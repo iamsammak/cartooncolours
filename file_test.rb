@@ -23,6 +23,6 @@ require_relative 'pokemon_list' # OR require './pokemon_list'
 folder_path = "./images/master-svg/"
 Dir.glob(folder_path + "*").sort.each do |f|
   filename = File.basename(f, File.extname(f))
-
-  puts filename
+  new_filename = filename + "_" + POKEMON_HASH[filename.to_i]
+  File.rename(f, folder_path + new_filename + File.extname(f))
 end
