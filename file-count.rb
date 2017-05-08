@@ -1,7 +1,7 @@
 puts "Counting files..."
 
 pokemon = Hash.new
-(1..150).each do |n|
+(1..151).each do |n|
   pokemon[n] = false
 end
 
