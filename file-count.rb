@@ -19,7 +19,9 @@ pokemon.each do |key, value|
 end
 
 ret.each do |num|
-  puts num
+  ret << num
+  puts "Missing #{num}"
 end
 
+puts "Caught em' all" if ret.length.zero?
 puts "Complete"
