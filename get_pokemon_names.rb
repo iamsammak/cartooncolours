@@ -29,3 +29,25 @@ POKEMON_HASH = {}
 (1..151).each do |n|
   POKEMON_HASH[n] = POKEMON_NAMES[n - 1]
 end
+
+# User Interface
+puts "Are you looking up one or many?"
+input = gets.chomp
+
+if input == "all"
+  puts POKEMON_HASH
+elsif input == "1"
+  puts "Pokemon id?"
+  poke_id = gets.chomp.to_i
+  puts "Pokemon #{poke_id} is: #{POKEMON_HASH[poke_id]}"
+else
+  puts "Enter the start"
+  start_idx = gets.chomp.to_i
+  puts "Enter the end_idx"
+  end_idx = gets.chomp.to_i
+
+  puts "Pokemon #{start_idx} to #{end_idx}:"
+  (start_idx..end_idx).each do |n|
+    puts POKEMON_HASH[n]
+  end
+end
