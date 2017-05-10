@@ -9,6 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  // ctx.fillStyle="red";
+  // ctx.fillRect(0,0,300,150);
+  // ctx.clearRect(20,20,100,50);
+
+  let img = new Image();
+  img.src = "http://res.cloudinary.com/dfazwubvc/image/upload/v1494345959/cartooncolours/143_snorlax.svg";
+  img.onload = function() {
+    // ctx.drawImage(img, 0, 0);
+    ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
+  };
+
+
+
+
 
 // Testing
   window.pokemon = POKEMON;
@@ -17,3 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fireemblemNameToId = fireemblemNameToId;
   console.log("Hello from inside cartooncolours.js");
 });
+
+const logRandomPokemon = () => {
+  console.log("Snorlax");
+};
+
+let randomPokemon = document.getElementsByClassName("random-pokemon");
+randomPokemon.addEventListener("click", logRandomPokemon());

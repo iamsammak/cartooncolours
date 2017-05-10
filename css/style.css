@@ -3,3 +3,39 @@ body {
   overflow: hidden;
   background-color: #B5FFDB;
 }
+
+#random-button {
+  position: absolute;
+  top: 10px;
+  right: 100px;
+  font-family: "Audiowide";
+  font-size: 14px;
+  background-color: red;
+  height: 37px;
+  width: 100px;
+  z-index: 100;
+}
+
+.random-pokemon {
+  position: absolute;
+  top: 10px;
+  right: 210px;
+  text-align: center;
+  background-color: blue;
+  border: 1px solid black;
+  height: 35px;
+  width: 100px;
+  z-index: 100;
+}
+
+.random-pokemon:hover {
+  background-color: red;
+}
+
+.random-pokemon p {
+  color: white;
+  font-family: "Audiowide";
+  font-size: 14px;
+  padding: 9px;
+  margin: 0 auto;
+}
