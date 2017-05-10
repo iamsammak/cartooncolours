@@ -21,7 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 
+  const logRandomPokemon = function() {
+    console.log("snorlax");
+  };
 
+  let randomPokemon = document.getElementById("random-pokemon");
+  randomPokemon.addEventListener("click", logRandomPokemon);
 
 
 // Testing
@@ -31,10 +36,3 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fireemblemNameToId = fireemblemNameToId;
   console.log("Hello from inside cartooncolours.js");
 });
-
-const logRandomPokemon = () => {
-  console.log("Snorlax");
-};
-
-let randomPokemon = document.getElementsByClassName("random-pokemon");
-randomPokemon.addEventListener("click", logRandomPokemon());

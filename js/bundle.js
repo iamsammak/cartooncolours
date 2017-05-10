@@ -278,6 +278,13 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
   };
 
+  var logRandomPokemon = function logRandomPokemon() {
+    console.log("snorlax");
+  };
+
+  var randomPokemon = document.getElementById("random-pokemon");
+  randomPokemon.addEventListener("click", logRandomPokemon);
+
   // Testing
   window.pokemon = _pokemon_list.POKEMON;
   window.pokemonNameToId = _pokemon.pokemonNameToId;
@@ -285,13 +292,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.fireemblemNameToId = _fireemblem.fireemblemNameToId;
   console.log("Hello from inside cartooncolours.js");
 });
-
-var logRandomPokemon = function logRandomPokemon() {
-  console.log("Snorlax");
-};
-
-var randomPokemon = document.getElementsByClassName("random-pokemon");
-randomPokemon.addEventListener("click", logRandomPokemon());
 
 /***/ }),
 /* 3 */
