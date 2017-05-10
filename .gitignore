@@ -4,4 +4,6 @@ rename/
 iconset/
 color-thief-master/
 /node_modules
-js/bundle
+
+bundle.js
+bundle.js.map
