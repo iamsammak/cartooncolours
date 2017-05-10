@@ -293,13 +293,15 @@ document.addEventListener('DOMContentLoaded', function () {
   randomPokemon.addEventListener("click", logRandomPokemon);
 
   var randomImage = function randomImage() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     var randNum = Math.floor(Math.random() * 4);
     var fourImages = [1, 2, 3, 143];
 
     var img = new Image();
     img.src = _pokemon_list.POKEMON[fourImages[randNum]][1];
     img.onload = function () {
-      ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
+      ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5, 500, 600);
     };
   };
 

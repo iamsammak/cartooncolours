@@ -30,18 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let pokeNum = Math.floor(Math.random() * 151) + 1;
     console.log(POKEMON[pokeNum][0]);
   };
-  
+
   let randomPokemon = document.getElementById("random-pokemon");
   randomPokemon.addEventListener("click", logRandomPokemon);
 
   const randomImage = function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     let randNum = Math.floor(Math.random() * 4);
     let fourImages = [1, 2, 3, 143];
 
     let img = new Image();
     img.src = POKEMON[fourImages[randNum]][1];
     img.onload = function() {
-      ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
+      ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5, 500, 600);
     };
   };
 
