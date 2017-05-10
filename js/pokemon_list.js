@@ -1,7 +1,7 @@
 export const POKEMON = {
-  1: ["bulbasaur"],
-  2: ["ivysaur"],
-  3: ["venusaur"],
+  1: ["bulbasaur", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346188/cartooncolours/001_bulbasaur.svg"],
+  2: ["ivysaur", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346374/cartooncolours/002_ivysaur.svg"],
+  3: ["venusaur", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346375/cartooncolours/003_venusaur.svg"],
   4: ["charmander"],
   5: ["charmeleon"],
   6: ["charizard"],

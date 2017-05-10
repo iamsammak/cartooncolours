@@ -93,9 +93,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var POKEMON = exports.POKEMON = {
-  1: ["bulbasaur"],
-  2: ["ivysaur"],
-  3: ["venusaur"],
+  1: ["bulbasaur", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346188/cartooncolours/001_bulbasaur.svg"],
+  2: ["ivysaur", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346374/cartooncolours/002_ivysaur.svg"],
+  3: ["venusaur", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346375/cartooncolours/003_venusaur.svg"],
   4: ["charmander"],
   5: ["charmeleon"],
   6: ["charizard"],
@@ -271,19 +271,40 @@ document.addEventListener('DOMContentLoaded', function () {
   // ctx.fillRect(0,0,300,150);
   // ctx.clearRect(20,20,100,50);
 
-  var img = new Image();
-  img.src = "http://res.cloudinary.com/dfazwubvc/image/upload/v1494345959/cartooncolours/143_snorlax.svg";
-  img.onload = function () {
-    // ctx.drawImage(img, 0, 0);
-    ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
-  };
+  // let img = new Image();
+  // img.src = "http://res.cloudinary.com/dfazwubvc/image/upload/v1494345959/cartooncolours/143_snorlax.svg";
+  // img.onload = function() {
+  //   // ctx.drawImage(img, 0, 0);
+  //   ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
+  //   // ctx.drawImage(image, dx, dy);
+  //   // ctx.drawImage(image, dx, dy, dWidth, dHeight);
+  //   // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+  // };
 
+
+  // Testing Random button which will eventually load a random image
   var logRandomPokemon = function logRandomPokemon() {
-    console.log("snorlax");
+    // add 1 to exclude 0 and include 151
+    var pokeNum = Math.floor(Math.random() * 151) + 1;
+    console.log(_pokemon_list.POKEMON[pokeNum][0]);
   };
 
   var randomPokemon = document.getElementById("random-pokemon");
   randomPokemon.addEventListener("click", logRandomPokemon);
+
+  var randomImage = function randomImage() {
+    var randNum = Math.floor(Math.random() * 4);
+    var fourImages = [1, 2, 3, 143];
+
+    var img = new Image();
+    img.src = _pokemon_list.POKEMON[fourImages[randNum]][1];
+    img.onload = function () {
+      ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
+    };
+  };
+
+  var randomButton = document.getElementById("random-button");
+  randomButton.addEventListener("click", randomImage);
 
   // Testing
   window.pokemon = _pokemon_list.POKEMON;
