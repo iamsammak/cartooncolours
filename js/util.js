@@ -23,7 +23,7 @@ export const imgDataToHexCode = function(color) {
   return '#' + r + g + b;
 };
 
-export const generateImgData = function(canvas, ctx, colors, currentId, group) {
+export const generateImgData = function(img, canvas, ctx, colors, currentId, group) {
   let imgData = ctx.getImageData(canvas.width/3, canvas.height/3,
     img.width, img.height).data;
   // return colors

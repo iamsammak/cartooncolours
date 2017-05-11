@@ -269,10 +269,93 @@ var FIREEMBLEM = exports.FIREEMBLEM = {
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: Unexpected token (59:31)\n\n\u001b[0m \u001b[90m 57 | \u001b[39m        \u001b[33mPOKEMON\u001b[39m\n \u001b[90m 58 | \u001b[39m      )\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 | \u001b[39m      \u001b[36mif\u001b[39m (\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcurrentPokeId \u001b[33m<\u001b[39m )\n \u001b[90m    | \u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 | \u001b[39m    }\n \u001b[90m 61 | \u001b[39m\n \u001b[90m 62 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcurrentPokeId\u001b[33m++\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n");
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Pokemon = exports.pokemonNameToId = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _pokemon_list = __webpack_require__(0);
+
+var _util = __webpack_require__(4);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var pokemonNameToId = exports.pokemonNameToId = function pokemonNameToId(obj, pokeName) {
+  for (var prop in obj) {
+    // console.log(`obj.${prop} = ${obj[prop]}`);
+    if (obj[prop][0] === pokeName) {
+      return parseInt(prop);
+    }
+  }
+};
+
+var Pokemon = exports.Pokemon = function () {
+  function Pokemon(canvas, ctx) {
+    _classCallCheck(this, Pokemon);
+
+    this.canvas = canvas;
+    this.ctx = ctx;
+    this.colors = {};
+    this.currentPokeId = 1;
+
+    // let that = this, binding of this
+    this.randomPokemon = this.randomPokemon.bind(this);
+    this.generatePokemonData = this.generatePokemonData.bind(this);
+  }
+
+  _createClass(Pokemon, [{
+    key: 'randomPokemon',
+    value: function randomPokemon() {
+      var _this = this;
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var pokeNum = (0, _util.randomPokeNumber)();
+      console.log(_pokemon_list.POKEMON[pokeNum][0]);
+
+      var img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = _pokemon_list.POKEMON[pokeNum][1];
+      img.onload = function () {
+        // fix proportions later
+        _this.ctx.drawImage(img, _this.canvas.width / 3, _this.canvas.height / 3);
+      };
+      var imgData = this.ctx.getImageData(this.canvas.width / 3, this.canvas.height / 3, 500, 600).data;
+      // debugger
+    }
+  }, {
+    key: 'generatePokemonData',
+    value: function generatePokemonData() {
+      var _this2 = this;
+
+      this.colors = {};
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
+      img.onload = function () {
+        _this2.ctx.drawImage(img, _this2.canvas.width / 3, _this2.canvas.height / 3);
+        (0, _util.generateImgData)(img, _this2.canvas, _this2.ctx, _this2.colors, _this2.currentPokeId, _pokemon_list.POKEMON);
+        if (_this2.currentPokeId < _pokemon_list.totalCount) {
+          _this2.currentPokeId++;
+        } else {
+          console.log("Hit 151");
+        }
+      };
+    }
+  }]);
+
+  return Pokemon;
+}();
 
 /***/ }),
 /* 4 */
@@ -309,7 +392,7 @@ var imgDataToHexCode = exports.imgDataToHexCode = function imgDataToHexCode(colo
   return '#' + r + g + b;
 };
 
-var generateImgData = exports.generateImgData = function generateImgData(canvas, ctx, colors, currentId, group) {
+var generateImgData = exports.generateImgData = function generateImgData(img, canvas, ctx, colors, currentId, group) {
   var imgData = ctx.getImageData(canvas.width / 3, canvas.height / 3, img.width, img.height).data;
   // return colors
 };

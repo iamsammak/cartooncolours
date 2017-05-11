@@ -46,20 +46,22 @@ export class Pokemon {
 
     let img = new Image();
     img.crossOrigin = "anonymous";
-    img.src = group[currentId][1];
+    img.src = POKEMON[this.currentPokeId][1];
     img.onload = () => {
       this.ctx.drawImage(img, this.canvas.width/3, this.canvas.height/3);
       generateImgData(
+        img,
         this.canvas,
         this.ctx,
         this.colors,
         this.currentPokeId,
         POKEMON
       );
-      if (this.currentPokeId < )
-    }
-
-    this.currentPokeId++;
-
+      if (this.currentPokeId < totalCount) {
+        this.currentPokeId++;
+      } else {
+        console.log("Hit 151");
+      }
+    };
   }
 }
