@@ -242,9 +242,9 @@ var totalCount = exports.totalCount = Object.keys(POKEMON).length;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var randomPokeNumber = exports.randomPokeNumber = function randomPokeNumber() {
-  // add 1 to exclude 0 and include 151
-  return Math.floor(Math.random() * 151) + 1;
+var randomNumber = exports.randomNumber = function randomNumber(limit) {
+  // add 1 to exclude 0 and include 'limit'
+  return Math.floor(Math.random() * limit) + 1;
 };
 
 // hexcode is just rgb mapped in base 16
@@ -459,6 +459,8 @@ var Pokemon = exports.Pokemon = function () {
 
         _this2.ctx.drawImage(img, dx, dy, dWidth, dHeight);
       };
+
+      // this part will be deleted later after creating search
       if (this.currentPokeId >= 151) {
         this.currentPokeId = 1;
       } else {
@@ -468,7 +470,7 @@ var Pokemon = exports.Pokemon = function () {
   }, {
     key: 'randomPokemon',
     value: function randomPokemon() {
-      var randomId = (0, _util.randomPokeNumber)();
+      var randomId = (0, _util.randomNumber)(151);
       this.currentPokeId = randomId;
       this.loadPokemon();
     }
@@ -497,22 +499,26 @@ var _util = __webpack_require__(1);
 // end testing imports
 
 document.addEventListener('DOMContentLoaded', function () {
-  var canvas = document.getElementById('colours-canvas');
-  var ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  var loadCanvas = function loadCanvas() {
+    var canvas = document.getElementById('colours-canvas');
+    var ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-  document.body.style.backgroundColor = "#B5FFDB";
+    document.body.style.backgroundColor = "#B5FFDB";
 
-  var pokemon = new _pokemon.Pokemon(canvas, ctx);
-  pokemon.loadData();
+    var pokemon = new _pokemon.Pokemon(canvas, ctx);
+    pokemon.loadData();
 
-  var logRandomPokemon = document.getElementById("random-pokemon");
-  logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
+    var logRandomPokemon = document.getElementById("random-pokemon");
+    logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
-  var randomButton = document.getElementById("random-button");
-  // randomButton.addEventListener("click", pokemon.randomPokemon);
-  randomButton.addEventListener("click", pokemon.loadPokemon);
+    var randomButton = document.getElementById("random-button");
+    randomButton.addEventListener("click", pokemon.loadPokemon);
+  };
+
+  window.addEventListener('resize', loadCanvas, false);
+  loadCanvas();
 
   // Testing
   window.pokemon = _pokemon_list.POKEMON;
@@ -521,19 +527,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.fireemblemNameToId = _fireemblem.fireemblemNameToId;
   window.imgDataToHexCode = _util.imgDataToHexCode;
   console.log("Hello from inside cartooncolours.js");
-});
-
-// let img = new Image();
-// img.src = "http://res.cloudinary.com/dfazwubvc/image/upload/v1494345959/cartooncolours/143_snorlax.svg";
-// img.onload = function() {
-//   // ctx.drawImage(img, 0, 0);
-//   ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
-//   // references: d = destination, s = source image
-//   // ctx.drawImage(image, dx, dy);
-//   // ctx.drawImage(image, dx, dy, dWidth, dHeight);
-//   // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-// };
-// testing
+}); // testing
 
 /***/ })
 /******/ ]);

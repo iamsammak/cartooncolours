@@ -1,5 +1,5 @@
 import { POKEMON, totalCount } from './pokemon_list';
-import { randomPokeNumber, imgDataToHexCode, generateImgData } from './util';
+import { randomNumber, imgDataToHexCode, generateImgData } from './util';
 
 export const pokemonNameToId = (obj, pokeName) => {
   for (let prop in obj ) {
@@ -92,6 +92,8 @@ export class Pokemon {
 
       this.ctx.drawImage(img, dx, dy, dWidth, dHeight);
     };
+
+    // this part will be deleted later after creating search
     if (this.currentPokeId >= 151) {
       this.currentPokeId = 1;
     } else {
@@ -100,7 +102,7 @@ export class Pokemon {
   }
 
   randomPokemon() {
-    let randomId = randomPokeNumber();
+    let randomId = randomNumber(151);
     this.currentPokeId = randomId;
     this.loadPokemon();
   }

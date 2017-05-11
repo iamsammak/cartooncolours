@@ -1,6 +1,6 @@
-export const randomPokeNumber = function() {
-  // add 1 to exclude 0 and include 151
-  return (Math.floor(Math.random() * 151) + 1);
+export const randomNumber = function(limit) {
+  // add 1 to exclude 0 and include 'limit'
+  return (Math.floor(Math.random() * limit) + 1);
 };
 
 // hexcode is just rgb mapped in base 16
