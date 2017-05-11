@@ -15,14 +15,13 @@ export class Pokemon {
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentPokeId = 1;
+    this.currentPokeId = 143;
     this.pokemonData = {};
     this.image = null;
 
     // let that = this, binding of this
     this.randomPokemon = this.randomPokemon.bind(this);
     this.generatePokemonData = this.generatePokemonData.bind(this);
-    this.loadData = this.loadData.bind(this);
     this.loadPokemon = this.loadPokemon.bind(this);
   }
 
@@ -79,10 +78,11 @@ export class Pokemon {
   }
 
   loadData() {
+    let that = this;
     $.getJSON('./js/pokemon_data.json', function(data) {
-      this.pokemonData = data;
-      this.loadPokemon();
-    })
+      that.pokemonData = data;
+      that.loadPokemon();
+    });
   }
 
   loadPokemon() {
@@ -97,5 +97,10 @@ export class Pokemon {
       img.width = img.height * scaleProportions;
       this.ctx.drawImage(img, this.canvas.width/3, this.canvas.height/3, img.width, img.height);
     };
+    if (this.currentPokeId >= 151) {
+      this.currentPokeId = 1;
+    } else {
+      this.currentPokeId++;
+    }
   };
 }

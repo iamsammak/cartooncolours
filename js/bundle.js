@@ -242,169 +242,6 @@ var totalCount = exports.totalCount = Object.keys(POKEMON).length;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var fireemblemNameToId = exports.fireemblemNameToId = function fireemblemNameToId(obj, name) {
-  for (var prop in obj) {
-    // console.log(`obj.${prop} = ${obj[prop]}`);
-    if (obj[prop][0] === name) {
-      return parseInt(prop);
-    }
-  }
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var FIREEMBLEM = exports.FIREEMBLEM = {
-  1: ["azura", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348437/cartooncolours/Full_Portrait_Azura.png"],
-  2: ["eirika", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348435/cartooncolours/Full_Portrait_Eirika.png"],
-  3: ["ike"]
-};
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Pokemon = exports.pokemonNameToId = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _pokemon_list = __webpack_require__(0);
-
-var _util = __webpack_require__(4);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var pokemonNameToId = exports.pokemonNameToId = function pokemonNameToId(obj, pokeName) {
-  for (var prop in obj) {
-    // console.log(`obj.${prop} = ${obj[prop]}`);
-    if (obj[prop][0] === pokeName) {
-      return parseInt(prop);
-    }
-  }
-};
-
-var Pokemon = exports.Pokemon = function () {
-  function Pokemon(canvas, ctx) {
-    _classCallCheck(this, Pokemon);
-
-    this.canvas = canvas;
-    this.ctx = ctx;
-    this.colors = {};
-    this.currentPokeId = 1;
-    this.pokemonData = {};
-    this.image = null;
-
-    // let that = this, binding of this
-    this.randomPokemon = this.randomPokemon.bind(this);
-    this.generatePokemonData = this.generatePokemonData.bind(this);
-    this.loadData = this.loadData.bind(this);
-    this.loadPokemon = this.loadPokemon.bind(this);
-  }
-
-  _createClass(Pokemon, [{
-    key: 'randomPokemon',
-    value: function randomPokemon() {
-      var _this = this;
-
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      var pokeNum = (0, _util.randomPokeNumber)();
-      console.log(_pokemon_list.POKEMON[pokeNum][0]);
-
-      var img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = _pokemon_list.POKEMON[pokeNum][1];
-      img.onload = function () {
-        // fix proportions later
-        _this.ctx.drawImage(img, _this.canvas.width / 3, _this.canvas.height / 3);
-      };
-      var imgData = this.ctx.getImageData(this.canvas.width / 3, this.canvas.height / 3, 500, 600).data;
-      // debugger
-    }
-  }, {
-    key: 'generatePokemonData',
-    value: function generatePokemonData() {
-      var _this2 = this;
-
-      this.colors = {};
-
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      var img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
-      img.onload = function () {
-        _this2.ctx.drawImage(img, _this2.canvas.width / 3, _this2.canvas.height / 3);
-
-        var topColors = (0, _util.generateImgData)(img, _this2.canvas, _this2.ctx, _this2.colors, _this2.currentPokeId, _pokemon_list.POKEMON);
-
-        _this2.pokemonData[_this2.currentPokeId] = {
-          name: _pokemon_list.POKEMON[_this2.currentPokeId][0],
-          colors: topColors
-        };
-
-        if (_this2.currentPokeId < _pokemon_list.totalCount) {
-          _this2.currentPokeId++;
-          _this2.generatePokemonData();
-        } else {
-          console.log("Hit 151");
-          console.log(JSON.stringify(_this2.pokemonData));
-        }
-      };
-    }
-  }, {
-    key: 'loadData',
-    value: function loadData() {
-      $.getJSON('./js/pokemon_data.json', function (data) {
-        this.pokemonData = data;
-        this.loadPokemon();
-      });
-    }
-  }, {
-    key: 'loadPokemon',
-    value: function loadPokemon() {
-      var _this3 = this;
-
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      var img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
-      img.onload = function () {
-        var scaleProportions = img.width / img.height;
-        img.height = _this3.canvas.height / 2.2;
-        img.width = img.height * scaleProportions;
-        _this3.ctx.drawImage(img, _this3.canvas.width / 3, _this3.canvas.height / 3, img.width, img.height);
-      };
-    }
-  }]);
-
-  return Pokemon;
-}();
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 var randomPokeNumber = exports.randomPokeNumber = function randomPokeNumber() {
   // add 1 to exclude 0 and include 151
   return Math.floor(Math.random() * 151) + 1;
@@ -472,6 +309,174 @@ var generateImgData = exports.generateImgData = function generateImgData(img, ca
 };
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var fireemblemNameToId = exports.fireemblemNameToId = function fireemblemNameToId(obj, name) {
+  for (var prop in obj) {
+    // console.log(`obj.${prop} = ${obj[prop]}`);
+    if (obj[prop][0] === name) {
+      return parseInt(prop);
+    }
+  }
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var FIREEMBLEM = exports.FIREEMBLEM = {
+  1: ["azura", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348437/cartooncolours/Full_Portrait_Azura.png"],
+  2: ["eirika", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348435/cartooncolours/Full_Portrait_Eirika.png"],
+  3: ["ike"]
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Pokemon = exports.pokemonNameToId = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _pokemon_list = __webpack_require__(0);
+
+var _util = __webpack_require__(1);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var pokemonNameToId = exports.pokemonNameToId = function pokemonNameToId(obj, pokeName) {
+  for (var prop in obj) {
+    // console.log(`obj.${prop} = ${obj[prop]}`);
+    if (obj[prop][0] === pokeName) {
+      return parseInt(prop);
+    }
+  }
+};
+
+var Pokemon = exports.Pokemon = function () {
+  function Pokemon(canvas, ctx) {
+    _classCallCheck(this, Pokemon);
+
+    this.canvas = canvas;
+    this.ctx = ctx;
+    this.colors = {};
+    this.currentPokeId = 143;
+    this.pokemonData = {};
+    this.image = null;
+
+    // let that = this, binding of this
+    this.randomPokemon = this.randomPokemon.bind(this);
+    this.generatePokemonData = this.generatePokemonData.bind(this);
+    this.loadPokemon = this.loadPokemon.bind(this);
+  }
+
+  _createClass(Pokemon, [{
+    key: 'randomPokemon',
+    value: function randomPokemon() {
+      var _this = this;
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var pokeNum = (0, _util.randomPokeNumber)();
+      console.log(_pokemon_list.POKEMON[pokeNum][0]);
+
+      var img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = _pokemon_list.POKEMON[pokeNum][1];
+      img.onload = function () {
+        // fix proportions later
+        _this.ctx.drawImage(img, _this.canvas.width / 3, _this.canvas.height / 3);
+      };
+      var imgData = this.ctx.getImageData(this.canvas.width / 3, this.canvas.height / 3, 500, 600).data;
+      // debugger
+    }
+  }, {
+    key: 'generatePokemonData',
+    value: function generatePokemonData() {
+      var _this2 = this;
+
+      this.colors = {};
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
+      img.onload = function () {
+        _this2.ctx.drawImage(img, _this2.canvas.width / 3, _this2.canvas.height / 3);
+
+        var topColors = (0, _util.generateImgData)(img, _this2.canvas, _this2.ctx, _this2.colors, _this2.currentPokeId, _pokemon_list.POKEMON);
+
+        _this2.pokemonData[_this2.currentPokeId] = {
+          name: _pokemon_list.POKEMON[_this2.currentPokeId][0],
+          colors: topColors
+        };
+
+        if (_this2.currentPokeId < _pokemon_list.totalCount) {
+          _this2.currentPokeId++;
+          _this2.generatePokemonData();
+        } else {
+          console.log("Hit 151");
+          console.log(JSON.stringify(_this2.pokemonData));
+        }
+      };
+    }
+  }, {
+    key: 'loadData',
+    value: function loadData() {
+      var that = this;
+      $.getJSON('./js/pokemon_data.json', function (data) {
+        that.pokemonData = data;
+        that.loadPokemon();
+      });
+    }
+  }, {
+    key: 'loadPokemon',
+    value: function loadPokemon() {
+      var _this3 = this;
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
+      img.onload = function () {
+        var scaleProportions = img.width / img.height;
+        img.height = _this3.canvas.height / 2.2;
+        img.width = img.height * scaleProportions;
+        _this3.ctx.drawImage(img, _this3.canvas.width / 3, _this3.canvas.height / 3, img.width, img.height);
+      };
+      if (this.currentPokeId >= 151) {
+        this.currentPokeId = 1;
+      } else {
+        this.currentPokeId++;
+      }
+    }
+  }]);
+
+  return Pokemon;
+}();
+
+/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -480,13 +485,13 @@ var generateImgData = exports.generateImgData = function generateImgData(img, ca
 
 var _pokemon_list = __webpack_require__(0);
 
-var _pokemon = __webpack_require__(3);
+var _pokemon = __webpack_require__(4);
 
-var _fireemblem_list = __webpack_require__(2);
+var _fireemblem_list = __webpack_require__(3);
 
-var _fireemblem = __webpack_require__(1);
+var _fireemblem = __webpack_require__(2);
 
-var _util = __webpack_require__(4);
+var _util = __webpack_require__(1);
 
 // end testing imports
 
