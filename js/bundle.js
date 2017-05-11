@@ -281,6 +281,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _pokemon_list = __webpack_require__(0);
 
+var _util = __webpack_require__(4);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var pokemonNameToId = exports.pokemonNameToId = function pokemonNameToId(obj, pokeName) {
@@ -298,40 +300,39 @@ var Pokemon = exports.Pokemon = function () {
 
     this.canvas = canvas;
     this.ctx = ctx;
+    this.colors = {};
+    this.currentPokeId = 1;
 
     // let that = this, binding of this
     this.randomPokemon = this.randomPokemon.bind(this);
+    this.generatePokemonData = this.generatePokemonData.bind(this);
   }
 
-  // Testing Random button which will eventually load a random image
-
-
   _createClass(Pokemon, [{
-    key: "logRandomPokemon",
-    value: function logRandomPokemon() {
-      // add 1 to exclude 0 and include 151
-      var pokeNum = Math.floor(Math.random() * 151) + 1;
-      console.log(_pokemon_list.POKEMON[pokeNum][0]);
-    }
-  }, {
-    key: "randomPokemon",
+    key: 'randomPokemon',
     value: function randomPokemon() {
       var _this = this;
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-      var randNum = Math.floor(Math.random() * 151) + 1;
+      var pokeNum = (0, _util.randomPokeNumber)();
+      console.log(_pokemon_list.POKEMON[pokeNum][0]);
 
       var img = new Image();
       img.crossOrigin = "anonymous";
-      img.src = _pokemon_list.POKEMON[randNum][1];
+      img.src = _pokemon_list.POKEMON[pokeNum][1];
       img.onload = function () {
         // fix proportions later
-        _this.ctx.drawImage(img, _this.canvas.width / 2, _this.canvas.height / 3);
+        _this.ctx.drawImage(img, _this.canvas.width / 3, _this.canvas.height / 3);
       };
-      var imgData = this.ctx.getImageData(this.canvas.width / 2.5, this.canvas.height / 3.5, 500, 600).data;
-      console.log(imgData);
+      var imgData = this.ctx.getImageData(this.canvas.width / 3, this.canvas.height / 3, 500, 600).data;
       // debugger
+    }
+  }, {
+    key: 'generatePokemonData',
+    value: function generatePokemonData() {
+      (0, _util.generateImgData)(this.canvas, this.ctx, this.colors, this.currentPokeId, _pokemon_list.POKEMON);
+      this.currentPokeId++;
     }
   }]);
 
@@ -348,6 +349,11 @@ var Pokemon = exports.Pokemon = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var randomPokeNumber = exports.randomPokeNumber = function randomPokeNumber() {
+  // add 1 to exclude 0 and include 151
+  return Math.floor(Math.random() * 151) + 1;
+};
+
 // hexcode is just rgb mapped in base 16
 var imgDataToHexCode = exports.imgDataToHexCode = function imgDataToHexCode(color) {
   var r = color.red.toString(16);
@@ -368,6 +374,21 @@ var imgDataToHexCode = exports.imgDataToHexCode = function imgDataToHexCode(colo
   return '#' + r + g + b;
 };
 
+var generateImgData = exports.generateImgData = function generateImgData(canvas, ctx, colors, currentId, group) {
+  colors = {};
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  var img = new Image();
+  img.crossOrigin = "anonymous";
+  img.src = group[currentId][1];
+  img.onload = function () {
+    ctx.drawImage(img, canvas.width / 3, canvas.height / 3);
+    var imgData = ctx.getImageData(canvas.width / 3, canvas.height / 3, img.width, img.height).data;
+  };
+  // return colors
+};
+
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -385,6 +406,8 @@ var _fireemblem = __webpack_require__(1);
 
 var _util = __webpack_require__(4);
 
+// end testing imports
+
 document.addEventListener('DOMContentLoaded', function () {
   var canvas = document.getElementById('colours-canvas');
   var ctx = canvas.getContext('2d');
@@ -396,10 +419,11 @@ document.addEventListener('DOMContentLoaded', function () {
   var pokemon = new _pokemon.Pokemon(canvas, ctx);
 
   var logRandomPokemon = document.getElementById("random-pokemon");
-  logRandomPokemon.addEventListener("click", pokemon.logRandomPokemon);
+  logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   var randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.randomPokemon);
+  // randomButton.addEventListener("click", pokemon.randomPokemon);
+  randomButton.addEventListener("click", pokemon.generatePokemonData);
 
   // Testing
   window.pokemon = _pokemon_list.POKEMON;
@@ -420,6 +444,7 @@ document.addEventListener('DOMContentLoaded', function () {
 //   // ctx.drawImage(image, dx, dy, dWidth, dHeight);
 //   // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
 // };
+// testing
 
 /***/ })
 /******/ ]);

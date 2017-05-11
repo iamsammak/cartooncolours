@@ -1,9 +1,10 @@
+// testing
 import { POKEMON } from './pokemon_list';
 import { pokemonNameToId, Pokemon } from './pokemon';
 import { FIREEMBLEM } from './fireemblem_list';
 import { fireemblemNameToId } from './fireemblem';
-
 import { imgDataToHexCode } from './util';
+// end testing imports
 
 document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('colours-canvas');
@@ -16,10 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const pokemon = new Pokemon(canvas, ctx);
 
   const logRandomPokemon = document.getElementById("random-pokemon");
-  logRandomPokemon.addEventListener("click", pokemon.logRandomPokemon);
+  logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   const randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.randomPokemon);
+  // randomButton.addEventListener("click", pokemon.randomPokemon);
+  randomButton.addEventListener("click", pokemon.generatePokemonData);
 
 
 // Testing

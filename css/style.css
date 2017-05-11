@@ -20,6 +20,10 @@ canvas {
   cursor: pointer;
 }
 
+#random-button:hover {
+  background-color: #BEA3C4;
+}
+
 #random-pokemon {
   position: absolute;
   top: 10px;

@@ -1,3 +1,8 @@
+export const randomPokeNumber = function() {
+  // add 1 to exclude 0 and include 151
+  return (Math.floor(Math.random() * 151) + 1);
+};
+
 // hexcode is just rgb mapped in base 16
 export const imgDataToHexCode = function(color) {
   let r = color.red.toString(16);
@@ -16,4 +21,19 @@ export const imgDataToHexCode = function(color) {
   }
 
   return '#' + r + g + b;
+};
+
+export const generateImgData = function(canvas, ctx, colors, currentId, group) {
+  colors = {};
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+  let img = new Image();
+  img.crossOrigin = "anonymous";
+  img.src = group[currentId][1];
+  img.onload = () => {
+    ctx.drawImage(img, canvas.width/3, canvas.height/3);
+    let imgData = ctx.getImageData(canvas.width/3, canvas.height/3, img.width, img.height).data;
+  }
+  // return colors
 };
