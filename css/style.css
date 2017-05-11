@@ -4,7 +4,7 @@ body {
 }
 
 canvas {
-  background-color: #FFF5B0;
+  /*background-color: #FFF5B0;*/
 }
 
 #random-button {
@@ -13,10 +13,11 @@ canvas {
   right: 100px;
   font-family: "Audiowide";
   font-size: 14px;
-  background-color: red;
+  background-color: #FFBFB3;
   height: 37px;
   width: 100px;
   z-index: 100;
+  cursor: pointer;
 }
 
 #random-pokemon {
@@ -24,19 +25,20 @@ canvas {
   top: 10px;
   right: 210px;
   text-align: center;
-  background-color: blue;
+  background-color: #BEA3C4;
   border: 1px solid black;
   height: 35px;
   width: 100px;
   z-index: 100;
+  cursor: pointer;
 }
 
 #random-pokemon:hover {
-  background-color: red;
+  background-color: #FFBFB3;
 }
 
 #random-pokemon p {
-  color: white;
+  color: black;
   font-family: "Audiowide";
   font-size: 14px;
   padding: 9px;

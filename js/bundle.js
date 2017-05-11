@@ -63,27 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var FIREEMBLEM = exports.FIREEMBLEM = {
-  1: ["azura", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348437/cartooncolours/Full_Portrait_Azura.png"],
-  2: ["eirika", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348435/cartooncolours/Full_Portrait_Eirika.png"],
-  3: ["ike"]
-};
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -247,107 +231,7 @@ var POKEMON = exports.POKEMON = {
 };
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _pokemon_list = __webpack_require__(1);
-
-var _pokemon = __webpack_require__(3);
-
-var _fireemblem_list = __webpack_require__(0);
-
-var _fireemblem = __webpack_require__(4);
-
-document.addEventListener('DOMContentLoaded', function () {
-  var canvas = document.getElementById('colours-canvas');
-  var ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  canvas.style.backgroundColor = "#B5FFDB";
-
-  // ctx.fillStyle="red";
-  // ctx.fillRect(0,0,300,150);
-  // ctx.clearRect(20,20,100,50);
-
-  // let img = new Image();
-  // img.src = "http://res.cloudinary.com/dfazwubvc/image/upload/v1494345959/cartooncolours/143_snorlax.svg";
-  // img.onload = function() {
-  //   // ctx.drawImage(img, 0, 0);
-  //   ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
-  //   // ctx.drawImage(image, dx, dy);
-  //   // ctx.drawImage(image, dx, dy, dWidth, dHeight);
-  //   // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
-  // };
-
-  // Testing Random button which will eventually load a random image
-  var logRandomPokemon = function logRandomPokemon() {
-    // add 1 to exclude 0 and include 151
-    var pokeNum = Math.floor(Math.random() * 151) + 1;
-    console.log(_pokemon_list.POKEMON[pokeNum][0]);
-  };
-
-  var randomPokemon = document.getElementById("random-pokemon");
-  randomPokemon.addEventListener("click", logRandomPokemon);
-
-  var randomImage = function randomImage() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    var randNum = Math.floor(Math.random() * 4);
-    var fourImages = [1, 2, 3, 143];
-
-    var img = new Image();
-    img.src = _pokemon_list.POKEMON[fourImages[randNum]][1];
-    img.onload = function () {
-      ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5, 500, 600);
-    };
-  };
-
-  var randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", randomImage);
-
-  // Testing
-  window.pokemon = _pokemon_list.POKEMON;
-  window.pokemonNameToId = _pokemon.pokemonNameToId;
-  window.fireemblem = _fireemblem_list.FIREEMBLEM;
-  window.fireemblemNameToId = _fireemblem.fireemblemNameToId;
-  console.log("Hello from inside cartooncolours.js");
-});
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var pokemonNameToId = exports.pokemonNameToId = function pokemonNameToId(obj, pokeName) {
-  for (var prop in obj) {
-    // console.log(`obj.${prop} = ${obj[prop]}`);
-    if (obj[prop][0] === pokeName) {
-      return parseInt(prop);
-    }
-  }
-};
-
-var Pokemon = exports.Pokemon = function Pokemon(canvas, ctx) {
-  _classCallCheck(this, Pokemon);
-
-  this.canvs = canvs;
-  this.ctx = ctx;
-};
-
-/***/ }),
-/* 4 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -364,6 +248,178 @@ var fireemblemNameToId = exports.fireemblemNameToId = function fireemblemNameToI
     }
   }
 };
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var FIREEMBLEM = exports.FIREEMBLEM = {
+  1: ["azura", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348437/cartooncolours/Full_Portrait_Azura.png"],
+  2: ["eirika", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348435/cartooncolours/Full_Portrait_Eirika.png"],
+  3: ["ike"]
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Pokemon = exports.pokemonNameToId = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _pokemon_list = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var pokemonNameToId = exports.pokemonNameToId = function pokemonNameToId(obj, pokeName) {
+  for (var prop in obj) {
+    // console.log(`obj.${prop} = ${obj[prop]}`);
+    if (obj[prop][0] === pokeName) {
+      return parseInt(prop);
+    }
+  }
+};
+
+var Pokemon = exports.Pokemon = function () {
+  function Pokemon(canvas, ctx) {
+    _classCallCheck(this, Pokemon);
+
+    this.canvas = canvas;
+    this.ctx = ctx;
+
+    // let that = this, binding of this
+    this.randomPokemon = this.randomPokemon.bind(this);
+  }
+
+  // Testing Random button which will eventually load a random image
+
+
+  _createClass(Pokemon, [{
+    key: "logRandomPokemon",
+    value: function logRandomPokemon() {
+      // add 1 to exclude 0 and include 151
+      var pokeNum = Math.floor(Math.random() * 151) + 1;
+      console.log(_pokemon_list.POKEMON[pokeNum][0]);
+    }
+  }, {
+    key: "randomPokemon",
+    value: function randomPokemon() {
+      var _this = this;
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var randNum = Math.floor(Math.random() * 151) + 1;
+
+      var img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = _pokemon_list.POKEMON[randNum][1];
+      img.onload = function () {
+        // fix proportions later
+        _this.ctx.drawImage(img, _this.canvas.width / 2, _this.canvas.height / 3);
+      };
+      var imgData = this.ctx.getImageData(this.canvas.width / 2.5, this.canvas.height / 3.5, 500, 600).data;
+      console.log(imgData);
+      // debugger
+    }
+  }]);
+
+  return Pokemon;
+}();
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// hexcode is just rgb mapped in base 16
+var imgDataToHexCode = exports.imgDataToHexCode = function imgDataToHexCode(color) {
+  var r = color.red.toString(16);
+  var g = color.green.toString(16);
+  var b = color.blue.toString(16);
+  var result = '';
+  // prepend '0' before 0-9 digits
+  if (r.length === 1) {
+    r = '0' + r;
+  }
+  if (g.length === 1) {
+    g = '0' + g;
+  }
+  if (b.length === 1) {
+    b = '0' + b;
+  }
+
+  return '#' + r + g + b;
+};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _pokemon_list = __webpack_require__(0);
+
+var _pokemon = __webpack_require__(3);
+
+var _fireemblem_list = __webpack_require__(2);
+
+var _fireemblem = __webpack_require__(1);
+
+var _util = __webpack_require__(4);
+
+document.addEventListener('DOMContentLoaded', function () {
+  var canvas = document.getElementById('colours-canvas');
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  document.body.style.backgroundColor = "#B5FFDB";
+
+  var pokemon = new _pokemon.Pokemon(canvas, ctx);
+
+  var logRandomPokemon = document.getElementById("random-pokemon");
+  logRandomPokemon.addEventListener("click", pokemon.logRandomPokemon);
+
+  var randomButton = document.getElementById("random-button");
+  randomButton.addEventListener("click", pokemon.randomPokemon);
+
+  // Testing
+  window.pokemon = _pokemon_list.POKEMON;
+  window.pokemonNameToId = _pokemon.pokemonNameToId;
+  window.fireemblem = _fireemblem_list.FIREEMBLEM;
+  window.fireemblemNameToId = _fireemblem.fireemblemNameToId;
+  window.imgDataToHexCode = _util.imgDataToHexCode;
+  console.log("Hello from inside cartooncolours.js");
+});
+
+// let img = new Image();
+// img.src = "http://res.cloudinary.com/dfazwubvc/image/upload/v1494345959/cartooncolours/143_snorlax.svg";
+// img.onload = function() {
+//   // ctx.drawImage(img, 0, 0);
+//   ctx.drawImage(img, canvas.width / 2.5, canvas.height / 3.5);
+//   // references: d = destination, s = source image
+//   // ctx.drawImage(image, dx, dy);
+//   // ctx.drawImage(image, dx, dy, dWidth, dHeight);
+//   // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+// };
 
 /***/ })
 /******/ ]);
