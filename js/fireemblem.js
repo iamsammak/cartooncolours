@@ -94,7 +94,7 @@ export class FireEmblemHero {
     };
 
     // this part will be deleted later after creating search
-    if (this.currentHeroId >= 151) {
+    if (this.currentHeroId >= totalCount) {
       this.currentHeroId = 1;
     } else {
       this.currentHeroId++;
@@ -102,7 +102,7 @@ export class FireEmblemHero {
   }
 
   randomHero() {
-    let randomId = randomNumber(151);
+    let randomId = randomNumber(totalCount);
     this.currentHeroId = randomId;
     this.loadHero();
   }
