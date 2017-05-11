@@ -15,7 +15,7 @@ export class FireEmblemHero {
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentHeroId = 2;
+    this.currentHeroId = 1;
     this.fireEmblemData = {};
     this.image = null;
 
@@ -77,7 +77,7 @@ export class FireEmblemHero {
     img.crossOrigin = 'anonymous';
     img.src = FIREEMBLEM[this.currentHeroId][1];
     img.onload = () => {
-      let canvasToImageScale = 2.5;
+      let canvasToImageScale = 1.5;
       let imageScale = img.width / img.height;
       img.height = this.canvas.height / canvasToImageScale;
       img.width = img.height * imageScale;

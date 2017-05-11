@@ -344,7 +344,7 @@ var FireEmblemHero = exports.FireEmblemHero = function () {
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentHeroId = 2;
+    this.currentHeroId = 1;
     this.fireEmblemData = {};
     this.image = null;
 
@@ -409,7 +409,7 @@ var FireEmblemHero = exports.FireEmblemHero = function () {
       img.crossOrigin = 'anonymous';
       img.src = _fireemblem_list.FIREEMBLEM[this.currentHeroId][1];
       img.onload = function () {
-        var canvasToImageScale = 2.5;
+        var canvasToImageScale = 1.5;
         var imageScale = img.width / img.height;
         img.height = _this2.canvas.height / canvasToImageScale;
         img.width = img.height * imageScale;
@@ -629,22 +629,22 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.backgroundColor = "#B5FFDB";
 
     var pokemon = new _pokemon.Pokemon(canvas, ctx);
-    // pokemon.loadData();
-    //
-    // const logRandomPokemon = document.getElementById("random-pokemon");
-    // logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
-    //
-    // const randomButton = document.getElementById("random-button");
-    // randomButton.addEventListener("click", pokemon.loadPokemon);
-
-    var hero = new _fireemblem.FireEmblemHero(canvas, ctx);
-    // hero.loadData();
+    pokemon.loadData();
 
     var logRandomPokemon = document.getElementById("random-pokemon");
-    logRandomPokemon.addEventListener("click", hero.randomHero);
+    logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
     var randomButton = document.getElementById("random-button");
-    randomButton.addEventListener("click", hero.generateHeroData);
+    randomButton.addEventListener("click", pokemon.loadPokemon);
+
+    // const hero = new FireEmblemHero(canvas, ctx);
+    // hero.loadData();
+    //
+    // const logRandomPokemon = document.getElementById("random-pokemon");
+    // logRandomPokemon.addEventListener("click", hero.randomHero);
+    //
+    // const randomButton = document.getElementById("random-button");
+    // randomButton.addEventListener("click", hero.loadHero);
   };
 
   window.addEventListener('resize', loadCanvas, false);

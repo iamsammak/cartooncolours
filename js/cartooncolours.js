@@ -16,22 +16,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.backgroundColor = "#B5FFDB";
 
     const pokemon = new Pokemon(canvas, ctx);
-    // pokemon.loadData();
-    //
-    // const logRandomPokemon = document.getElementById("random-pokemon");
-    // logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
-    //
-    // const randomButton = document.getElementById("random-button");
-    // randomButton.addEventListener("click", pokemon.loadPokemon);
-
-    const hero = new FireEmblemHero(canvas, ctx);
-    // hero.loadData();
+    pokemon.loadData();
 
     const logRandomPokemon = document.getElementById("random-pokemon");
-    logRandomPokemon.addEventListener("click", hero.randomHero);
+    logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
     const randomButton = document.getElementById("random-button");
-    randomButton.addEventListener("click", hero.generateHeroData);
+    randomButton.addEventListener("click", pokemon.loadPokemon);
+
+    // const hero = new FireEmblemHero(canvas, ctx);
+    // hero.loadData();
+    //
+    // const logRandomPokemon = document.getElementById("random-pokemon");
+    // logRandomPokemon.addEventListener("click", hero.randomHero);
+    //
+    // const randomButton = document.getElementById("random-button");
+    // randomButton.addEventListener("click", hero.loadHero);
   };
 
   window.addEventListener('resize', loadCanvas, false);
