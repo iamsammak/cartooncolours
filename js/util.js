@@ -24,7 +24,40 @@ export const imgDataToHexCode = function(color) {
 };
 
 export const generateImgData = function(img, canvas, ctx, colors, currentId, group) {
-  let imgData = ctx.getImageData(canvas.width/3, canvas.height/3,
+  let imageData = ctx.getImageData(canvas.width/3, canvas.height/3,
     img.width, img.height).data;
+
+  for (let i = 0; i < imageData.length - 3; i+=4) {
+    let r = imageData[i];
+    let g = imageData[i + 1];
+    let b = imageData[i + 2];
+
+    let imageColor = imgDataToHexCode({red: r, green: g, blue: b});
+
+    if (imageColor in colors) {
+      colors[imageColor] += 1;
+    } else {
+      colors[imageColor] = 1;
+    }
+
+    let sortedColors = [];
+
+    Object.keys(colors).forEach(color => {
+      sortedColors.push({
+        color: color,
+        count: colors[color]
+      });
+    });
+
+    // sorts from largest to smallest
+    sortedColors.sort((a, b) => b.count - a.count);
+    let topTenColors = [];
+
+    for (let k = 0; k < 10; k++) {
+      topTenColors.push(sortedColors[k]);
+    }
+
+    return topTenColors;
+  }
   // return colors
 };

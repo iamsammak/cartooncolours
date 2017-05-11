@@ -16,6 +16,7 @@ export class Pokemon {
     this.ctx = ctx;
     this.colors = {};
     this.currentPokeId = 1;
+    this.pokemonData = {};
 
     // let that = this, binding of this
     this.randomPokemon = this.randomPokemon.bind(this);
@@ -49,7 +50,8 @@ export class Pokemon {
     img.src = POKEMON[this.currentPokeId][1];
     img.onload = () => {
       this.ctx.drawImage(img, this.canvas.width/3, this.canvas.height/3);
-      generateImgData(
+
+      let topColors = generateImgData(
         img,
         this.canvas,
         this.ctx,
@@ -57,10 +59,18 @@ export class Pokemon {
         this.currentPokeId,
         POKEMON
       );
+
+      this.pokemonData[this.currentPokeId] = {
+        name: POKEMON[this.currentPokeId][0],
+        colors: topColors
+      };
+
       if (this.currentPokeId < totalCount) {
         this.currentPokeId++;
+        this.generatePokemonData();
       } else {
         console.log("Hit 151");
+        console.log(JSON.stringify(this.pokemonData));
       }
     };
   }

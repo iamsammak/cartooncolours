@@ -304,6 +304,7 @@ var Pokemon = exports.Pokemon = function () {
     this.ctx = ctx;
     this.colors = {};
     this.currentPokeId = 1;
+    this.pokemonData = {};
 
     // let that = this, binding of this
     this.randomPokemon = this.randomPokemon.bind(this);
@@ -344,11 +345,20 @@ var Pokemon = exports.Pokemon = function () {
       img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
       img.onload = function () {
         _this2.ctx.drawImage(img, _this2.canvas.width / 3, _this2.canvas.height / 3);
-        (0, _util.generateImgData)(img, _this2.canvas, _this2.ctx, _this2.colors, _this2.currentPokeId, _pokemon_list.POKEMON);
+
+        var topColors = (0, _util.generateImgData)(img, _this2.canvas, _this2.ctx, _this2.colors, _this2.currentPokeId, _pokemon_list.POKEMON);
+
+        _this2.pokemonData[_this2.currentPokeId] = {
+          name: _pokemon_list.POKEMON[_this2.currentPokeId][0],
+          colors: topColors
+        };
+
         if (_this2.currentPokeId < _pokemon_list.totalCount) {
           _this2.currentPokeId++;
+          _this2.generatePokemonData();
         } else {
           console.log("Hit 151");
+          console.log(JSON.stringify(_this2.pokemonData));
         }
       };
     }
@@ -367,6 +377,9 @@ var Pokemon = exports.Pokemon = function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var randomPokeNumber = exports.randomPokeNumber = function randomPokeNumber() {
   // add 1 to exclude 0 and include 151
   return Math.floor(Math.random() * 151) + 1;
@@ -393,7 +406,50 @@ var imgDataToHexCode = exports.imgDataToHexCode = function imgDataToHexCode(colo
 };
 
 var generateImgData = exports.generateImgData = function generateImgData(img, canvas, ctx, colors, currentId, group) {
-  var imgData = ctx.getImageData(canvas.width / 3, canvas.height / 3, img.width, img.height).data;
+  var imageData = ctx.getImageData(canvas.width / 3, canvas.height / 3, img.width, img.height).data;
+
+  var _loop = function _loop(i) {
+    var r = imageData[i];
+    var g = imageData[i + 1];
+    var b = imageData[i + 2];
+
+    var imageColor = imgDataToHexCode({ red: r, green: g, blue: b });
+
+    if (imageColor in colors) {
+      colors[imageColor] += 1;
+    } else {
+      colors[imageColor] = 1;
+    }
+
+    var sortedColors = [];
+
+    Object.keys(colors).forEach(function (color) {
+      sortedColors.push({
+        color: color,
+        count: colors[color]
+      });
+    });
+
+    // sorts from largest to smallest
+    sortedColors.sort(function (a, b) {
+      return b.count - a.count;
+    });
+    var topTenColors = [];
+
+    for (var k = 0; k < 10; k++) {
+      topTenColors.push(sortedColors[k]);
+    }
+
+    return {
+      v: topTenColors
+    };
+  };
+
+  for (var i = 0; i < imageData.length - 3; i += 4) {
+    var _ret = _loop(i);
+
+    if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+  }
   // return colors
 };
 
