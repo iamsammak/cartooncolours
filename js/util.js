@@ -8,7 +8,6 @@ export const imgDataToHexCode = function(color) {
   let r = color.red.toString(16);
   let g = color.green.toString(16);
   let b = color.blue.toString(16);
-  let result = '';
   // prepend '0' before 0-9 digits
   if (r.length === 1) {
     r = '0' + r;
@@ -39,25 +38,24 @@ export const generateImgData = function(img, canvas, ctx, colors, currentId, gro
     } else {
       colors[imageColor] = 1;
     }
-
-    let sortedColors = [];
-
-    Object.keys(colors).forEach(color => {
-      sortedColors.push({
-        color: color,
-        count: colors[color]
-      });
-    });
-
-    // sorts from largest to smallest
-    sortedColors.sort((a, b) => b.count - a.count);
-    let topTenColors = [];
-
-    for (let k = 0; k < 10; k++) {
-      topTenColors.push(sortedColors[k]);
-    }
-
-    return topTenColors;
   }
+  let sortedColors = [];
+
+  Object.keys(colors).forEach(color => {
+    sortedColors.push({
+      color: color,
+      count: colors[color]
+    });
+  });
+
+  // sorts from largest to smallest
+  sortedColors.sort((a, b) => b.count - a.count);
+  let topTenColors = [];
+
+  for (let k = 0; k < 10; k++) {
+    topTenColors.push(sortedColors[k]);
+  }
+
+  return topTenColors;
   // return colors
 };

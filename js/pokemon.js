@@ -67,7 +67,8 @@ export class Pokemon {
 
       if (this.currentPokeId < totalCount) {
         this.currentPokeId++;
-        this.generatePokemonData();
+        // this.generatePokemonData();
+        console.log(JSON.stringify(this.pokemonData));
       } else {
         console.log("Hit 151");
         console.log(JSON.stringify(this.pokemonData));
