@@ -390,29 +390,9 @@ var Pokemon = exports.Pokemon = function () {
   }
 
   _createClass(Pokemon, [{
-    key: 'randomPokemon',
-    value: function randomPokemon() {
-      var _this = this;
-
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      var pokeNum = (0, _util.randomPokeNumber)();
-      console.log(_pokemon_list.POKEMON[pokeNum][0]);
-
-      var img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = _pokemon_list.POKEMON[pokeNum][1];
-      img.onload = function () {
-        // fix proportions later
-        _this.ctx.drawImage(img, _this.canvas.width / 3, _this.canvas.height / 3);
-      };
-      var imgData = this.ctx.getImageData(this.canvas.width / 3, this.canvas.height / 3, 500, 600).data;
-      // debugger
-    }
-  }, {
     key: 'generatePokemonData',
     value: function generatePokemonData() {
-      var _this2 = this;
+      var _this = this;
 
       this.colors = {};
 
@@ -422,21 +402,21 @@ var Pokemon = exports.Pokemon = function () {
       img.crossOrigin = "anonymous";
       img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
       img.onload = function () {
-        _this2.ctx.drawImage(img, _this2.canvas.width / 3, _this2.canvas.height / 3);
+        _this.ctx.drawImage(img, _this.canvas.width / 3, _this.canvas.height / 3);
 
-        var topColors = (0, _util.generateImgData)(img, _this2.canvas, _this2.ctx, _this2.colors, _this2.currentPokeId, _pokemon_list.POKEMON);
+        var topColors = (0, _util.generateImgData)(img, _this.canvas, _this.ctx, _this.colors, _this.currentPokeId, _pokemon_list.POKEMON);
 
-        _this2.pokemonData[_this2.currentPokeId] = {
-          name: _pokemon_list.POKEMON[_this2.currentPokeId][0],
+        _this.pokemonData[_this.currentPokeId] = {
+          name: _pokemon_list.POKEMON[_this.currentPokeId][0],
           colors: topColors
         };
 
-        if (_this2.currentPokeId < _pokemon_list.totalCount) {
-          _this2.currentPokeId++;
-          _this2.generatePokemonData();
+        if (_this.currentPokeId < _pokemon_list.totalCount) {
+          _this.currentPokeId++;
+          _this.generatePokemonData();
         } else {
           console.log("Hit 151");
-          console.log(JSON.stringify(_this2.pokemonData));
+          console.log(JSON.stringify(_this.pokemonData));
         }
       };
     }
@@ -449,10 +429,13 @@ var Pokemon = exports.Pokemon = function () {
         that.loadPokemon();
       });
     }
+
+    // metapod, fearow, geodude are extra large
+
   }, {
     key: 'loadPokemon',
     value: function loadPokemon() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -462,10 +445,10 @@ var Pokemon = exports.Pokemon = function () {
       img.onload = function () {
         var canvasToImageScale = 2.5;
         var imageScale = img.width / img.height;
-        img.height = _this3.canvas.height / canvasToImageScale;
+        img.height = _this2.canvas.height / canvasToImageScale;
         img.width = img.height * imageScale;
 
-        var canvasMidpoint = [_this3.canvas.width / 2, _this3.canvas.height / 2];
+        var canvasMidpoint = [_this2.canvas.width / 2, _this2.canvas.height / 2];
         var imgMidpoint = [img.width / 2, img.height / 2];
 
         var dx = canvasMidpoint[0] - imgMidpoint[0];
@@ -473,13 +456,21 @@ var Pokemon = exports.Pokemon = function () {
         var dWidth = img.width;
         var dHeight = img.height;
 
-        _this3.ctx.drawImage(img, dx, dy, dWidth, dHeight);
+        _this2.ctx.drawImage(img, dx, dy, dWidth, dHeight);
       };
       if (this.currentPokeId >= 151) {
         this.currentPokeId = 1;
       } else {
         this.currentPokeId++;
       }
+    }
+  }, {
+    key: 'randomPokemon',
+    value: function randomPokemon() {
+      var randomId = (0, _util.randomPokeNumber)();
+      console.log(_pokemon_list.POKEMON[randomId][0]);
+      this.currentPokeId = randomId;
+      this.loadPokemon();
     }
   }]);
 

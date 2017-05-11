@@ -25,23 +25,6 @@ export class Pokemon {
     this.loadPokemon = this.loadPokemon.bind(this);
   }
 
-  randomPokemon() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    let pokeNum = randomPokeNumber();
-    console.log(POKEMON[pokeNum][0]);
-
-    let img = new Image();
-    img.crossOrigin = "anonymous";
-    img.src = POKEMON[pokeNum][1];
-    img.onload = () => {
-      // fix proportions later
-      this.ctx.drawImage(img, this.canvas.width / 3, this.canvas.height / 3);
-    };
-    let imgData = this.ctx.getImageData(this.canvas.width / 3, this.canvas.height / 3, 500, 600).data;
-    // debugger
-  }
-
   generatePokemonData() {
     this.colors = {};
 
@@ -85,6 +68,7 @@ export class Pokemon {
     });
   }
 
+  // metapod, fearow, geodude are extra large
   loadPokemon() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -112,5 +96,12 @@ export class Pokemon {
     } else {
       this.currentPokeId++;
     }
-  };
+  }
+
+  randomPokemon() {
+    let randomId = randomPokeNumber();
+    console.log(POKEMON[randomId][0]);
+    this.currentPokeId = randomId;
+    this.loadPokemon();
+  }
 }
