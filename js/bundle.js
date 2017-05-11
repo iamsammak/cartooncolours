@@ -355,8 +355,7 @@ var Pokemon = exports.Pokemon = function () {
 
         if (_this2.currentPokeId < _pokemon_list.totalCount) {
           _this2.currentPokeId++;
-          // this.generatePokemonData();
-          console.log(JSON.stringify(_this2.pokemonData));
+          _this2.generatePokemonData();
         } else {
           console.log("Hit 151");
           console.log(JSON.stringify(_this2.pokemonData));
@@ -419,6 +418,9 @@ var generateImgData = exports.generateImgData = function generateImgData(img, ca
     }
   }
   var sortedColors = [];
+  delete colors['#000000'];
+  // delete colors['#ffffff'];
+  // delete this.colors['#0d131a'];
 
   Object.keys(colors).forEach(function (color) {
     sortedColors.push({
