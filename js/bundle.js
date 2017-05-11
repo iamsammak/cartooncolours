@@ -230,6 +230,8 @@ var POKEMON = exports.POKEMON = {
   151: ["mew", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346485/cartooncolours/151_mew.svg"]
 };
 
+var totalCount = exports.totalCount = Object.keys(POKEMON).length;
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -267,77 +269,10 @@ var FIREEMBLEM = exports.FIREEMBLEM = {
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Pokemon = exports.pokemonNameToId = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _pokemon_list = __webpack_require__(0);
-
-var _util = __webpack_require__(4);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var pokemonNameToId = exports.pokemonNameToId = function pokemonNameToId(obj, pokeName) {
-  for (var prop in obj) {
-    // console.log(`obj.${prop} = ${obj[prop]}`);
-    if (obj[prop][0] === pokeName) {
-      return parseInt(prop);
-    }
-  }
-};
-
-var Pokemon = exports.Pokemon = function () {
-  function Pokemon(canvas, ctx) {
-    _classCallCheck(this, Pokemon);
-
-    this.canvas = canvas;
-    this.ctx = ctx;
-    this.colors = {};
-    this.currentPokeId = 1;
-
-    // let that = this, binding of this
-    this.randomPokemon = this.randomPokemon.bind(this);
-    this.generatePokemonData = this.generatePokemonData.bind(this);
-  }
-
-  _createClass(Pokemon, [{
-    key: 'randomPokemon',
-    value: function randomPokemon() {
-      var _this = this;
-
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-      var pokeNum = (0, _util.randomPokeNumber)();
-      console.log(_pokemon_list.POKEMON[pokeNum][0]);
-
-      var img = new Image();
-      img.crossOrigin = "anonymous";
-      img.src = _pokemon_list.POKEMON[pokeNum][1];
-      img.onload = function () {
-        // fix proportions later
-        _this.ctx.drawImage(img, _this.canvas.width / 3, _this.canvas.height / 3);
-      };
-      var imgData = this.ctx.getImageData(this.canvas.width / 3, this.canvas.height / 3, 500, 600).data;
-      // debugger
-    }
-  }, {
-    key: 'generatePokemonData',
-    value: function generatePokemonData() {
-      (0, _util.generateImgData)(this.canvas, this.ctx, this.colors, this.currentPokeId, _pokemon_list.POKEMON);
-      this.currentPokeId++;
-    }
-  }]);
-
-  return Pokemon;
-}();
+throw new Error("Module build failed: SyntaxError: Unexpected token (59:31)\n\n\u001b[0m \u001b[90m 57 | \u001b[39m        \u001b[33mPOKEMON\u001b[39m\n \u001b[90m 58 | \u001b[39m      )\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 59 | \u001b[39m      \u001b[36mif\u001b[39m (\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcurrentPokeId \u001b[33m<\u001b[39m )\n \u001b[90m    | \u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 60 | \u001b[39m    }\n \u001b[90m 61 | \u001b[39m\n \u001b[90m 62 | \u001b[39m    \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcurrentPokeId\u001b[33m++\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n");
 
 /***/ }),
 /* 4 */
@@ -375,17 +310,7 @@ var imgDataToHexCode = exports.imgDataToHexCode = function imgDataToHexCode(colo
 };
 
 var generateImgData = exports.generateImgData = function generateImgData(canvas, ctx, colors, currentId, group) {
-  colors = {};
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  var img = new Image();
-  img.crossOrigin = "anonymous";
-  img.src = group[currentId][1];
-  img.onload = function () {
-    ctx.drawImage(img, canvas.width / 3, canvas.height / 3);
-    var imgData = ctx.getImageData(canvas.width / 3, canvas.height / 3, img.width, img.height).data;
-  };
+  var imgData = ctx.getImageData(canvas.width / 3, canvas.height / 3, img.width, img.height).data;
   // return colors
 };
 

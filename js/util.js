@@ -24,16 +24,7 @@ export const imgDataToHexCode = function(color) {
 };
 
 export const generateImgData = function(canvas, ctx, colors, currentId, group) {
-  colors = {};
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-  let img = new Image();
-  img.crossOrigin = "anonymous";
-  img.src = group[currentId][1];
-  img.onload = () => {
-    ctx.drawImage(img, canvas.width/3, canvas.height/3);
-    let imgData = ctx.getImageData(canvas.width/3, canvas.height/3, img.width, img.height).data;
-  }
+  let imgData = ctx.getImageData(canvas.width/3, canvas.height/3,
+    img.width, img.height).data;
   // return colors
 };

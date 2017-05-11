@@ -1,4 +1,4 @@
-import { POKEMON } from './pokemon_list';
+import { POKEMON, totalCount } from './pokemon_list';
 import { randomPokeNumber, imgDataToHexCode, generateImgData } from './util';
 
 export const pokemonNameToId = (obj, pokeName) => {
@@ -40,13 +40,25 @@ export class Pokemon {
   }
 
   generatePokemonData() {
-    generateImgData(
-      this.canvas,
-      this.ctx,
-      this.colors,
-      this.currentPokeId,
-      POKEMON
-    );
+    this.colors = {};
+
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+
+    let img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = group[currentId][1];
+    img.onload = () => {
+      this.ctx.drawImage(img, this.canvas.width/3, this.canvas.height/3);
+      generateImgData(
+        this.canvas,
+        this.ctx,
+        this.colors,
+        this.currentPokeId,
+        POKEMON
+      );
+      if (this.currentPokeId < )
+    }
+
     this.currentPokeId++;
 
   }

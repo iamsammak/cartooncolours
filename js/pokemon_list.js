@@ -151,3 +151,5 @@ export const POKEMON = {
   150: ["mewtwo", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346484/cartooncolours/150_mewtwo.svg"],
   151: ["mew", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346485/cartooncolours/151_mew.svg"]
 }
+
+export const totalCount = Object.keys(POKEMON).length;

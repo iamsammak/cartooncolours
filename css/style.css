@@ -3,11 +3,7 @@ body {
   overflow: hidden;
 }
 
-canvas {
-  /*background-color: #FFF5B0;*/
-}
-
-#random-button {
+.random-button {
   position: absolute;
   top: 10px;
   right: 100px;
@@ -20,11 +16,11 @@ canvas {
   cursor: pointer;
 }
 
-#random-button:hover {
+.random-button:hover {
   background-color: #BEA3C4;
 }
 
-#random-pokemon {
+.random-pokemon {
   position: absolute;
   top: 10px;
   right: 210px;
@@ -37,11 +33,11 @@ canvas {
   cursor: pointer;
 }
 
-#random-pokemon:hover {
+.random-pokemon:hover {
   background-color: #FFBFB3;
 }
 
-#random-pokemon p {
+.random-pokemon p {
   color: black;
   font-family: "Audiowide";
   font-size: 14px;
