@@ -305,10 +305,13 @@ var Pokemon = exports.Pokemon = function () {
     this.colors = {};
     this.currentPokeId = 1;
     this.pokemonData = {};
+    this.image = null;
 
     // let that = this, binding of this
     this.randomPokemon = this.randomPokemon.bind(this);
     this.generatePokemonData = this.generatePokemonData.bind(this);
+    this.loadData = this.loadData.bind(this);
+    this.loadPokemon = this.loadPokemon.bind(this);
   }
 
   _createClass(Pokemon, [{
@@ -360,6 +363,31 @@ var Pokemon = exports.Pokemon = function () {
           console.log("Hit 151");
           console.log(JSON.stringify(_this2.pokemonData));
         }
+      };
+    }
+  }, {
+    key: 'loadData',
+    value: function loadData() {
+      $.getJSON('./js/pokemon_data.json', function (data) {
+        this.pokemonData = data;
+        this.loadPokemon();
+      });
+    }
+  }, {
+    key: 'loadPokemon',
+    value: function loadPokemon() {
+      var _this3 = this;
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
+      img.onload = function () {
+        var scaleProportions = img.width / img.height;
+        img.height = _this3.canvas.height / 2.2;
+        img.width = img.height * scaleProportions;
+        _this3.ctx.drawImage(img, _this3.canvas.width / 3, _this3.canvas.height / 3, img.width, img.height);
       };
     }
   }]);
@@ -471,13 +499,14 @@ document.addEventListener('DOMContentLoaded', function () {
   document.body.style.backgroundColor = "#B5FFDB";
 
   var pokemon = new _pokemon.Pokemon(canvas, ctx);
+  pokemon.loadData();
 
   var logRandomPokemon = document.getElementById("random-pokemon");
   logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   var randomButton = document.getElementById("random-button");
   // randomButton.addEventListener("click", pokemon.randomPokemon);
-  randomButton.addEventListener("click", pokemon.generatePokemonData);
+  randomButton.addEventListener("click", pokemon.loadPokemon);
 
   // Testing
   window.pokemon = _pokemon_list.POKEMON;

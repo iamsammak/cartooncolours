@@ -15,13 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.style.backgroundColor = "#B5FFDB";
 
   const pokemon = new Pokemon(canvas, ctx);
+  pokemon.loadData();
 
   const logRandomPokemon = document.getElementById("random-pokemon");
   logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   const randomButton = document.getElementById("random-button");
   // randomButton.addEventListener("click", pokemon.randomPokemon);
-  randomButton.addEventListener("click", pokemon.generatePokemonData);
+  randomButton.addEventListener("click", pokemon.loadPokemon);
 
 
 // Testing

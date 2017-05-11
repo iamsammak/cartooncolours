@@ -17,10 +17,13 @@ export class Pokemon {
     this.colors = {};
     this.currentPokeId = 1;
     this.pokemonData = {};
+    this.image = null;
 
     // let that = this, binding of this
     this.randomPokemon = this.randomPokemon.bind(this);
     this.generatePokemonData = this.generatePokemonData.bind(this);
+    this.loadData = this.loadData.bind(this);
+    this.loadPokemon = this.loadPokemon.bind(this);
   }
 
   randomPokemon() {
@@ -74,4 +77,25 @@ export class Pokemon {
       }
     };
   }
+
+  loadData() {
+    $.getJSON('./js/pokemon_data.json', function(data) {
+      this.pokemonData = data;
+      this.loadPokemon();
+    })
+  }
+
+  loadPokemon() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    let img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = POKEMON[this.currentPokeId][1];
+    img.onload = () => {
+      let scaleProportions = img.width / img.height;
+      img.height = this.canvas.height / 2.2;
+      img.width = img.height * scaleProportions;
+      this.ctx.drawImage(img, this.canvas.width/3, this.canvas.height/3, img.width, img.height);
+    };
+  };
 }
