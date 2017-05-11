@@ -92,10 +92,20 @@ export class Pokemon {
     img.crossOrigin = 'anonymous';
     img.src = POKEMON[this.currentPokeId][1];
     img.onload = () => {
-      let scaleProportions = img.width / img.height;
-      img.height = this.canvas.height / 2.2;
-      img.width = img.height * scaleProportions;
-      this.ctx.drawImage(img, this.canvas.width/3, this.canvas.height/3, img.width, img.height);
+      let canvasToImageScale = 2.5;
+      let imageScale = img.width / img.height;
+      img.height = this.canvas.height / canvasToImageScale;
+      img.width = img.height * imageScale;
+
+      let canvasMidpoint = [this.canvas.width/2, this.canvas.height/2];
+      let imgMidpoint = [img.width/2, img.height/2];
+
+      let dx = canvasMidpoint[0] - imgMidpoint[0];
+      let dy = canvasMidpoint[1] - imgMidpoint[1];
+      let dWidth = img.width;
+      let dHeight = img.height;
+
+      this.ctx.drawImage(img, dx, dy, dWidth, dHeight);
     };
     if (this.currentPokeId >= 151) {
       this.currentPokeId = 1;

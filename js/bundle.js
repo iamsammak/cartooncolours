@@ -460,10 +460,20 @@ var Pokemon = exports.Pokemon = function () {
       img.crossOrigin = 'anonymous';
       img.src = _pokemon_list.POKEMON[this.currentPokeId][1];
       img.onload = function () {
-        var scaleProportions = img.width / img.height;
-        img.height = _this3.canvas.height / 2.2;
-        img.width = img.height * scaleProportions;
-        _this3.ctx.drawImage(img, _this3.canvas.width / 3, _this3.canvas.height / 3, img.width, img.height);
+        var canvasToImageScale = 2.5;
+        var imageScale = img.width / img.height;
+        img.height = _this3.canvas.height / canvasToImageScale;
+        img.width = img.height * imageScale;
+
+        var canvasMidpoint = [_this3.canvas.width / 2, _this3.canvas.height / 2];
+        var imgMidpoint = [img.width / 2, img.height / 2];
+
+        var dx = canvasMidpoint[0] - imgMidpoint[0];
+        var dy = canvasMidpoint[1] - imgMidpoint[1];
+        var dWidth = img.width;
+        var dHeight = img.height;
+
+        _this3.ctx.drawImage(img, dx, dy, dWidth, dHeight);
       };
       if (this.currentPokeId >= 151) {
         this.currentPokeId = 1;
