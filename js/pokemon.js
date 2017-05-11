@@ -71,6 +71,7 @@ export class Pokemon {
   // metapod, fearow, geodude are extra large
   loadPokemon() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    console.log(POKEMON[this.currentPokeId][0]);
 
     let img = new Image();
     img.crossOrigin = 'anonymous';
@@ -100,7 +101,6 @@ export class Pokemon {
 
   randomPokemon() {
     let randomId = randomPokeNumber();
-    console.log(POKEMON[randomId][0]);
     this.currentPokeId = randomId;
     this.loadPokemon();
   }

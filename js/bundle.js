@@ -438,6 +438,7 @@ var Pokemon = exports.Pokemon = function () {
       var _this2 = this;
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      console.log(_pokemon_list.POKEMON[this.currentPokeId][0]);
 
       var img = new Image();
       img.crossOrigin = 'anonymous';
@@ -468,7 +469,6 @@ var Pokemon = exports.Pokemon = function () {
     key: 'randomPokemon',
     value: function randomPokemon() {
       var randomId = (0, _util.randomPokeNumber)();
-      console.log(_pokemon_list.POKEMON[randomId][0]);
       this.currentPokeId = randomId;
       this.loadPokemon();
     }
