@@ -318,6 +318,16 @@ var generateImgData = exports.generateImgData = function generateImgData(img, ca
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.FireEmblemHero = exports.fireemblemNameToId = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _fireemblem_list = __webpack_require__(3);
+
+var _util = __webpack_require__(1);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var fireemblemNameToId = exports.fireemblemNameToId = function fireemblemNameToId(obj, name) {
   for (var prop in obj) {
     // console.log(`obj.${prop} = ${obj[prop]}`);
@@ -326,6 +336,115 @@ var fireemblemNameToId = exports.fireemblemNameToId = function fireemblemNameToI
     }
   }
 };
+
+var FireEmblemHero = exports.FireEmblemHero = function () {
+  function FireEmblemHero(canvas, ctx) {
+    _classCallCheck(this, FireEmblemHero);
+
+    this.canvas = canvas;
+    this.ctx = ctx;
+    this.colors = {};
+    this.currentHeroId = 2;
+    this.fireEmblemData = {};
+    this.image = null;
+
+    // let that = this, binding of this
+    this.randomHero = this.randomHero.bind(this);
+    this.generateHeroData = this.generateHeroData.bind(this);
+    this.loadHero = this.loadHero.bind(this);
+  }
+
+  _createClass(FireEmblemHero, [{
+    key: 'generateHeroData',
+    value: function generateHeroData() {
+      var _this = this;
+
+      this.colors = {};
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      var img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = _fireemblem_list.FIREEMBLEM[this.currentHeroId][1];
+      img.onload = function () {
+        _this.ctx.drawImage(img, _this.canvas.width / 3, _this.canvas.height / 3);
+
+        var topColors = (0, _util.generateImgData)(img, _this.canvas, _this.ctx, _this.colors, _this.currentHeroId, _fireemblem_list.FIREEMBLEM);
+
+        _this.fireEmblemData[_this.currentHeroId] = {
+          name: _fireemblem_list.FIREEMBLEM[_this.currentHeroId][0],
+          colors: topColors
+        };
+
+        if (_this.currentHeroId < _fireemblem_list.totalCount) {
+          _this.currentHeroId++;
+          _this.generateHeroData();
+        } else {
+          console.log("Data Creation Complete");
+          console.log(JSON.stringify(_this.fireEmblemData));
+        }
+      };
+    }
+  }, {
+    key: 'loadData',
+    value: function loadData() {
+      var that = this;
+      $.getJSON('./js/fireemblem_data.json', function (data) {
+        that.fireEmblemData = data;
+        that.loadHero();
+      });
+    }
+
+    // metapod, fearow, geodude are extra large
+
+  }, {
+    key: 'loadHero',
+    value: function loadHero() {
+      var _this2 = this;
+
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      console.log(_fireemblem_list.FIREEMBLEM[this.currentHeroId][0]);
+
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.src = _fireemblem_list.FIREEMBLEM[this.currentHeroId][1];
+      img.onload = function () {
+        var canvasToImageScale = 2.5;
+        var imageScale = img.width / img.height;
+        img.height = _this2.canvas.height / canvasToImageScale;
+        img.width = img.height * imageScale;
+
+        var canvasMidpoint = [_this2.canvas.width / 2, _this2.canvas.height / 2];
+        var imgMidpoint = [img.width / 2, img.height / 2];
+
+        var dx = canvasMidpoint[0] - imgMidpoint[0];
+        var dy = canvasMidpoint[1] - imgMidpoint[1];
+        var dWidth = img.width;
+        var dHeight = img.height;
+
+        _this2.ctx.drawImage(img, dx, dy, dWidth, dHeight);
+      };
+
+      // this part will be deleted later after creating search
+      if (this.currentHeroId >= 151) {
+        this.currentHeroId = 1;
+      } else {
+        this.currentHeroId++;
+      }
+    }
+  }, {
+    key: 'randomHero',
+    value: function randomHero() {
+      var randomId = (0, _util.randomNumber)(151);
+      this.currentHeroId = randomId;
+      this.loadHero();
+    }
+  }]);
+
+  return FireEmblemHero;
+}();
+
+;
 
 /***/ }),
 /* 3 */
@@ -342,6 +461,8 @@ var FIREEMBLEM = exports.FIREEMBLEM = {
   2: ["eirika", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348435/cartooncolours/Full_Portrait_Eirika.png"],
   3: ["ike"]
 };
+
+var totalCount = exports.totalCount = Object.keys(FIREEMBLEM).length;
 
 /***/ }),
 /* 4 */
@@ -415,7 +536,7 @@ var Pokemon = exports.Pokemon = function () {
           _this.currentPokeId++;
           _this.generatePokemonData();
         } else {
-          console.log("Hit 151");
+          console.log("Data Creation Complete: Hit 151");
           console.log(JSON.stringify(_this.pokemonData));
         }
       };
@@ -461,7 +582,7 @@ var Pokemon = exports.Pokemon = function () {
       };
 
       // this part will be deleted later after creating search
-      if (this.currentPokeId >= 151) {
+      if (this.currentPokeId >= _pokemon_list.totalCount) {
         this.currentPokeId = 1;
       } else {
         this.currentPokeId++;
@@ -470,7 +591,7 @@ var Pokemon = exports.Pokemon = function () {
   }, {
     key: 'randomPokemon',
     value: function randomPokemon() {
-      var randomId = (0, _util.randomNumber)(151);
+      var randomId = (0, _util.randomNumber)(_pokemon_list.totalCount);
       this.currentPokeId = randomId;
       this.loadPokemon();
     }

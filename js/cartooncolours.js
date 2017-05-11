@@ -2,7 +2,7 @@
 import { POKEMON } from './pokemon_list';
 import { pokemonNameToId, Pokemon } from './pokemon';
 import { FIREEMBLEM } from './fireemblem_list';
-import { fireemblemNameToId } from './fireemblem';
+import { fireemblemNameToId, FireEmblemHero } from './fireemblem';
 import { imgDataToHexCode } from './util';
 // end testing imports
 

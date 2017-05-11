@@ -54,7 +54,7 @@ export class Pokemon {
         this.currentPokeId++;
         this.generatePokemonData();
       } else {
-        console.log("Hit 151");
+        console.log("Data Creation Complete: Hit 151");
         console.log(JSON.stringify(this.pokemonData));
       }
     };
@@ -94,7 +94,7 @@ export class Pokemon {
     };
 
     // this part will be deleted later after creating search
-    if (this.currentPokeId >= 151) {
+    if (this.currentPokeId >= totalCount) {
       this.currentPokeId = 1;
     } else {
       this.currentPokeId++;
@@ -102,7 +102,7 @@ export class Pokemon {
   }
 
   randomPokemon() {
-    let randomId = randomNumber(151);
+    let randomId = randomNumber(totalCount);
     this.currentPokeId = randomId;
     this.loadPokemon();
   }
