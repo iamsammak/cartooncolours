@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  canvas.style.backgroundColor = "#B5FFDB";
+
   // ctx.fillStyle="red";
   // ctx.fillRect(0,0,300,150);
   // ctx.clearRect(20,20,100,50);
@@ -22,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //   // ctx.drawImage(image, dx, dy, dWidth, dHeight);
   //   // ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
   // };
-
 
   // Testing Random button which will eventually load a random image
   const logRandomPokemon = function() {

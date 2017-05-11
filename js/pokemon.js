@@ -6,3 +6,10 @@ export const pokemonNameToId = (obj, pokeName) => {
     }
   }
 }
+
+export class Pokemon {
+  constructor(canvas, ctx) {
+    this.canvs = canvs;
+    this.ctx = ctx;
+  }
+}

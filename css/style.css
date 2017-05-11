@@ -1,7 +1,10 @@
 body {
   margin: 0;
   overflow: hidden;
-  background-color: #B5FFDB;
+}
+
+canvas {
+  background-color: #FFF5B0;
 }
 
 #random-button {
