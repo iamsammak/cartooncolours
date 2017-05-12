@@ -42,6 +42,10 @@ http://jsfiddle.net/5GCsJ/4713/
 
 
 ## Removing and element with plain javascript
+```js
+document.getElementById("main-color").remove();
+```
+
 
 https://www.w3schools.com/jsref/met_select_remove.asp
 http://red-team-design.com/removing-an-element-with-plain-javascript-remove-method/
