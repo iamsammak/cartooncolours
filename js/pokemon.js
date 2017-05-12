@@ -1,4 +1,4 @@
-import { POKEMON, totalCount } from './pokemon_list';
+import { POKEMON, POKEMON_NAMES, totalCount } from './pokemon_list';
 import { randomNumber, imgDataToHexCode, generateImgData } from './util';
 
 export const pokemonNameToId = (obj, pokeName) => {
@@ -108,5 +108,14 @@ export class Pokemon {
     let randomId = randomNumber(totalCount);
     this.currentPokeId = randomId;
     this.loadPokemon();
+  }
+
+  searchPokemon(input) {
+    input = input.toLowerCase();
+    if (input >= 1 && input <= 151) {
+      this.currentPokeId = input;
+    } else if (POKEMON_NAMES.includes(input)) {
+      console.log(input);
+    }
   }
 }

@@ -26,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomButton = document.getElementById("random-button");
     randomButton.addEventListener("click", pokemon.loadPokemon);
 
+    const searchInput = document.getElementById("search-bar-input");
+    searchInput.addEventListener("keydown", function(e) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        pokemon.searchPokemon(this.value);
+      };
+    });
+
     // const hero = new FireEmblemHero(canvas, ctx);
     // hero.loadData();
     //

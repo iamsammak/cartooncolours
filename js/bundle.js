@@ -250,6 +250,8 @@ var POKEMON = exports.POKEMON = {
 
 var totalCount = exports.totalCount = Object.keys(POKEMON).length;
 
+var POKEMON_NAMES = exports.POKEMON_NAMES = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle", "blastoise", "caterpie", "metapod", "butterfree", "weedle", "kakuna", "beedrill", "pidgey", "pidgeotto", "pidgeot", "rattata", "raticate", "spearow", "fearow", "ekans", "arbok", "pikachu", "raichu", "sandshrew", "sandslash", "nidoran♀", "nidorina", "nidoqueen", "nidoran♂", "nidorino", "nidoking", "clefairy", "clefable", "vulpix", "ninetales", "jigglypuff", "wigglytuff", "zubat", "golbat", "oddish", "gloom", "vileplume", "paras", "parasect", "venonat", "venomoth", "diglett", "dugtrio", "meowth", "persian", "psyduck", "golduck", "mankey", "primeape", "growlithe", "arcanine", "poliwag", "poliwhirl", "poliwrath", "abra", "kadabra", "alakazam", "machop", "machoke", "machamp", "bellsprout", "weepinbell", "victreebel", "tentacool", "tentacruel", "geodude", "graveler", "golem", "ponyta", "rapidash", "slowpoke", "slowbro", "magnemite", "magneton", "farfetchd", "doduo", "dodrio", "seel", "dewgong", "grimer", "muk", "shellder", "cloyster", "gastly", "haunter", "gengar", "onix", "drowzee", "hypno", "krabby", "kingler", "voltorb", "electrode", "exeggcute", "exeggutor", "cubone", "marowak", "hitmonlee", "hitmonchan", "lickitung", "koffing", "weezing", "rhyhorn", "rhydon", "chansey", "tangela", "kangaskhan", "horsea", "seadra", "goldeen", "seaking", "staryu", "starmie", "mr. mime", "scyther", "jynx", "electabuzz", "magmar", "pinsir", "tauros", "magikarp", "gyarados", "lapras", "ditto", "eevee", "vaporeon", "jolteon", "flareon", "porygon", "omanyte", "omastar", "kabuto", "kabutops", "aerodactyl", "snorlax", "articuno", "zapdos", "moltres", "dratini", "dragonair", "dragonite", "mewtwo", "mew"];
+
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -598,6 +600,16 @@ var Pokemon = exports.Pokemon = function () {
       this.currentPokeId = randomId;
       this.loadPokemon();
     }
+  }, {
+    key: 'searchPokemon',
+    value: function searchPokemon(input) {
+      input = input.toLowerCase();
+      if (input >= 1 && input <= 151) {
+        this.currentPokeId = input;
+      } else if (_pokemon_list.POKEMON_NAMES.includes(input)) {
+        console.log(input);
+      }
+    }
   }]);
 
   return Pokemon;
@@ -647,6 +659,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var randomButton = document.getElementById("random-button");
     randomButton.addEventListener("click", pokemon.loadPokemon);
+
+    var searchInput = document.getElementById("search-bar-input");
+    searchInput.addEventListener("keydown", function (e) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        pokemon.searchPokemon(this.value);
+      };
+    });
 
     // const hero = new FireEmblemHero(canvas, ctx);
     // hero.loadData();
