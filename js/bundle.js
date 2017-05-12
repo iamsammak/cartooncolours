@@ -607,8 +607,14 @@ var Pokemon = exports.Pokemon = function () {
       if (input >= 1 && input <= 151) {
         this.currentPokeId = input;
       } else if (_pokemon_list.POKEMON_NAMES.includes(input)) {
-        console.log(input);
+        this.currentPokeId = _pokemon_list.POKEMON_NAMES.indexOf(input) + 1;
+        this.loadPokemon();
       }
+    }
+  }, {
+    key: 'displayPalette',
+    value: function displayPalette() {
+      var palette = this.pokemonData[this.currentPokeId].colors;
     }
   }]);
 

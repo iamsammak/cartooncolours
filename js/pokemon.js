@@ -115,7 +115,13 @@ export class Pokemon {
     if (input >= 1 && input <= 151) {
       this.currentPokeId = input;
     } else if (POKEMON_NAMES.includes(input)) {
-      console.log(input);
+      this.currentPokeId = POKEMON_NAMES.indexOf(input) + 1;
+      this.loadPokemon();
     }
+  }
+
+  displayPalette() {
+    let palette = this.pokemonData[this.currentPokeId].colors;
+    
   }
 }
