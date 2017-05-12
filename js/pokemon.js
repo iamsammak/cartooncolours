@@ -26,6 +26,9 @@ export class Pokemon {
   }
 
   generatePokemonData() {
+    // currentPokeId must be set to 1 to get Complete Pokemon Data
+    console.log("Warning: Change currentPokeId back to 1");
+
     this.colors = {};
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)

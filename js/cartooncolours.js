@@ -1,10 +1,12 @@
+require("../css/colours.scss");
+
 // testing
 import { POKEMON } from './pokemon_list';
-import { pokemonNameToId, Pokemon } from './pokemon';
 import { FIREEMBLEM } from './fireemblem_list';
-import { fireemblemNameToId, FireEmblemHero } from './fireemblem';
-import { imgDataToHexCode } from './util';
 // end testing imports
+
+import { Pokemon } from './pokemon';
+import { FireEmblemHero } from './fireemblem';
 
 document.addEventListener('DOMContentLoaded', () => {
   const loadCanvas = () => {
@@ -39,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Testing
   window.pokemon = POKEMON;
-  window.pokemonNameToId = pokemonNameToId;
   window.fireemblem = FIREEMBLEM;
-  window.fireemblemNameToId = fireemblemNameToId;
-  window.imgDataToHexCode = imgDataToHexCode;
   console.log("Hello from inside cartooncolours.js");
 });

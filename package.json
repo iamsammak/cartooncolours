@@ -19,5 +19,10 @@
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "webpack": "^2.5.1"
+  },
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.5"
   }
 }
