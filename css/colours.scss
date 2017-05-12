@@ -17,10 +17,15 @@ span, article, footer, time, small {
   background: transparent;
   font-family: 'Montserrat', sans-serif;
 }
+// to hide chrome scrollbar
+::-webkit-scrollbar {
+    display: none;
+}
 
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 canvas {
@@ -85,17 +90,38 @@ canvas {
   }
 }
 
-#palette {
+.palette {
+  position: relative;
   z-index: 5;
+  p {
+    font-size: 160px;
+    font-family: "Audiowide";
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 101;
+  }
   h1 {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: orange;
+    background-color: yellow;
   }
-  h2 {
-    position: absolute;
-    bottom: 25px;
+}
 
+.palette-slab {
+  z-index: 101;
+  position: absolute;
+  bottom: 8vh;
+  left: 5vw;
+  width: 90vw;
+  background-color: orange;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  h3 {
+    width: 8vw;
+    height: 8vw;
+    background-color: #BEA3C4;
   }
 }

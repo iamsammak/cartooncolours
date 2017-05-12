@@ -17,9 +17,13 @@ span, article, footer, time, small {
   background: transparent;
   font-family: 'Montserrat', sans-serif; }
 
+::-webkit-scrollbar {
+  display: none; }
+
 body {
   margin: 0;
-  overflow: hidden; }
+  overflow-x: hidden;
+  overflow-y: scroll; }
 
 canvas {
   position: absolute;
@@ -75,15 +79,35 @@ canvas {
     overflow: hidden;
     padding-left: 15px; }
 
-#palette {
+.palette {
+  position: relative;
   z-index: 5; }
-  #palette h1 {
+  .palette p {
+    font-size: 160px;
+    font-family: "Audiowide";
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    z-index: 101; }
+  .palette h1 {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background-color: orange; }
-  #palette h2 {
-    position: absolute;
-    bottom: 25px; }
+    background-color: yellow; }
+
+.palette-slab {
+  z-index: 101;
+  position: absolute;
+  bottom: 8vh;
+  left: 5vw;
+  width: 90vw;
+  background-color: orange;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around; }
+  .palette-slab h3 {
+    width: 8vw;
+    height: 8vw;
+    background-color: #BEA3C4; }
 
 /*# sourceMappingURL=style.css.map*/

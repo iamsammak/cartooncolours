@@ -329,8 +329,6 @@ var generateImgData = exports.generateImgData = function generateImgData(img, ca
 };
 
 var calculateColorPercentage = exports.calculateColorPercentage = function calculateColorPercentage(palette) {
-  console.log(palette);
-
   var totalCount = 0;
   var colorRatio = [];
 
@@ -529,6 +527,8 @@ var Pokemon = exports.Pokemon = function () {
     this.randomPokemon = this.randomPokemon.bind(this);
     this.generatePokemonData = this.generatePokemonData.bind(this);
     this.loadPokemon = this.loadPokemon.bind(this);
+    // for testing, probably won't need later
+    this.displayPalette = this.displayPalette.bind(this);
   }
 
   _createClass(Pokemon, [{
@@ -637,6 +637,22 @@ var Pokemon = exports.Pokemon = function () {
     value: function displayPalette() {
       var palette = this.pokemonData[this.currentPokeId].colors;
       var ratioPalette = (0, _util.calculateColorPercentage)(palette);
+
+      document.getElementById("main-color").remove();
+
+      var name = document.getElementById("pokemon-name");
+      name.style.color = palette[1].color;
+      name.innerHTML = _pokemon_list.POKEMON[this.currentPokeId][0];
+
+      var h1 = document.createElement('h1');
+      h1.setAttribute("id", "main-color");
+      h1.style.backgroundColor = palette[0].color;
+      document.getElementById("palette-background").appendChild(h1);
+
+      for (var i = 1; i < palette.length; i++) {
+        var h3 = document.getElementById("color" + i);
+        h3.style.backgroundColor = palette[i].color;
+      }
     }
   }]);
 
@@ -711,6 +727,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.pokemon = _pokemon_list.POKEMON;
   window.fireemblem = _fireemblem_list.FIREEMBLEM;
   // TODO we have a bug with resizing Canvas
+  // TODO will need to check the colorData later, ex Eirika's doesn't look right
   window.canvas = canvas;
   console.log("Hello from inside cartooncolours.js");
 });

@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.pokemon = POKEMON;
   window.fireemblem = FIREEMBLEM;
 // TODO we have a bug with resizing Canvas
+// TODO will need to check the colorData later, ex Eirika's doesn't look right
   window.canvas = canvas;
   console.log("Hello from inside cartooncolours.js");
 });

@@ -1,4 +1,4 @@
-export const sample = {
+export const sample_data = {
   "1": {
     "name": "azura",
     "colors": [
