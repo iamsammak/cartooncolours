@@ -36,10 +36,9 @@ body {
   width: 100px;
   z-index: 100;
   cursor: pointer;
-}
-
-.random-button:hover {
-  background-color: #BEA3C4;
+  &:hover {
+    background-color: #BEA3C4;
+  }
 }
 
 .random-pokemon {
@@ -53,18 +52,16 @@ body {
   width: 100px;
   z-index: 100;
   cursor: pointer;
-}
-
-.random-pokemon:hover {
-  background-color: #FFBFB3;
-}
-
-.random-pokemon p {
-  color: black;
-  font-family: "Audiowide";
-  font-size: 14px;
-  padding: 9px;
-  margin: 0 auto;
+  p {
+    color: black;
+    font-family: "Audiowide";
+    font-size: 14px;
+    padding: 9px;
+    margin: 0 auto;
+  }
+  &:hover {
+    background-color: #FFBFB3;
+  }
 }
 
 .search-bar {
@@ -72,13 +69,12 @@ body {
   position: absolute;
   top: 10px;
   left: 100px;
-}
-
-.search-bar-input {
-  width: 400px;
-  height: 35px;
-  font-family: 'Audiowide';
-  font-size: 14px;
-  overflow: hidden;
-  padding-left: 15px;
+  .search-bar-input {
+    width: 400px;
+    height: 35px;
+    font-family: 'Audiowide';
+    font-size: 14px;
+    overflow: hidden;
+    padding-left: 15px;
+  }
 }
