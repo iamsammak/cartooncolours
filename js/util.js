@@ -62,3 +62,20 @@ export const generateImgData = function(img, canvas, ctx, colors, currentId, gro
   return topTenColors;
   // return colors
 };
+
+export const calculateColorPercentage = function(palette) {
+  console.log(palette);
+
+  let totalCount = 0;
+  let colorRatio = [];
+
+  palette.forEach(p => totalCount += p.count);
+  palette.forEach(p => {
+    let color = p.color;
+    let percentage = p.count / totalCount;
+    colorRatio.push({
+      color, percentage
+    });
+  });
+  return colorRatio;
+};

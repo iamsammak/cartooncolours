@@ -1,5 +1,8 @@
 import { POKEMON, POKEMON_NAMES, totalCount } from './pokemon_list';
-import { randomNumber, imgDataToHexCode, generateImgData } from './util';
+import { randomNumber,
+         imgDataToHexCode,
+         generateImgData,
+         calculateColorPercentage } from './util';
 
 export const pokemonNameToId = (obj, pokeName) => {
   for (let prop in obj ) {
@@ -96,6 +99,8 @@ export class Pokemon {
       this.ctx.drawImage(img, dx, dy, dWidth, dHeight);
     };
 
+    this.displayPalette();
+
     // this part will be deleted later after creating search
     if (this.currentPokeId >= totalCount) {
       this.currentPokeId = 1;
@@ -122,6 +127,6 @@ export class Pokemon {
 
   displayPalette() {
     let palette = this.pokemonData[this.currentPokeId].colors;
-    
+    let ratioPalette = calculateColorPercentage(palette);
   }
 }

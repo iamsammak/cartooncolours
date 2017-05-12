@@ -328,6 +328,25 @@ var generateImgData = exports.generateImgData = function generateImgData(img, ca
   // return colors
 };
 
+var calculateColorPercentage = exports.calculateColorPercentage = function calculateColorPercentage(palette) {
+  console.log(palette);
+
+  var totalCount = 0;
+  var colorRatio = [];
+
+  palette.forEach(function (p) {
+    return totalCount += p.count;
+  });
+  palette.forEach(function (p) {
+    var color = p.color;
+    var percentage = p.count / totalCount;
+    colorRatio.push({
+      color: color, percentage: percentage
+    });
+  });
+  return colorRatio;
+};
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -586,6 +605,8 @@ var Pokemon = exports.Pokemon = function () {
         _this2.ctx.drawImage(img, dx, dy, dWidth, dHeight);
       };
 
+      this.displayPalette();
+
       // this part will be deleted later after creating search
       if (this.currentPokeId >= _pokemon_list.totalCount) {
         this.currentPokeId = 1;
@@ -615,6 +636,7 @@ var Pokemon = exports.Pokemon = function () {
     key: 'displayPalette',
     value: function displayPalette() {
       var palette = this.pokemonData[this.currentPokeId].colors;
+      var ratioPalette = (0, _util.calculateColorPercentage)(palette);
     }
   }]);
 
@@ -649,47 +671,47 @@ __webpack_require__(5);
 // end testing imports
 
 document.addEventListener('DOMContentLoaded', function () {
-  var loadCanvas = function loadCanvas() {
-    var canvas = document.getElementById('colours-canvas');
-    var ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  var canvas = document.getElementById('colours-canvas');
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
-    document.body.style.backgroundColor = "#B5FFDB";
+  document.body.style.backgroundColor = "#B5FFDB";
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    var pokemon = new _pokemon.Pokemon(canvas, ctx);
-    pokemon.loadData();
+  var pokemon = new _pokemon.Pokemon(canvas, ctx);
+  pokemon.loadData();
+  //
+  var logRandomPokemon = document.getElementById("random-pokemon");
+  logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
-    var logRandomPokemon = document.getElementById("random-pokemon");
-    logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
+  var randomButton = document.getElementById("random-button");
+  randomButton.addEventListener("click", pokemon.loadPokemon);
 
-    var randomButton = document.getElementById("random-button");
-    randomButton.addEventListener("click", pokemon.loadPokemon);
+  var searchInput = document.getElementById("search-bar-input");
+  searchInput.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      pokemon.searchPokemon(this.value);
+    };
+  });
 
-    var searchInput = document.getElementById("search-bar-input");
-    searchInput.addEventListener("keydown", function (e) {
-      if (e.keyCode === 13) {
-        e.preventDefault();
-        pokemon.searchPokemon(this.value);
-      };
-    });
+  // const hero = new FireEmblemHero(canvas, ctx);
+  // hero.loadData();
+  //
+  // const logRandomPokemon = document.getElementById("random-pokemon");
+  // logRandomPokemon.addEventListener("click", hero.randomHero);
+  //
+  // const randomButton = document.getElementById("random-button");
+  // randomButton.addEventListener("click", hero.loadHero);
 
-    // const hero = new FireEmblemHero(canvas, ctx);
-    // hero.loadData();
-    //
-    // const logRandomPokemon = document.getElementById("random-pokemon");
-    // logRandomPokemon.addEventListener("click", hero.randomHero);
-    //
-    // const randomButton = document.getElementById("random-button");
-    // randomButton.addEventListener("click", hero.loadHero);
-  };
-
-  window.addEventListener('resize', loadCanvas, false);
-  loadCanvas();
+  // window.addEventListener('resize', loadCanvas, false);
 
   // Testing
   window.pokemon = _pokemon_list.POKEMON;
   window.fireemblem = _fireemblem_list.FIREEMBLEM;
+  // TODO we have a bug with resizing Canvas
+  window.canvas = canvas;
   console.log("Hello from inside cartooncolours.js");
 });
 

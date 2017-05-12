@@ -23,6 +23,11 @@ body {
   overflow: hidden;
 }
 
+canvas {
+  position: absolute;
+  z-index: 99;
+}
+
 .random-button {
   position: absolute;
   top: 10px;
@@ -69,6 +74,7 @@ body {
   position: absolute;
   top: 10px;
   left: 100px;
+  z-index: 100;
   .search-bar-input {
     width: 400px;
     height: 35px;
@@ -76,5 +82,20 @@ body {
     font-size: 14px;
     overflow: hidden;
     padding-left: 15px;
+  }
+}
+
+#palette {
+  z-index: 5;
+  h1 {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: orange;
+  }
+  h2 {
+    position: absolute;
+    bottom: 25px;
+
   }
 }

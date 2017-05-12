@@ -21,6 +21,10 @@ body {
   margin: 0;
   overflow: hidden; }
 
+canvas {
+  position: absolute;
+  z-index: 99; }
+
 .random-button {
   position: absolute;
   top: 10px;
@@ -61,7 +65,8 @@ body {
   background-color: #FFBFB3;
   position: absolute;
   top: 10px;
-  left: 100px; }
+  left: 100px;
+  z-index: 100; }
   .search-bar .search-bar-input {
     width: 400px;
     height: 35px;
@@ -69,5 +74,16 @@ body {
     font-size: 14px;
     overflow: hidden;
     padding-left: 15px; }
+
+#palette {
+  z-index: 5; }
+  #palette h1 {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: orange; }
+  #palette h2 {
+    position: absolute;
+    bottom: 25px; }
 
 /*# sourceMappingURL=style.css.map*/
