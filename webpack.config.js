@@ -32,7 +32,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({ filename: 'css/style.css', allChunks: true })
+    new ExtractTextPlugin({ filename: '../css/style.css', allChunks: true })
   ],
   devtool: 'source-map',
 };
