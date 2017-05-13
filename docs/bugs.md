@@ -9,7 +9,19 @@ python -m SimpleHTTPServer
 
 
 ## Canvas resize bug
+- trial 1
+- if you create a pokemon instance everytime on resize, then any pokemon function called will be instantiated 'x' many times
 
+- THINGS TO TRY
+  1. put document.addEventListener("resize", resizeCanvas) inside pokemon instance
+
+## Keydown event listener
+Event listener will also trigger when typing in input tag/field
+BUT using
+```js
+  if (document.activeElement.nodeName != "BODY") { return; }
+```
+User clicking anywhere on the webpage the activeElement would be the BODY unless they click input tag, which will draw the activeElement
 
 ## Hiding Scrollbar
 For Google chrome

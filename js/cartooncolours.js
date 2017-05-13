@@ -37,6 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   });
 
+  document.addEventListener("keydown", function(e) {
+    if (document.activeElement.nodeName != "BODY") { return; }
+
+    if (e.which === 32) {
+      pokemon.randomPokemon();
+    } else if (e.which === 37 || e.which === 40) {
+      pokemon.backPokemon();
+    } else if (e.which === 38 || e.which === 39) {
+      pokemon.loadPokemon();
+    }
+  });
   // window.addEventListener('resize', loadCanvas, false);
 
 // Testing
