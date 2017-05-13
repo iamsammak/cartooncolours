@@ -555,7 +555,9 @@ var Pokemon = exports.Pokemon = function () {
           colors: topColors
         };
 
-        if (_this.currentPokeId < _pokemon_list.totalCount) {
+        // TODO bulbasaur reinstate
+        // if (this.currentPokeId < totalCount) {
+        if (_this.currentPokeId === 1) {
           _this.currentPokeId++;
           _this.generatePokemonData();
         } else {
@@ -607,11 +609,12 @@ var Pokemon = exports.Pokemon = function () {
       this.displayPalette();
 
       // this part will be deleted later after creating search
-      if (this.currentPokeId >= _pokemon_list.totalCount) {
-        this.currentPokeId = 1;
-      } else {
-        this.currentPokeId++;
-      }
+      // TODO bulbasaur - comment out to run generatePokemonData
+      // if (this.currentPokeId >= totalCount) {
+      //   this.currentPokeId = 1;
+      // } else {
+      //   this.currentPokeId++;
+      // }
     }
   }, {
     key: 'randomPokemon',
@@ -708,7 +711,7 @@ document.addEventListener('DOMContentLoaded', function () {
   logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   var randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.loadPokemon);
+  randomButton.addEventListener("click", pokemon.generatePokemonData);
 
   var searchInput = document.getElementById("search-bar-input");
   searchInput.addEventListener("keydown", function (e) {

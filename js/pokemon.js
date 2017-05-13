@@ -58,7 +58,9 @@ export class Pokemon {
         colors: topColors
       };
 
-      if (this.currentPokeId < totalCount) {
+      // TODO bulbasaur reinstate
+      // if (this.currentPokeId < totalCount) {
+      if (this.currentPokeId === 1) {
         this.currentPokeId++;
         this.generatePokemonData();
       } else {
@@ -104,11 +106,12 @@ export class Pokemon {
     this.displayPalette();
 
     // this part will be deleted later after creating search
-    if (this.currentPokeId >= totalCount) {
-      this.currentPokeId = 1;
-    } else {
-      this.currentPokeId++;
-    }
+    // TODO bulbasaur - comment out to run generatePokemonData
+    // if (this.currentPokeId >= totalCount) {
+    //   this.currentPokeId = 1;
+    // } else {
+    //   this.currentPokeId++;
+    // }
   }
 
   randomPokemon() {
