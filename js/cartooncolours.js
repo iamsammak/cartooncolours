@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   // window.addEventListener('resize', loadCanvas, false);
+  console.log("style the nav bar");
 
 // Testing
   window.pokemon = POKEMON;

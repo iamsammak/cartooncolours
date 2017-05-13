@@ -749,6 +749,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
   // window.addEventListener('resize', loadCanvas, false);
+  console.log("style the nav bar");
 
   // Testing
   window.pokemon = _pokemon_list.POKEMON;
