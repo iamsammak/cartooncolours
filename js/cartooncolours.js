@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   const randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.loadPokemon);
+  randomButton.addEventListener("click", pokemon.generatePokemonData);
 
   const searchInput = document.getElementById("search-bar-input");
   searchInput.addEventListener("keydown", function(e) {

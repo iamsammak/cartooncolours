@@ -18,7 +18,7 @@ export class Pokemon {
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentPokeId = 143;
+    this.currentPokeId = 1;
     this.pokemonData = {};
     this.image = null;
 

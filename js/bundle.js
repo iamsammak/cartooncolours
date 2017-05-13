@@ -123,10 +123,10 @@ var POKEMON = exports.POKEMON = {
   26: ["raichu", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346389/cartooncolours/026_raichu.svg"],
   27: ["sandshrew", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346390/cartooncolours/027_sandshrew.svg"],
   28: ["sandslash", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346390/cartooncolours/028_sandslash.svg"],
-  29: ["nidoranf", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346391/cartooncolours/029_nidoran.svg"],
+  29: ["nidoran♀", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346391/cartooncolours/029_nidoran.svg"],
   30: ["nidorina", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346390/cartooncolours/030_nidorina.svg"],
   31: ["nidoqueen", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346391/cartooncolours/031_nidoqueen.svg"],
-  32: ["nidoranm", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346392/cartooncolours/032_nidoran.svg"],
+  32: ["nidoran♂", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346392/cartooncolours/032_nidoran.svg"],
   33: ["nidorino", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346393/cartooncolours/033_nidorino.svg"],
   34: ["nidoking", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346394/cartooncolours/034_nidoking.svg"],
   35: ["clefairy", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494346394/cartooncolours/035_clefairy.svg"],
@@ -305,7 +305,7 @@ var generateImgData = exports.generateImgData = function generateImgData(img, ca
   var sortedColors = [];
   delete colors['#000000'];
   // delete colors['#ffffff'];
-  // delete this.colors['#0d131a'];
+  delete colors['#0d131a'];
 
   Object.keys(colors).forEach(function (color) {
     sortedColors.push({
@@ -518,7 +518,7 @@ var Pokemon = exports.Pokemon = function () {
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentPokeId = 143;
+    this.currentPokeId = 1;
     this.pokemonData = {};
     this.image = null;
 
@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function () {
   logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   var randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.loadPokemon);
+  randomButton.addEventListener("click", pokemon.generatePokemonData);
 
   var searchInput = document.getElementById("search-bar-input");
   searchInput.addEventListener("keydown", function (e) {

@@ -42,7 +42,7 @@ export const generateImgData = function(img, canvas, ctx, colors, currentId, gro
   let sortedColors = [];
   delete colors['#000000'];
   // delete colors['#ffffff'];
-	// delete this.colors['#0d131a'];
+	delete colors['#0d131a'];
 
   Object.keys(colors).forEach(color => {
     sortedColors.push({
