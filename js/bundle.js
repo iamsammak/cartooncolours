@@ -568,7 +568,7 @@ var Pokemon = exports.Pokemon = function () {
     key: 'loadData',
     value: function loadData() {
       var that = this;
-      $.getJSON('./js/pokemon_data.json', function (data) {
+      $.getJSON('./js/pokemon_data2.json', function (data) {
         that.pokemonData = data;
         that.loadPokemon();
       });
@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function () {
   logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   var randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.generatePokemonData);
+  randomButton.addEventListener("click", pokemon.loadPokemon);
 
   var searchInput = document.getElementById("search-bar-input");
   searchInput.addEventListener("keydown", function (e) {

@@ -70,7 +70,7 @@ export class Pokemon {
 
   loadData() {
     let that = this;
-    $.getJSON('./js/pokemon_data.json', function(data) {
+    $.getJSON('./js/pokemon_data2.json', function(data) {
       that.pokemonData = data;
       that.loadPokemon();
     });
