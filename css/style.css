@@ -15,7 +15,7 @@ span, article, footer, time, small {
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Audiowide', sans-serif; }
 
 ::-webkit-scrollbar {
   display: none; }
@@ -29,18 +29,35 @@ canvas {
   position: absolute;
   z-index: 99; }
 
+.nav-bar {
+  position: absolute;
+  background-color: orange;
+  width: 100%;
+  height: 6vh;
+  z-index: 100; }
+
+.search-bar {
+  background-color: #FFBFB3;
+  top: 10px;
+  left: 100px; }
+  .search-bar .search-bar-input {
+    width: 400px;
+    height: 35px;
+    font-family: 'Audiowide';
+    font-size: 14px;
+    overflow: hidden;
+    padding-left: 15px; }
+
 button {
   font-family: "Audiowide";
   font-size: 14px; }
 
 .button {
-  position: absolute;
   top: 10px;
   text-align: center;
   border: 1px solid black;
   height: 35px;
   width: 100px;
-  z-index: 100;
   cursor: pointer; }
 
 .next {
@@ -67,44 +84,30 @@ button {
   .random:hover {
     background-color: #FFBFB3; }
 
-.search-bar {
-  background-color: #FFBFB3;
-  position: absolute;
-  top: 10px;
-  left: 100px;
-  z-index: 100; }
-  .search-bar .search-bar-input {
-    width: 400px;
-    height: 35px;
-    font-family: 'Audiowide';
-    font-size: 14px;
-    overflow: hidden;
-    padding-left: 15px; }
-
-.palette {
+.palette-background {
   position: relative;
   z-index: 5; }
-  .palette p {
+  .palette-background p {
     font-family: "Audiowide";
     position: absolute;
     z-index: 101; }
-  .palette .pokemon-name {
+  .palette-background .pokemon-name {
     font-size: 160px;
     top: 50px;
     left: 50px;
     text-shadow: -1px 0 black, 0 2px black, 4px 0 black, 0 -1px black; }
-  .palette .main-hexcode {
+  .palette-background .main-hexcode {
     font-size: 28px;
     top: 70vh;
     right: 8vw; }
-  .palette h1 {
+  .palette-background h1 {
     position: absolute;
     width: 100vw;
     height: 100vh;
     background-color: yellow; }
 
 .palette-slab {
-  z-index: 101;
+  z-index: 100;
   position: absolute;
   bottom: 8vh;
   left: 5vw;

@@ -137,8 +137,8 @@ export class Pokemon {
       this.currentPokeId = input;
     } else if (POKEMON_NAMES.includes(input)) {
       this.currentPokeId = POKEMON_NAMES.indexOf(input) + 1;
-      this.loadPokemon();
     }
+    this.loadPokemon();
   }
 
   displayPalette() {

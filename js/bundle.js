@@ -643,8 +643,8 @@ var Pokemon = exports.Pokemon = function () {
         this.currentPokeId = input;
       } else if (_pokemon_list.POKEMON_NAMES.includes(input)) {
         this.currentPokeId = _pokemon_list.POKEMON_NAMES.indexOf(input) + 1;
-        this.loadPokemon();
       }
+      this.loadPokemon();
     }
   }, {
     key: 'displayPalette',

@@ -15,7 +15,7 @@ span, article, footer, time, small {
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Audiowide', sans-serif;
 }
 // to hide chrome scrollbar
 ::-webkit-scrollbar {
@@ -33,19 +33,46 @@ canvas {
   z-index: 99;
 }
 
+.nav-bar {
+  position: absolute;
+  background-color: orange;
+  width: 100%;
+  height: 6vh;
+  z-index: 100;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+}
+
+.search-bar {
+  background-color: #FFBFB3;
+  // position: absolute;
+  top: 10px;
+  left: 100px;
+  // z-index: 100;
+  .search-bar-input {
+    width: 400px;
+    height: 35px;
+    font-family: 'Audiowide';
+    font-size: 14px;
+    overflow: hidden;
+    padding-left: 15px;
+  }
+}
+
 button {
   font-family: "Audiowide";
   font-size: 14px;
 }
 
 .button {
-  position: absolute;
+  // position: absolute;
   top: 10px;
   text-align: center;
   border: 1px solid black;
   height: 35px;
   width: 100px;
-  z-index: 100;
+  // z-index: 100;
   cursor: pointer;
 }
 
@@ -80,23 +107,7 @@ button {
   }
 }
 
-.search-bar {
-  background-color: #FFBFB3;
-  position: absolute;
-  top: 10px;
-  left: 100px;
-  z-index: 100;
-  .search-bar-input {
-    width: 400px;
-    height: 35px;
-    font-family: 'Audiowide';
-    font-size: 14px;
-    overflow: hidden;
-    padding-left: 15px;
-  }
-}
-
-.palette {
+.palette-background {
   position: relative;
   z-index: 5;
   p {
@@ -124,7 +135,7 @@ button {
 }
 
 .palette-slab {
-  z-index: 101;
+  z-index: 100;
   position: absolute;
   bottom: 8vh;
   left: 5vw;

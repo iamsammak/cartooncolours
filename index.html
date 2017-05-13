@@ -9,13 +9,16 @@
   </head>
   <body>
     <div class="nav-bar">
+      <div id="search-bar" class="search-bar">
+        <input id="search-bar-input" class="search-bar-input" placeholder="type in a name or #" autofocus="true" type="text"></input>
+      </div>
+      <div id="random-button" class="random button"><p>Random</p></div>
+      <button type="button" class="next button" id="next-button">Next</button>
+      <button type="button" class="back button" id="back-button">Back</button>
     </div>
 
-    <div id="search-bar" class="search-bar">
-      <input id="search-bar-input" class="search-bar-input" placeholder="type in a name or #" autofocus="true" type="text"></input>
-    </div>
 
-    <div id="palette-background" class="palette">
+    <div id="palette-background" class="palette-background">
       <p id=pokemon-name class="pokemon-name"></p>
       <p id ="main-hexcode" class="main-hexcode"></p>
       <h1 id="main-color"></h1>
@@ -34,10 +37,6 @@
     </div>
 
     <canvas id="colours-canvas"></canvas>
-
-    <div id="random-button" class="random button"><p>Random</p></div>
-    <button type="button" class="next button" id="next-button">Next</button>
-    <button type="button" class="back button" id="back-button">Back</button>
 
   </body>
   <script type="application/javascript" src="js/bundle.js"></script>
