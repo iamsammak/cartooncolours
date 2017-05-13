@@ -639,17 +639,20 @@ var Pokemon = exports.Pokemon = function () {
       var ratioPalette = (0, _util.calculateColorPercentage)(palette);
 
       document.getElementById("main-color").remove();
-
+      //
       var name = document.getElementById("pokemon-name");
       name.style.color = palette[1].color;
       name.innerHTML = _pokemon_list.POKEMON[this.currentPokeId][0];
-
+      //
       var h1 = document.createElement('h1');
       h1.setAttribute("id", "main-color");
       h1.style.backgroundColor = palette[0].color;
       document.getElementById("palette-background").appendChild(h1);
 
       for (var i = 1; i < palette.length; i++) {
+        // document.getElementById("color" + 1).remove();
+        // document.getElementById("hexcode" + 1).remove();
+
         var h3 = document.getElementById("color" + i);
         h3.style.backgroundColor = palette[i].color;
         var hexcode = document.getElementById("hexcode" + i);

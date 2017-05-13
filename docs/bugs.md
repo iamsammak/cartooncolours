@@ -53,3 +53,7 @@ http://red-team-design.com/removing-an-element-with-plain-javascript-remove-meth
 
 ## Ideas CSS Transitions for Hexcode display
 http://jsfiddle.net/ankitladhania/Qa7Aa/
+
+### Slow loading of images
+
+  do images load faster, after cloudinary is ping'ed

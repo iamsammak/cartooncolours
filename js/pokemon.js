@@ -132,17 +132,20 @@ export class Pokemon {
     let ratioPalette = calculateColorPercentage(palette);
 
     document.getElementById("main-color").remove();
-
+    //
     let name = document.getElementById("pokemon-name");
     name.style.color = palette[1].color;
     name.innerHTML = POKEMON[this.currentPokeId][0];
-
+    //
     let h1 = document.createElement('h1');
     h1.setAttribute("id", "main-color");
     h1.style.backgroundColor = palette[0].color;
     document.getElementById("palette-background").appendChild(h1);
 
     for (let i = 1; i < palette.length; i++) {
+      // document.getElementById("color" + 1).remove();
+      // document.getElementById("hexcode" + 1).remove();
+
       let h3 = document.getElementById("color" + i);
       h3.style.backgroundColor = palette[i].color;
       let hexcode = document.getElementById("hexcode" + i);
