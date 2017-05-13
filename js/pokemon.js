@@ -32,6 +32,7 @@ export class Pokemon {
 
   generatePokemonData() {
     // currentPokeId must be set to 1 to get Complete Pokemon Data
+    // comment out if/else below, look for TODO bulbasaur
     console.log("Warning: Change currentPokeId back to 1");
 
     this.colors = {};
@@ -58,9 +59,7 @@ export class Pokemon {
         colors: topColors
       };
 
-      // TODO bulbasaur reinstate
-      // if (this.currentPokeId < totalCount) {
-      if (this.currentPokeId === 1) {
+      if (this.currentPokeId < totalCount) {
         this.currentPokeId++;
         this.generatePokemonData();
       } else {
@@ -106,12 +105,12 @@ export class Pokemon {
     this.displayPalette();
 
     // this part will be deleted later after creating search
-    // TODO bulbasaur - comment out to run generatePokemonData
-    // if (this.currentPokeId >= totalCount) {
-    //   this.currentPokeId = 1;
-    // } else {
-    //   this.currentPokeId++;
-    // }
+    // TODO bulbasaur: comment out below if/else to generate Full Data
+    if (this.currentPokeId >= totalCount) {
+      this.currentPokeId = 1;
+    } else {
+      this.currentPokeId++;
+    }
   }
 
   randomPokemon() {

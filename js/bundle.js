@@ -536,6 +536,7 @@ var Pokemon = exports.Pokemon = function () {
       var _this = this;
 
       // currentPokeId must be set to 1 to get Complete Pokemon Data
+      // comment out if/else below, look for TODO bulbasaur
       console.log("Warning: Change currentPokeId back to 1");
 
       this.colors = {};
@@ -555,9 +556,7 @@ var Pokemon = exports.Pokemon = function () {
           colors: topColors
         };
 
-        // TODO bulbasaur reinstate
-        // if (this.currentPokeId < totalCount) {
-        if (_this.currentPokeId === 1) {
+        if (_this.currentPokeId < _pokemon_list.totalCount) {
           _this.currentPokeId++;
           _this.generatePokemonData();
         } else {
@@ -609,12 +608,12 @@ var Pokemon = exports.Pokemon = function () {
       this.displayPalette();
 
       // this part will be deleted later after creating search
-      // TODO bulbasaur - comment out to run generatePokemonData
-      // if (this.currentPokeId >= totalCount) {
-      //   this.currentPokeId = 1;
-      // } else {
-      //   this.currentPokeId++;
-      // }
+      // TODO bulbasaur: comment out below if/else to generate Full Data
+      if (this.currentPokeId >= _pokemon_list.totalCount) {
+        this.currentPokeId = 1;
+      } else {
+        this.currentPokeId++;
+      }
     }
   }, {
     key: 'randomPokemon',
@@ -711,7 +710,7 @@ document.addEventListener('DOMContentLoaded', function () {
   logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
 
   var randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.generatePokemonData);
+  randomButton.addEventListener("click", pokemon.loadPokemon);
 
   var searchInput = document.getElementById("search-bar-input");
   searchInput.addEventListener("keydown", function (e) {
