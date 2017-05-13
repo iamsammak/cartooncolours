@@ -82,14 +82,17 @@ canvas {
 .palette {
   position: relative;
   z-index: 5; }
-  .palette .pokemon-name {
-    font-size: 160px;
+  .palette p {
     font-family: "Audiowide";
     position: absolute;
+    z-index: 101; }
+  .palette .pokemon-name {
+    font-size: 160px;
     top: 50px;
     left: 50px;
-    z-index: 101;
     text-shadow: -1px 0 black, 0 2px black, 4px 0 black, 0 -1px black; }
+  .palette .main-hexcode {
+    font-size: 24px; }
   .palette h1 {
     position: absolute;
     width: 100vw;
