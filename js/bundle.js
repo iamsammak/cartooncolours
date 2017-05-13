@@ -325,7 +325,6 @@ var generateImgData = exports.generateImgData = function generateImgData(img, ca
   }
 
   return topTenColors;
-  // return colors
 };
 
 var calculateColorPercentage = exports.calculateColorPercentage = function calculateColorPercentage(palette) {

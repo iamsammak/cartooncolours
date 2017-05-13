@@ -62,4 +62,3 @@ http://jsfiddle.net/ankitladhania/Qa7Aa/
 - Metapod, fearow, geodude images are very long horizontally
 - vulpix name color
 - poliwag primaryColor is #000
-- Sit need to add Main color hexcode

@@ -60,7 +60,6 @@ export const generateImgData = function(img, canvas, ctx, colors, currentId, gro
   }
 
   return topTenColors;
-  // return colors
 };
 
 export const calculateColorPercentage = function(palette) {
