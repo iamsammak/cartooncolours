@@ -54,6 +54,14 @@ http://red-team-design.com/removing-an-element-with-plain-javascript-remove-meth
 ## Ideas CSS Transitions for Hexcode display
 http://jsfiddle.net/ankitladhania/Qa7Aa/
 
+## Text Input rendering placeholder when empty
+```html
+<input id="search-bar-input" class="search-bar-input" placeholder="type in a name" autofocus="true" type="text"></input>
+```
+by setting input tag's type property to "text"...
+ - "type='text'"
+...it will then render placeholder when empty
+
 ### Slow loading of images
 
   do images load faster, after cloudinary is ping'ed
@@ -62,3 +70,8 @@ http://jsfiddle.net/ankitladhania/Qa7Aa/
 - Metapod, fearow, geodude images are very long horizontally
 - vulpix name color
 - poliwag primaryColor is #000
+
+
+## Notes
+- http://wesbos.com/times-html-entity-close-button/
+- &times;
