@@ -19,12 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const pokemon = new Pokemon(canvas, ctx);
   pokemon.loadData();
-  //
-  const logRandomCharacter = document.getElementById("random");
+
+  const logRandomCharacter = document.getElementById("random-button");
   logRandomCharacter.addEventListener("click", pokemon.randomPokemon);
 
-  const randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.loadPokemon);
+  const backButton = document.getElementById("back-button");
+  backButton.addEventListener("click", pokemon.backPokemon);
+
+  const nextButton = document.getElementById("next-button");
+  nextButton.addEventListener("click", pokemon.loadPokemon);
 
   const searchInput = document.getElementById("search-bar-input");
   searchInput.addEventListener("keydown", function(e) {

@@ -518,7 +518,7 @@ var Pokemon = exports.Pokemon = function () {
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentPokeId = 1;
+    this.currentPokeId = 143;
     this.pokemonData = {};
     this.image = null;
 
@@ -526,6 +526,7 @@ var Pokemon = exports.Pokemon = function () {
     this.randomPokemon = this.randomPokemon.bind(this);
     this.generatePokemonData = this.generatePokemonData.bind(this);
     this.loadPokemon = this.loadPokemon.bind(this);
+    this.backPokemon = this.backPokemon.bind(this);
     // for testing, probably won't need later
     this.displayPalette = this.displayPalette.bind(this);
   }
@@ -616,6 +617,18 @@ var Pokemon = exports.Pokemon = function () {
       }
     }
   }, {
+    key: 'backPokemon',
+    value: function backPokemon() {
+      if (this.currentPokeId === 2) {
+        this.currentPokeId = 151;
+      } else if (this.currentPokeId === 1) {
+        this.currentPokeId = 150;
+      } else {
+        this.currentPokeId = this.currentPokeId - 2;
+      }
+      this.loadPokemon();
+    }
+  }, {
     key: 'randomPokemon',
     value: function randomPokemon() {
       var randomId = (0, _util.randomNumber)(_pokemon_list.totalCount);
@@ -704,12 +717,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var pokemon = new _pokemon.Pokemon(canvas, ctx);
   pokemon.loadData();
-  //
-  var logRandomCharacter = document.getElementById("random");
+
+  var logRandomCharacter = document.getElementById("random-button");
   logRandomCharacter.addEventListener("click", pokemon.randomPokemon);
 
-  var randomButton = document.getElementById("random-button");
-  randomButton.addEventListener("click", pokemon.loadPokemon);
+  var backButton = document.getElementById("back-button");
+  backButton.addEventListener("click", pokemon.backPokemon);
+
+  var nextButton = document.getElementById("next-button");
+  nextButton.addEventListener("click", pokemon.loadPokemon);
 
   var searchInput = document.getElementById("search-bar-input");
   searchInput.addEventListener("keydown", function (e) {

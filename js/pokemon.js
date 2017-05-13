@@ -18,7 +18,7 @@ export class Pokemon {
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentPokeId = 1;
+    this.currentPokeId = 143;
     this.pokemonData = {};
     this.image = null;
 
@@ -26,6 +26,7 @@ export class Pokemon {
     this.randomPokemon = this.randomPokemon.bind(this);
     this.generatePokemonData = this.generatePokemonData.bind(this);
     this.loadPokemon = this.loadPokemon.bind(this);
+    this.backPokemon = this.backPokemon.bind(this);
     // for testing, probably won't need later
     this.displayPalette = this.displayPalette.bind(this);
   }
@@ -111,6 +112,17 @@ export class Pokemon {
     } else {
       this.currentPokeId++;
     }
+  }
+
+  backPokemon() {
+    if (this.currentPokeId === 2) {
+      this.currentPokeId = 151;
+    } else if (this.currentPokeId === 1) {
+      this.currentPokeId = 150;
+    } else {
+      this.currentPokeId = this.currentPokeId - 2;
+    }
+    this.loadPokemon();
   }
 
   randomPokemon() {
