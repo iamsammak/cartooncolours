@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const pokemon = new Pokemon(canvas, ctx);
   pokemon.loadData();
   //
-  const logRandomPokemon = document.getElementById("random-pokemon");
-  logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
+  const logRandomCharacter = document.getElementById("random");
+  logRandomCharacter.addEventListener("click", pokemon.randomPokemon);
 
   const randomButton = document.getElementById("random-button");
   randomButton.addEventListener("click", pokemon.loadPokemon);
@@ -33,15 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
       pokemon.searchPokemon(this.value);
     };
   });
-
-  // const hero = new FireEmblemHero(canvas, ctx);
-  // hero.loadData();
-  //
-  // const logRandomPokemon = document.getElementById("random-pokemon");
-  // logRandomPokemon.addEventListener("click", hero.randomHero);
-  //
-  // const randomButton = document.getElementById("random-button");
-  // randomButton.addEventListener("click", hero.loadHero);
 
   // window.addEventListener('resize', loadCanvas, false);
 

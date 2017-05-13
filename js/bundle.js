@@ -653,7 +653,6 @@ var Pokemon = exports.Pokemon = function () {
 
       var mainHexCode = document.getElementById("main-hexcode");
       mainHexCode.innerHTML = palette[0].color;
-      console.log(palette[0].color);
 
       for (var i = 1; i < palette.length; i++) {
         var h3 = document.getElementById("color" + i);
@@ -706,8 +705,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var pokemon = new _pokemon.Pokemon(canvas, ctx);
   pokemon.loadData();
   //
-  var logRandomPokemon = document.getElementById("random-pokemon");
-  logRandomPokemon.addEventListener("click", pokemon.randomPokemon);
+  var logRandomCharacter = document.getElementById("random");
+  logRandomCharacter.addEventListener("click", pokemon.randomPokemon);
 
   var randomButton = document.getElementById("random-button");
   randomButton.addEventListener("click", pokemon.loadPokemon);
@@ -719,15 +718,6 @@ document.addEventListener('DOMContentLoaded', function () {
       pokemon.searchPokemon(this.value);
     };
   });
-
-  // const hero = new FireEmblemHero(canvas, ctx);
-  // hero.loadData();
-  //
-  // const logRandomPokemon = document.getElementById("random-pokemon");
-  // logRandomPokemon.addEventListener("click", hero.randomHero);
-  //
-  // const randomButton = document.getElementById("random-button");
-  // randomButton.addEventListener("click", hero.loadHero);
 
   // window.addEventListener('resize', loadCanvas, false);
 

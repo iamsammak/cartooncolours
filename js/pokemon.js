@@ -147,7 +147,6 @@ export class Pokemon {
 
     let mainHexCode = document.getElementById("main-hexcode");
     mainHexCode.innerHTML = palette[0].color;
-    console.log(palette[0].color);
 
     for (let i = 1; i < palette.length; i++) {
       let h3 = document.getElementById("color" + i);
