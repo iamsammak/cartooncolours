@@ -57,3 +57,9 @@ http://jsfiddle.net/ankitladhania/Qa7Aa/
 ### Slow loading of images
 
   do images load faster, after cloudinary is ping'ed
+
+#### Minor things I need to fix
+- Metapod, fearow, geodude images are very long horizontally
+- vulpix name color
+- poliwag primaryColor is #000
+- Sit need to add Main color hexcode
