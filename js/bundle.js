@@ -649,6 +649,9 @@ var Pokemon = exports.Pokemon = function () {
       h1.setAttribute("id", "main-color");
       h1.style.backgroundColor = palette[0].color;
       document.getElementById("palette-background").appendChild(h1);
+
+      var mainHexCode = document.getElementById("main-hexcode");
+      mainHexCode.innerHTML = palette[0].color;
       console.log(palette[0].color);
 
       for (var i = 1; i < palette.length; i++) {
