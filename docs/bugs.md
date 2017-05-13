@@ -49,3 +49,7 @@ document.getElementById("main-color").remove();
 
 https://www.w3schools.com/jsref/met_select_remove.asp
 http://red-team-design.com/removing-an-element-with-plain-javascript-remove-method/
+
+
+## Ideas CSS Transitions for Hexcode display
+http://jsfiddle.net/ankitladhania/Qa7Aa/

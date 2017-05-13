@@ -145,6 +145,8 @@ export class Pokemon {
     for (let i = 1; i < palette.length; i++) {
       let h3 = document.getElementById("color" + i);
       h3.style.backgroundColor = palette[i].color;
+      let hexcode = document.getElementById("hexcode" + i);
+      hexcode.innerHTML = palette[i].color;
     }
   }
 }

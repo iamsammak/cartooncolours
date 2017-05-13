@@ -652,6 +652,8 @@ var Pokemon = exports.Pokemon = function () {
       for (var i = 1; i < palette.length; i++) {
         var h3 = document.getElementById("color" + i);
         h3.style.backgroundColor = palette[i].color;
+        var hexcode = document.getElementById("hexcode" + i);
+        hexcode.innerHTML = palette[i].color;
       }
     }
   }]);
