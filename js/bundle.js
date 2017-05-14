@@ -656,7 +656,7 @@ var Pokemon = exports.Pokemon = function () {
 
       var name = document.getElementById("pokemon-name");
       name.style.color = palette[1].color;
-      name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 4px 0 " + palette[2].color + ", 0 -1px " + palette[2].color;
+      name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 5px 0 " + palette[2].color + ", 0 -1px " + palette[2].color;
       name.innerHTML = _pokemon_list.POKEMON[this.currentPokeId][0];
 
       var h1 = document.createElement('h1');

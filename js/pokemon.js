@@ -149,7 +149,7 @@ export class Pokemon {
 
     let name = document.getElementById("pokemon-name");
     name.style.color = palette[1].color;
-    name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 4px 0 " + palette[2].color + ", 0 -1px " + palette[2].color
+    name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 5px 0 " + palette[2].color + ", 0 -1px " + palette[2].color
     name.innerHTML = POKEMON[this.currentPokeId][0];
 
     let h1 = document.createElement('h1');

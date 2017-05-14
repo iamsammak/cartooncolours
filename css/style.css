@@ -82,23 +82,23 @@ button {
   .random:hover {
     background-color: #e50044; }
 
-.palette-background {
+.palette {
   position: relative;
   z-index: 5; }
-  .palette-background p {
+  .palette p {
     font-family: "Audiowide";
     position: absolute;
     z-index: 101; }
-  .palette-background .pokemon-name {
+  .palette .pokemon-name {
     font-size: 160px;
     top: 5vh;
     left: 5vw;
     text-shadow: -1px 0 black, 0 2px black, 4px 0 black, 0 -1px black; }
-  .palette-background .main-hexcode {
+  .palette .main-hexcode {
     font-size: 28px;
     top: 70vh;
     right: 8vw; }
-  .palette-background h1 {
+  .palette h1 {
     position: absolute;
     width: 100vw;
     height: 100vh;
