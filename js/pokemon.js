@@ -160,6 +160,15 @@ export class Pokemon {
     let mainHexCode = document.getElementById("main-hexcode");
     mainHexCode.innerHTML = palette[0].color;
 
+    // let searchBar = document.getElementById("search-bar");
+    // searchBar.style.backgroundColor = palette[2].color;
+    // let nextButton = document.getElementById("next-button");
+    // nextButton.style.backgroundColor = palette[3].color;
+    // let randomButton = document.getElementById("random-button");
+    // randomButton.style.backgroundColor = palette[2].color;
+    // let backButton = document.getElementById("back-button");
+    // backButton.style.backgroundColor = palette[3].color;
+
     for (let i = 1; i < palette.length; i++) {
       let h3 = document.getElementById("color" + i);
       h3.style.backgroundColor = palette[i].color;

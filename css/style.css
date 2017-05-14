@@ -34,11 +34,12 @@ canvas {
   z-index: 100;
   background-color: orange;
   width: 100%;
+  border: 4px solid black;
   display: flex;
   flex-direction: row; }
 
 .search-bar {
-  background-color: #FFBFB3;
+  background-color: #ffffff;
   width: 64%;
   height: 35px; }
   .search-bar .search-bar-input {
@@ -46,6 +47,7 @@ canvas {
     width: 98%;
     font-family: 'Audiowide';
     font-size: 14px;
+    color: #e50044;
     overflow: hidden;
     padding-left: 15px; }
 
@@ -55,30 +57,30 @@ button {
 
 .button {
   text-align: center;
+  border-left: 4px solid black;
   height: 35px;
   width: 12%;
   cursor: pointer; }
 
-.next {
-  background-color: #BEA3C4; }
-  .next:hover {
-    background-color: #FFBFB3; }
-
-.back {
-  background-color: #BEA3C4; }
-  .back:hover {
-    background-color: #FFBFB3; }
+.next, .back {
+  background-color: #e50044;
+  color: #ffffff; }
+  .next:hover, .back:hover {
+    background-color: #ffffff;
+    color: #e50044; }
 
 .random {
-  background-color: #FFBFB3; }
+  background-color: #ffffff; }
   .random p {
-    color: black;
+    color: #e50044;
     font-family: "Audiowide";
     font-size: 14px;
     padding: 9px;
     margin: 0 auto; }
+    .random p:hover {
+      color: #ffffff; }
   .random:hover {
-    background-color: #BEA3C4; }
+    background-color: #e50044; }
 
 .palette-background {
   position: relative;
@@ -89,8 +91,8 @@ button {
     z-index: 101; }
   .palette-background .pokemon-name {
     font-size: 160px;
-    top: 50px;
-    left: 50px;
+    top: 5vh;
+    left: 5vw;
     text-shadow: -1px 0 black, 0 2px black, 4px 0 black, 0 -1px black; }
   .palette-background .main-hexcode {
     font-size: 28px;
