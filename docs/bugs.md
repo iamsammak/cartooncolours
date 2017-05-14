@@ -78,6 +78,10 @@ by setting input tag's type property to "text"...
 
   do images load faster, after cloudinary is ping'ed
 
+  test to see if http images run load faster than https
+
+# add media kit, dynamic css
+
 #### Minor things I need to fix
 - Metapod, fearow, geodude images are very long horizontally
 - vulpix name color
