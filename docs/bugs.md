@@ -74,7 +74,7 @@ by setting input tag's type property to "text"...
  - "type='text'"
 ...it will then render placeholder when empty
 
-### Slow loading of images
+# Slow loading of images
 
   do images load faster, after cloudinary is ping'ed
 

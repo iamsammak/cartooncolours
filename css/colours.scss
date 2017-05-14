@@ -24,8 +24,9 @@ span, article, footer, time, small {
 
 body {
   margin: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
+  // overflow-x: hidden;
+  // overflow-y: scroll;
 }
 
 canvas {
@@ -114,7 +115,7 @@ button {
   }
   .main-hexcode {
     font-size: 28px;
-    top: 70vh;
+    top: 67vh;
     right: 8vw;
   }
   h1 {
@@ -128,7 +129,7 @@ button {
 .palette-slab {
   z-index: 100;
   position: absolute;
-  top: 76vh;
+  top: 72vh;
   left: 5vw;
   width: 90vw;
   // background-color: orange;
