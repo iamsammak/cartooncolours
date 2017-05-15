@@ -21,8 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // I feel like there has to be a better way than this:
   let navBar = document.getElementById("nav-bar");
   navBar.style.width = window.innerWidth - 8 + "px";
+  let leadPokeId = 4;
 
-  let pokemon = new Pokemon(canvas, ctx);
+  let pokemon = new Pokemon(canvas, ctx, leadPokeId);
   pokemon.loadData();
 
 // Random Button
@@ -60,6 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const resizeCanvas = () => {
+    // grabs old pokemon id before creating a new canvas
+    leadPokeId = pokemon.logCurrentPokeId();
+
+    // reassign variables
     canvas = document.getElementById('colours-canvas');
     ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -69,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navBar = document.getElementById("nav-bar");
     navBar.style.width = window.innerWidth - 8 + "px";
 
-    pokemon = new Pokemon(canvas, ctx);
+    pokemon = new Pokemon(canvas, ctx, leadPokeId);
     pokemon.loadData();
   };
 

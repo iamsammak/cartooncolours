@@ -543,13 +543,13 @@ var pokemonNameToId = exports.pokemonNameToId = function pokemonNameToId(obj, po
 };
 
 var Pokemon = exports.Pokemon = function () {
-  function Pokemon(canvas, ctx) {
+  function Pokemon(canvas, ctx, leadPokeId) {
     _classCallCheck(this, Pokemon);
 
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentPokeId = 4;
+    this.currentPokeId = leadPokeId;
     this.pokemonData = {};
     this.image = null;
 
@@ -706,6 +706,11 @@ var Pokemon = exports.Pokemon = function () {
         hexcode.innerHTML = palette[i].color;
       }
     }
+  }, {
+    key: 'logCurrentPokeId',
+    value: function logCurrentPokeId() {
+      return this.currentPokeId - 1;
+    }
   }]);
 
   return Pokemon;
@@ -751,8 +756,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // I feel like there has to be a better way than this:
   var navBar = document.getElementById("nav-bar");
   navBar.style.width = window.innerWidth - 8 + "px";
+  var leadPokeId = 4;
 
-  var pokemon = new _pokemon.Pokemon(canvas, ctx);
+  var pokemon = new _pokemon.Pokemon(canvas, ctx, leadPokeId);
   pokemon.loadData();
 
   // Random Button
@@ -792,6 +798,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   var resizeCanvas = function resizeCanvas() {
+    // grabs old pokemon id before creating a new canvas
+    leadPokeId = pokemon.logCurrentPokeId();
+
+    // reassign variables
     canvas = document.getElementById('colours-canvas');
     ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -801,7 +811,7 @@ document.addEventListener('DOMContentLoaded', function () {
     navBar = document.getElementById("nav-bar");
     navBar.style.width = window.innerWidth - 8 + "px";
 
-    pokemon = new _pokemon.Pokemon(canvas, ctx);
+    pokemon = new _pokemon.Pokemon(canvas, ctx, leadPokeId);
     pokemon.loadData();
   };
 

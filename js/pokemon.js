@@ -16,11 +16,11 @@ export const pokemonNameToId = (obj, pokeName) => {
 }
 
 export class Pokemon {
-  constructor(canvas, ctx) {
+  constructor(canvas, ctx, leadPokeId) {
     this.canvas = canvas;
     this.ctx = ctx;
     this.colors = {};
-    this.currentPokeId = 4;
+    this.currentPokeId = leadPokeId;
     this.pokemonData = {};
     this.image = null;
 
@@ -171,5 +171,8 @@ export class Pokemon {
       let hexcode = document.getElementById("hexcode" + i);
       hexcode.innerHTML = palette[i].color;
     }
+  }
+  logCurrentPokeId() {
+    return this.currentPokeId - 1;
   }
 }
