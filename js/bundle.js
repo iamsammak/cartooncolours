@@ -706,11 +706,6 @@ var Pokemon = exports.Pokemon = function () {
         hexcode.innerHTML = palette[i].color;
       }
     }
-  }, {
-    key: 'logCurrentPokeId',
-    value: function logCurrentPokeId() {
-      console.log(this.currentPokeId);
-    }
   }]);
 
   return Pokemon;

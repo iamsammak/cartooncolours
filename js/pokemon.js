@@ -172,8 +172,4 @@ export class Pokemon {
       hexcode.innerHTML = palette[i].color;
     }
   }
-
-  logCurrentPokeId() {
-    console.log(this.currentPokeId);
-  }
 }
