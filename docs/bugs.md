@@ -24,6 +24,8 @@ versus defining with let, means variable can be written over
 
 Although I don't like having to reload the pokemonData each time there is a resize
 
+Before reassigning variables, grabbed old currentPokeId and fed that into the params for the "new" Pokemon(canvas, ctx, leadPokeId)
+
 ## Keydown event listener
 Event listener will also trigger when typing in input tag/field
 BUT using
