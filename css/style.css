@@ -32,7 +32,6 @@ canvas {
   position: absolute;
   z-index: 100;
   background-color: orange;
-  width: 100%;
   border: 4px solid black;
   display: flex;
   flex-direction: row; }

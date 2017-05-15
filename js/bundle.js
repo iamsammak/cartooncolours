@@ -714,6 +714,10 @@ document.addEventListener('DOMContentLoaded', function () {
   document.body.style.backgroundColor = "#B5FFDB";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  // I feel like there has to be a better way than this:
+  var navBar = document.getElementById("nav-bar");
+  navBar.style.width = window.innerWidth - 8 + "px";
+
   var pokemon = new _pokemon.Pokemon(canvas, ctx);
   pokemon.loadData();
 
