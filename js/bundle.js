@@ -737,6 +737,7 @@ var _pokemon = __webpack_require__(4);
 
 var _fireemblem = __webpack_require__(3);
 
+// for webpacking css
 __webpack_require__(5);
 
 // testing
@@ -815,10 +816,8 @@ document.addEventListener('DOMContentLoaded', function () {
   window.pokemon = _pokemon_list.POKEMON;
   window.fireemblem = _fireemblem_list.FIREEMBLEM;
   window.pokemonNames = _pokemon_list.POKEMON_NAMES;
-  // TODO we have a bug with resizing Canvas
-  // TODO will need to check the colorData later, ex Eirika's doesn't look right
   window.canvas = canvas;
-  console.log("Hello from inside cartooncolours.js");
+  // TODO will need to check the colorData later, ex Eirika's doesn't look right
 });
 
 /***/ })

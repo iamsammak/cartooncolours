@@ -1,3 +1,4 @@
+// for webpacking css
 require("../css/colours.scss");
 
 // testing
@@ -78,8 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.pokemon = POKEMON;
   window.fireemblem = FIREEMBLEM;
   window.pokemonNames = POKEMON_NAMES;
-// TODO we have a bug with resizing Canvas
-// TODO will need to check the colorData later, ex Eirika's doesn't look right
   window.canvas = canvas;
-  console.log("Hello from inside cartooncolours.js");
+// TODO will need to check the colorData later, ex Eirika's doesn't look right
 });
