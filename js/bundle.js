@@ -757,7 +757,6 @@ document.addEventListener('DOMContentLoaded', function () {
   navBar.style.width = window.innerWidth - 8 + "px";
 
   var pokemon = new _pokemon.Pokemon(canvas, ctx);
-  console.log(pokemon);
   pokemon.loadData();
 
   // Random Button
@@ -797,7 +796,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   var resizeCanvas = function resizeCanvas() {
-    console.log("resize");
     canvas = document.getElementById('colours-canvas');
     ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -808,7 +806,6 @@ document.addEventListener('DOMContentLoaded', function () {
     navBar.style.width = window.innerWidth - 8 + "px";
 
     pokemon = new _pokemon.Pokemon(canvas, ctx);
-    console.log(pokemon);
     pokemon.loadData();
   };
 

@@ -19,6 +19,11 @@ python -m SimpleHTTPServer
 Changed const to let, since variables will need to be reassigned
 Created resizeCanvas function that would reassigned canvas, ctx, pokemon...all variables that will need to be rerendered
 
+defining a variable with const means variable is read only
+versus defining with let, means variable can be written over
+
+Although I don't like having to reload the pokemonData each time there is a resize
+
 ## Keydown event listener
 Event listener will also trigger when typing in input tag/field
 BUT using
