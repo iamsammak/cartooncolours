@@ -77,32 +77,10 @@ export const calculateColorPercentage = function(palette) {
   return colorRatio;
 };
 
-export const calculateNameWidth = function(nameElement, currentPokeId) {
-  if (window.innerWidth <= 1057 && long_name_array.includes(currentPokeId)) {
+export const calculateNameWidth = function(nameElement, currentId, longNameArray) {
+  if (window.innerWidth <= 1057 && longNameArray.includes(currentId)) {
     nameElement.style.fontSize = "13.5vw";
   } else {
     nameElement.style.fontSize = "143px";
   }
 }
-
-const long_names = {
-  142: ["aerodactyl", 870],
-  125: ["electabuzz", 860],
-  115: ["kangaskhan", 960],
-  107: ["hitmonchan", 921],
-  103: ["exeggutor", 834],
-  102: ["exeggcute", 840],
-  81: ["magnemite", 845],
-  73: ["tentacruel", 845],
-  71: ["victreebel", 805],
-  70: ["weepinbell", 834],
-  69: ["bellsprout", 822],
-  40: ["wigglytuff", 847],
-  31: ["nidoqueen", 818],
-  27: ["sandshrew", 867],
-  12: ["butterfree", 874],
-  5: ["charmeleon", 914],
-  4: ["charmander", 950]
-}
-
-const long_name_array = [4,5,12,27,31,40,69,70,71,73,81,102,103,107,115,125,142];
