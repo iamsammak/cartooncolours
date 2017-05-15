@@ -582,6 +582,8 @@ var Pokemon = exports.Pokemon = function () {
 
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       console.log(_pokemon_list.POKEMON[this.currentPokeId][0]);
+      // reset input field upon submission
+      document.getElementById("search-bar-input").value = "";
 
       var img = new Image();
       img.crossOrigin = 'anonymous';
@@ -635,7 +637,7 @@ var Pokemon = exports.Pokemon = function () {
   }, {
     key: 'searchPokemon',
     value: function searchPokemon(input) {
-      input = input.toLowerCase();
+      input = input.toLowerCase().trim();
       if (input >= 1 && input <= 151) {
         this.currentPokeId = input;
       } else if (_pokemon_list.POKEMON_NAMES.includes(input)) {

@@ -81,6 +81,8 @@ export class Pokemon {
   loadPokemon() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     console.log(POKEMON[this.currentPokeId][0]);
+    // reset input field upon submission
+    document.getElementById("search-bar-input").value = "";
 
     let img = new Image();
     img.crossOrigin = 'anonymous';
@@ -131,7 +133,7 @@ export class Pokemon {
   }
 
   searchPokemon(input) {
-    input = input.toLowerCase();
+    input = input.toLowerCase().trim();
     if (input >= 1 && input <= 151) {
       this.currentPokeId = input;
     } else if (POKEMON_NAMES.includes(input)) {
