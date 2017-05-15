@@ -366,6 +366,7 @@ var calculateColorPercentage = exports.calculateColorPercentage = function calcu
   return colorRatio;
 };
 
+// this function can be replaced with a mixin
 var calculateNameWidth = exports.calculateNameWidth = function calculateNameWidth(nameElement, currentId, longNameArray) {
   if (window.innerWidth <= 1057 && longNameArray.includes(currentId)) {
     nameElement.style.fontSize = "13.5vw";
@@ -705,6 +706,11 @@ var Pokemon = exports.Pokemon = function () {
         hexcode.innerHTML = palette[i].color;
       }
     }
+  }, {
+    key: 'logCurrentPokeId',
+    value: function logCurrentPokeId() {
+      console.log(this.currentPokeId);
+    }
   }]);
 
   return Pokemon;
@@ -751,6 +757,7 @@ document.addEventListener('DOMContentLoaded', function () {
   navBar.style.width = window.innerWidth - 8 + "px";
 
   var pokemon = new _pokemon.Pokemon(canvas, ctx);
+  console.log(pokemon);
   pokemon.loadData();
 
   // Random Button
@@ -788,7 +795,24 @@ document.addEventListener('DOMContentLoaded', function () {
       pokemon.loadPokemon();
     }
   });
-  // window.addEventListener('resize', loadCanvas, false);
+
+  var resizeCanvas = function resizeCanvas() {
+    console.log("resize");
+    canvas = document.getElementById('colours-canvas');
+    ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    navBar = document.getElementById("nav-bar");
+    navBar.style.width = window.innerWidth - 8 + "px";
+
+    pokemon = new _pokemon.Pokemon(canvas, ctx);
+    console.log(pokemon);
+    pokemon.loadData();
+  };
+
+  window.addEventListener('resize', resizeCanvas, false);
 
   // Testing
   window.pokemon = _pokemon_list.POKEMON;

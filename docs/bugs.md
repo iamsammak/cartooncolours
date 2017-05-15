@@ -15,6 +15,10 @@ python -m SimpleHTTPServer
 - THINGS TO TRY
   1. put document.addEventListener("resize", resizeCanvas) inside pokemon instance
 
+5.11.17 - I believe I fixed the resizing issue
+Changed const to let, since variables will need to be reassigned
+Created resizeCanvas function that would reassigned canvas, ctx, pokemon...all variables that will need to be rerendered
+
 ## Keydown event listener
 Event listener will also trigger when typing in input tag/field
 BUT using

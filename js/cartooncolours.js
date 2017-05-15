@@ -9,8 +9,8 @@ import { Pokemon } from './pokemon';
 import { FireEmblemHero } from './fireemblem';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const canvas = document.getElementById('colours-canvas');
-  const ctx = canvas.getContext('2d');
+  let canvas = document.getElementById('colours-canvas');
+  let ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
@@ -18,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 // I feel like there has to be a better way than this:
-  const navBar = document.getElementById("nav-bar");
+  let navBar = document.getElementById("nav-bar");
   navBar.style.width = window.innerWidth - 8 + "px";
 
-  const pokemon = new Pokemon(canvas, ctx);
+  let pokemon = new Pokemon(canvas, ctx);
+  console.log(pokemon);
   pokemon.loadData();
 
 // Random Button
@@ -57,7 +58,24 @@ document.addEventListener('DOMContentLoaded', () => {
       pokemon.loadPokemon();
     }
   });
-  // window.addEventListener('resize', loadCanvas, false);
+
+  const resizeCanvas = () => {
+    console.log("resize");
+    canvas = document.getElementById('colours-canvas');
+    ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    navBar = document.getElementById("nav-bar");
+    navBar.style.width = window.innerWidth - 8 + "px";
+
+    pokemon = new Pokemon(canvas, ctx);
+    console.log(pokemon);
+    pokemon.loadData();
+  };
+
+  window.addEventListener('resize', resizeCanvas, false);
 
 // Testing
   window.pokemon = POKEMON;
