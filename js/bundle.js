@@ -344,6 +344,36 @@ var calculateColorPercentage = exports.calculateColorPercentage = function calcu
   return colorRatio;
 };
 
+var calculateNameWidth = exports.calculateNameWidth = function calculateNameWidth(nameElement, currentPokeId) {
+  if (window.innerWidth <= 1057 && long_name_array.includes(currentPokeId)) {
+    nameElement.style.fontSize = "13.5vw";
+  } else {
+    nameElement.style.fontSize = "143px";
+  }
+};
+
+var long_names = {
+  142: ["aerodactyl", 870],
+  125: ["electabuzz", 860],
+  115: ["kangaskhan", 960],
+  107: ["hitmonchan", 921],
+  103: ["exeggutor", 834],
+  102: ["exeggcute", 840],
+  81: ["magnemite", 845],
+  73: ["tentacruel", 845],
+  71: ["victreebel", 805],
+  70: ["weepinbell", 834],
+  69: ["bellsprout", 822],
+  40: ["wigglytuff", 847],
+  31: ["nidoqueen", 818],
+  27: ["sandshrew", 867],
+  12: ["butterfree", 874],
+  5: ["charmeleon", 914],
+  4: ["charmander", 950]
+};
+
+var long_name_array = [4, 5, 12, 27, 31, 40, 69, 70, 71, 73, 81, 102, 103, 107, 115, 125, 142];
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -658,6 +688,8 @@ var Pokemon = exports.Pokemon = function () {
       name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 5px 0 " + palette[2].color + ", 0 -1px " + palette[2].color;
       name.innerHTML = _pokemon_list.POKEMON[this.currentPokeId][0];
 
+      (0, _util.calculateNameWidth)(name, this.currentPokeId);
+
       var h1 = document.createElement('h1');
       h1.setAttribute("id", "main-color");
       h1.style.backgroundColor = palette[0].color;
@@ -761,6 +793,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Testing
   window.pokemon = _pokemon_list.POKEMON;
   window.fireemblem = _fireemblem_list.FIREEMBLEM;
+  window.pokemonNames = _pokemon_list.POKEMON_NAMES;
   // TODO we have a bug with resizing Canvas
   // TODO will need to check the colorData later, ex Eirika's doesn't look right
   window.canvas = canvas;

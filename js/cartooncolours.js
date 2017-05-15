@@ -1,7 +1,7 @@
 require("../css/colours.scss");
 
 // testing
-import { POKEMON } from './pokemon_list';
+import { POKEMON, POKEMON_NAMES } from './pokemon_list';
 import { FIREEMBLEM } from './fireemblem_list';
 // end testing imports
 
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Testing
   window.pokemon = POKEMON;
   window.fireemblem = FIREEMBLEM;
+  window.pokemonNames = POKEMON_NAMES;
 // TODO we have a bug with resizing Canvas
 // TODO will need to check the colorData later, ex Eirika's doesn't look right
   window.canvas = canvas;

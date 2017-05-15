@@ -2,7 +2,8 @@ import { POKEMON, POKEMON_NAMES, totalCount } from './pokemon_list';
 import { randomNumber,
          imgDataToHexCode,
          generateImgData,
-         calculateColorPercentage } from './util';
+         calculateColorPercentage,
+         calculateNameWidth } from './util';
 
 export const pokemonNameToId = (obj, pokeName) => {
   for (let prop in obj ) {
@@ -152,6 +153,8 @@ export class Pokemon {
     name.style.color = palette[1].color;
     name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 5px 0 " + palette[2].color + ", 0 -1px " + palette[2].color
     name.innerHTML = POKEMON[this.currentPokeId][0];
+
+    calculateNameWidth(name, this.currentPokeId);
 
     let h1 = document.createElement('h1');
     h1.setAttribute("id", "main-color");

@@ -82,6 +82,10 @@ by setting input tag's type property to "text"...
 
 # add media kit, dynamic css
 
+
+## pokemon name, font size
+Tried to make logic to render pokemon name font size based on window.innerWidth, but there was a bug I couldn't understand
+
 #### Minor things I need to fix
 - Metapod, fearow, geodude images are very long horizontally
 - vulpix name color
