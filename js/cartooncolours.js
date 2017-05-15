@@ -24,15 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const pokemon = new Pokemon(canvas, ctx);
   pokemon.loadData();
 
+// Random Button
   const logRandomCharacter = document.getElementById("random-button");
   logRandomCharacter.addEventListener("click", pokemon.randomPokemon);
 
+// Back Button
   const backButton = document.getElementById("back-button");
   backButton.addEventListener("click", pokemon.backPokemon);
 
+// Next Button
   const nextButton = document.getElementById("next-button");
   nextButton.addEventListener("click", pokemon.loadPokemon);
 
+// Search Bar
   const searchInput = document.getElementById("search-bar-input");
   searchInput.addEventListener("keydown", function(e) {
     if (e.keyCode === 13) {
@@ -41,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   });
 
+// keys mapped: "spacebar" and arrow keys
   document.addEventListener("keydown", function(e) {
     if (document.activeElement.nodeName != "BODY") { return; }
 
