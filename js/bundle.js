@@ -597,6 +597,9 @@ var Pokemon = exports.Pokemon = function () {
         }
       };
     }
+
+    // could refractor this function to use a promise instead
+
   }, {
     key: 'loadData',
     value: function loadData() {
@@ -706,6 +709,9 @@ var Pokemon = exports.Pokemon = function () {
         hexcode.innerHTML = palette[i].color;
       }
     }
+
+    // need for resize Canvas function
+
   }, {
     key: 'logCurrentPokeId',
     value: function logCurrentPokeId() {
@@ -750,15 +756,28 @@ document.addEventListener('DOMContentLoaded', function () {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  // testing
+  // let canvasR = document.getElementById('colours-canvas-right');
+  // let ctxR = canvasR.getContext('2d');
+  // canvasR.width = window.innerWidth / 2;
+  // canvasR.height = window.innerHeight;
+  // canvasR.style.left = (window.innerWidth / 2) + "px";
+
   document.body.style.backgroundColor = "#B5FFDB";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // testing
+  // ctxR.clearRect(canvasR.width, 0, canvasR.width, canvasR.height);
 
   // I feel like there has to be a better way than this:
   var navBar = document.getElementById("nav-bar");
   navBar.style.width = window.innerWidth - 8 + "px";
   var leadPokeId = 4;
+  var secondPokeId = 1;
 
   var pokemon = new _pokemon.Pokemon(canvas, ctx, leadPokeId);
+  // let pokemon2 = new Pokemon(canvasR, ctxR, secondPokeId)
+  // pokemon2.loadData();
   pokemon.loadData();
 
   // Random Button
@@ -812,6 +831,7 @@ document.addEventListener('DOMContentLoaded', function () {
     navBar.style.width = window.innerWidth - 8 + "px";
 
     pokemon = new _pokemon.Pokemon(canvas, ctx, leadPokeId);
+    // essentially rerender/repopulate DOM view
     pokemon.loadData();
   };
 

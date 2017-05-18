@@ -15,15 +15,28 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+// testing
+  // let canvasR = document.getElementById('colours-canvas-right');
+  // let ctxR = canvasR.getContext('2d');
+  // canvasR.width = window.innerWidth / 2;
+  // canvasR.height = window.innerHeight;
+  // canvasR.style.left = (window.innerWidth / 2) + "px";
+
   document.body.style.backgroundColor = "#B5FFDB";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+// testing
+  // ctxR.clearRect(canvasR.width, 0, canvasR.width, canvasR.height);
 
 // I feel like there has to be a better way than this:
   let navBar = document.getElementById("nav-bar");
   navBar.style.width = window.innerWidth - 8 + "px";
   let leadPokeId = 4;
+  let secondPokeId = 1;
 
   let pokemon = new Pokemon(canvas, ctx, leadPokeId);
+  // let pokemon2 = new Pokemon(canvasR, ctxR, secondPokeId)
+  // pokemon2.loadData();
   pokemon.loadData();
 
 // Random Button
@@ -75,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navBar.style.width = window.innerWidth - 8 + "px";
 
     pokemon = new Pokemon(canvas, ctx, leadPokeId);
+    // essentially rerender/repopulate DOM view
     pokemon.loadData();
   };
 

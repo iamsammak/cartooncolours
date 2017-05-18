@@ -20,6 +20,10 @@ span, article, footer, time, small {
 ::-webkit-scrollbar {
   display: none; }
 
+html, body {
+  width: 100%;
+  height: 100%; }
+
 body {
   margin: 0;
   overflow: hidden; }

@@ -72,6 +72,7 @@ export class Pokemon {
     };
   }
 
+  // could refractor this function to use a promise instead
   loadData() {
     let that = this;
     $.getJSON('./js/pokemon_data2.json', function(data) {
@@ -172,6 +173,8 @@ export class Pokemon {
       hexcode.innerHTML = palette[i].color;
     }
   }
+
+  // need for resize Canvas function
   logCurrentPokeId() {
     return this.currentPokeId - 1;
   }
