@@ -132,8 +132,8 @@ button {
 
 @media (max-width: 415px) {
   .palette .pokemon-name {
-    font-size: 53.5px;
-    top: 13vh;
+    font-size: 13vw;
+    top: 14vh;
     left: 8vw; }
   .palette .main-hexcode {
     top: 70vh; }
