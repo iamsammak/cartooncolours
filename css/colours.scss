@@ -127,7 +127,7 @@ button {
   }
   .main-hexcode {
     font-size: 28px;
-    top: 68vh;
+    top: 69vh;
     right: 8vw;
   }
   h1 {
@@ -141,10 +141,9 @@ button {
 .palette-slab {
   z-index: 100;
   position: absolute;
-  top: 73vh;
+  top: 75vh;
   left: 5vw;
   width: 90vw;
-  // background-color: orange;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
@@ -171,9 +170,8 @@ button {
 // iPhone 6 plus
 @media (max-width: 415px) {
   .palette {
-
     .pokemon-name {
-      font-size: 13vw;
+      // font-size: 13vw;
       top: 14vh;
       left: 8vw;
     }
@@ -183,8 +181,7 @@ button {
   }
 
   .palette-slab {
-    top: 75vh;
-
+    // top: 75vh;
     span {
       display: none;
     }

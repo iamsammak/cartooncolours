@@ -104,7 +104,7 @@ button {
     text-shadow: -1px 0 black, 0 2px black, 4px 0 black, 0 -1px black; }
   .palette .main-hexcode {
     font-size: 28px;
-    top: 68vh;
+    top: 69vh;
     right: 8vw; }
   .palette h1 {
     position: absolute;
@@ -115,7 +115,7 @@ button {
 .palette-slab {
   z-index: 100;
   position: absolute;
-  top: 73vh;
+  top: 75vh;
   left: 5vw;
   width: 90vw;
   display: flex;
@@ -138,19 +138,16 @@ button {
 
 @media (max-width: 415px) {
   .palette .pokemon-name {
-    font-size: 13vw;
     top: 14vh;
     left: 8vw; }
   .palette .main-hexcode {
     top: 70vh; }
-  .palette-slab {
-    top: 75vh; }
-    .palette-slab span {
-      display: none; }
-    .palette-slab div:hover span {
-      display: block; }
-    .palette-slab div:last-of-type span {
-      right: 37px; }
+  .palette-slab span {
+    display: none; }
+  .palette-slab div:hover span {
+    display: block; }
+  .palette-slab div:last-of-type span {
+    right: 37px; }
   .search-bar {
     height: 60px;
     width: 85%; }
