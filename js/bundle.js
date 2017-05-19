@@ -369,7 +369,7 @@ var calculateColorPercentage = exports.calculateColorPercentage = function calcu
 // this function can be replaced with a mixin
 var calculateNameWidth = exports.calculateNameWidth = function calculateNameWidth(nameElement, currentId, longNameArray) {
   if (window.innerWidth <= 1057 && longNameArray.includes(currentId)) {
-    nameElement.style.fontSize = "13.5vw";
+    nameElement.style.fontSize = "13vw";
   } else {
     nameElement.style.fontSize = "143px";
   }

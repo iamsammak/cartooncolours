@@ -34,6 +34,8 @@ BUT using
 ```
 User clicking anywhere on the webpage the activeElement would be the BODY unless they click input tag, which will draw the activeElement
 
+There seems to be a bug, where user double taps on the canvas and triggers all the keydown events or rerendering
+
 ## Hiding Scrollbar
 For Google chrome
 ```css

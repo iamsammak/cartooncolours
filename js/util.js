@@ -80,7 +80,7 @@ export const calculateColorPercentage = function(palette) {
 // this function can be replaced with a mixin
 export const calculateNameWidth = function(nameElement, currentId, longNameArray) {
   if (window.innerWidth <= 1057 && longNameArray.includes(currentId)) {
-    nameElement.style.fontSize = "13.5vw";
+    nameElement.style.fontSize = "13vw";
   } else {
     nameElement.style.fontSize = "143px";
   }
