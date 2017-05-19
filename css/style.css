@@ -143,6 +143,8 @@ button {
       display: none; }
     .palette-slab div:hover span {
       display: block; }
+    .palette-slab span:last-of-type {
+      right: 37px; }
   .nav-bar {
     width: 100%;
     border: 0px; }

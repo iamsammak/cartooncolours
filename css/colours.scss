@@ -187,6 +187,9 @@ button {
     div:hover span {
       display: block;
     }
+    span:last-of-type {
+      right: 37px;
+    }
   }
 
   .nav-bar {
