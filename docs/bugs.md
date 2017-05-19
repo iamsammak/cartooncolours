@@ -94,15 +94,13 @@ by setting input tag's type property to "text"...
   test to see if http images run load faster than https
 
 # add media kit, dynamic css
-
-
-## pokemon name, font size
-Tried to make logic to render pokemon name font size based on window.innerWidth, but there was a bug I couldn't understand
+```css
+@media (max-width: 360px) {
+}
+```
 
 #### Minor things I need to fix
 - Metapod, fearow, geodude images are very long horizontally
-- vulpix name color
-- poliwag primaryColor is #000
 
 
 ## Notes

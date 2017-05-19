@@ -22,7 +22,9 @@ span, article, footer, time, small {
 
 html, body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  min-width: 320px;
+  min-height: 568px; }
 
 body {
   margin: 0;
@@ -140,6 +142,16 @@ button {
   .palette .pokemon-name {
     font-size: 143px; } }
 
+@media (max-width: 900px) {
+  .palette-slab span {
+    display: none; }
+  .palette-slab div:hover span {
+    display: block; } }
+
+@media (max-width: 760px) {
+  .palette-slab div:last-of-type span {
+    right: 37px; } }
+
 @media (max-width: 415px) {
   .palette .pokemon-name {
     top: 14vh;
@@ -147,12 +159,6 @@ button {
   .palette .main-hexcode {
     top: 70vh;
     font-size: 25px; }
-  .palette-slab span {
-    display: none; }
-  .palette-slab div:hover span {
-    display: block; }
-  .palette-slab div:last-of-type span {
-    right: 37px; }
   .search-bar {
     height: 60px;
     width: 85%; }
@@ -213,7 +219,7 @@ button {
     transform: rotate(-45deg);
     top: 0; } }
 
-@media (max-width: 320px) {
+@media (max-width: 360px) {
   .search-bar .search-bar-input {
     font-size: 24px; }
   .palette .main-hexcode {
