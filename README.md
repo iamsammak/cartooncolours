@@ -6,10 +6,12 @@ CartoonPalettes is visualize representation of everyday cartoons viewed from the
 
 Site is mobile friendly
 
-Desktop view
+## Desktop view
+
 ![desktop-view](./docs/images/desktop.png)
 
-Mobile view (screenshots are iPhone 6)
+## Mobile view (screenshots are iPhone 6)
+
 <img src="./docs/images/iphone6_v1.png" width="375px" height="667px"/>
 <img src="./docs/images/iphone6_v2.png" width="375px" height="667px"/>
 
@@ -55,7 +57,7 @@ Currently, building an app to pull color data from images and stumbled across Ca
   }
 ```
 
-A simple python http server was used to host and pull data
+4. A simple python http server was used to host and pull data
 Run follow code in command line:
 ```bash
 $ python -m SimpleHTTPServer
