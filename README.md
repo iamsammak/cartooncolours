@@ -3,7 +3,7 @@
 [Live Site](https://iamsammak.github.io/cartoonpalettes/)
 
 ![desktop-view](./docs/images/desktop.png)
-<img src="./docs/images/iPhone6_view.png" alt="Drawing" style="width: 200px;"/>
+<img src="./docs/images/iPhone6_view.png" alt="Drawing" style="width: 100px, height: 150px;"/>
 
 
 ### Current in the works: Future Features
