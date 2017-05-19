@@ -106,3 +106,6 @@ by setting input tag's type property to "text"...
 ## Notes
 - http://wesbos.com/times-html-entity-close-button/
 - &times;
+
+
+#### Add click listener for palette hexcode, once window gets smaller
