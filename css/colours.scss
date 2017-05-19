@@ -240,6 +240,7 @@ button {
     width: 30px;
     height: 6px;
     background-color: #ee1515;
+    transition: transform 0.5s;
     &:before {
       display: block;
       width: 30px;
@@ -248,6 +249,7 @@ button {
       content: "";
       position: absolute;
       top: -12px;
+      transition: transform 0.5s;
     }
     &:after {
       display: block;
@@ -257,10 +259,11 @@ button {
       content: "";
       position: absolute;
       top: 12px;
+      transition: transform 0.5s;
     }
   }
 
-  .header-right:hover .button {
+  .open .button {
     display: inline-block;
   }
 }

@@ -375,14 +375,6 @@ var calculateNameWidth = exports.calculateNameWidth = function calculateNameWidt
   }
 };
 
-var changeButtonDisplay = exports.changeButtonDisplay = function changeButtonDisplay(button) {
-  if (button.style.display === "inline-block") {
-    button.style.display = "none";
-  } else {
-    button.style.display = "inline-block";
-  }
-};
-
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -751,8 +743,6 @@ var _pokemon = __webpack_require__(4);
 
 var _fireemblem = __webpack_require__(3);
 
-var _util = __webpack_require__(2);
-
 // for webpacking css
 __webpack_require__(5);
 
@@ -825,12 +815,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // add button menu for mobile views
   var displayButtons = function displayButtons() {
-    backButton = document.getElementById("back-button");
-    logRandomCharacter = document.getElementById("random-button");
-    nextButton = document.getElementById("next-button");
-    (0, _util.changeButtonDisplay)(backButton);
-    (0, _util.changeButtonDisplay)(logRandomCharacter);
-    (0, _util.changeButtonDisplay)(nextButton);
+    var headerRight = document.getElementById("header-right");
+    headerRight.classList.toggle("open");
   };
 
   var menu = document.getElementById("menu");

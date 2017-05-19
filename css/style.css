@@ -177,7 +177,8 @@ button {
     left: 26%;
     width: 30px;
     height: 6px;
-    background-color: #ee1515; }
+    background-color: #ee1515;
+    transition: transform 0.5s; }
     .button-menu:before {
       display: block;
       width: 30px;
@@ -185,7 +186,8 @@ button {
       background: #ee1515;
       content: "";
       position: absolute;
-      top: -12px; }
+      top: -12px;
+      transition: transform 0.5s; }
     .button-menu:after {
       display: block;
       width: 30px;
@@ -193,8 +195,9 @@ button {
       background: #ee1515;
       content: "";
       position: absolute;
-      top: 12px; }
-  .header-right:hover .button {
+      top: 12px;
+      transition: transform 0.5s; }
+  .open .button {
     display: inline-block; } }
 
 /*# sourceMappingURL=style.css.map*/

@@ -8,7 +8,6 @@ import { FIREEMBLEM } from './fireemblem_list';
 
 import { Pokemon } from './pokemon';
 import { FireEmblemHero } from './fireemblem';
-import { changeButtonDisplay } from './util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let canvas = document.getElementById('colours-canvas');
@@ -73,12 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // add button menu for mobile views
   const displayButtons = () => {
-    backButton = document.getElementById("back-button");
-    logRandomCharacter = document.getElementById("random-button");
-    nextButton = document.getElementById("next-button");
-    changeButtonDisplay(backButton);
-    changeButtonDisplay(logRandomCharacter);
-    changeButtonDisplay(nextButton);
+    let headerRight = document.getElementById("header-right");
+    headerRight.classList.toggle("open");
   }
 
   let menu = document.getElementById("menu");
