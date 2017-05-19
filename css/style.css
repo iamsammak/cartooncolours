@@ -187,7 +187,7 @@ button {
       content: "";
       position: absolute;
       top: -12px;
-      transition: transform 0.5s; }
+      transition: transform 0.2s; }
     .button-menu:after {
       display: block;
       width: 30px;
@@ -196,8 +196,16 @@ button {
       content: "";
       position: absolute;
       top: 12px;
-      transition: transform 0.5s; }
+      transition: transform 0.2s; }
   .open .button {
-    display: inline-block; } }
+    display: inline-block; }
+  .open .button-menu {
+    background-color: #f0f0f0; }
+  .open .button-menu:before {
+    transform: rotate(45deg);
+    top: 0; }
+  .open .button-menu:after {
+    transform: rotate(-45deg);
+    top: 0; } }
 
 /*# sourceMappingURL=style.css.map*/
