@@ -48,9 +48,8 @@ Currently, building an app to pull color data from images and stumbled across Ca
 3. Counted the occurrence of each color and saved top 10 colours into a JSON object to save on future lookup time.
 ```js
   loadData() {
-    let that = this;
     $.getJSON('./js/pokemon_colour_data.json', function(data) {
-      that.pokeColourData = data;
+      this.pokeColourData = data;
     })
   }
 ```
@@ -74,3 +73,4 @@ $ python -m SimpleHTTPServer
   - Download/Copy Palette Option
     + Export Current Palette Modal
     + clipboard.js
+  - Download as wallpaper
