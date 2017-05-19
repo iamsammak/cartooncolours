@@ -770,8 +770,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // ctxR.clearRect(canvasR.width, 0, canvasR.width, canvasR.height);
 
   // I feel like there has to be a better way than this:
-  var navBar = document.getElementById("nav-bar");
-  navBar.style.width = window.innerWidth - 8 + "px";
+  // let navBar = document.getElementById("nav-bar");
+  // navBar.style.width = window.innerWidth - 8 + "px";
+
   var leadPokeId = 4;
   var secondPokeId = 1;
 

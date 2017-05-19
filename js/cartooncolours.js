@@ -29,8 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ctxR.clearRect(canvasR.width, 0, canvasR.width, canvasR.height);
 
 // I feel like there has to be a better way than this:
-  let navBar = document.getElementById("nav-bar");
-  navBar.style.width = window.innerWidth - 8 + "px";
+  // let navBar = document.getElementById("nav-bar");
+  // navBar.style.width = window.innerWidth - 8 + "px";
+  
   let leadPokeId = 4;
   let secondPokeId = 1;
 

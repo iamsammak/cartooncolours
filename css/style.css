@@ -135,6 +135,15 @@ button {
     font-size: 53.5px;
     top: 13vh;
     left: 8vw; }
+  .palette .main-hexcode {
+    top: 70vh; }
+  .palette .palette-slab {
+    top: 75vh; }
+  .palette-slab span {
+    display: none; }
+  .nav-bar {
+    width: 100%;
+    border: 0px; }
   .search-bar {
     height: 60px;
     width: 85%; }
@@ -142,6 +151,7 @@ button {
       height: 60px;
       font-size: 28px; }
   .button {
+    display: none;
     top: 65px;
     width: 35px;
     border-radius: 50%;
@@ -149,11 +159,11 @@ button {
     border-left: 0px;
     border-right: 1px solid #222224; }
   .back {
-    right: 81px; }
+    right: 100px; }
   .random {
-    right: 41px; }
+    right: 55px; }
   .next {
-    right: 1px; }
+    right: 10px; }
   .header-right {
     height: 60px;
     width: 15%; }
@@ -180,7 +190,7 @@ button {
       content: "";
       position: absolute;
       top: 12px; }
-    .button-menu:hover .button {
-      display: block; } }
+  .header-right:hover .button {
+    display: inline-block; } }
 
 /*# sourceMappingURL=style.css.map*/
