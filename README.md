@@ -3,7 +3,7 @@
 [Live Site](https://iamsammak.github.io/cartoonpalettes/)
 
 ![desktop-view](./docs/images/desktop.png)
-![mobile-view](./docs/images/iPhone6_view.png)
+<img src="./docs/images/iPhone6_view.png" alt="Drawing" style="width: 200px;"/>
 
 
 ### Current in the works: Future Features
@@ -15,7 +15,3 @@
   - Download/Copy Palette Option
       Export Current Palette Modal
       clipboard.js
-
-
-
-TESTING GIT REMOTE SETURL
