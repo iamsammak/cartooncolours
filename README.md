@@ -4,15 +4,13 @@
 
 CartoonPalettes is visualize representation of everyday cartoons viewed from the eyes of a designer. Currently the site only supports the original 151 Pokemon but more in the works.
 
-Site is mobile friendly
+## Mobile view (screenshots: iPhone 6)
+
+<img src="./docs/images/iphone6_v1.png" width="375px" height="667px"/><br/><img src="./docs/images/iphone6_v2.png" width="375px" height="667px"/>
 
 ## Desktop view
 
 ![desktop-view](./docs/images/desktop.png)
-
-## Mobile view (screenshots: iPhone 6)
-
-<img src="./docs/images/iphone6_v1.png" width="375px" height="667px"/> <br/><img src="./docs/images/iphone6_v2.png" width="375px" height="667px"/>
 
 ## Origin
 
