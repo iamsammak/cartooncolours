@@ -10,10 +10,9 @@ Site is mobile friendly
 
 ![desktop-view](./docs/images/desktop.png)
 
-## Mobile view (screenshots are iPhone 6)
+## Mobile view (screenshots: iPhone 6)
 
-<img src="./docs/images/iphone6_v1.png" width="375px" height="667px"/>
-<img src="./docs/images/iphone6_v2.png" width="375px" height="667px"/>
+<img src="./docs/images/iphone6_v1.png" width="375px" height="667px"/><img src="./docs/images/iphone6_v2.png" width="375px" height="667px"/>
 
 ## Origin
 
