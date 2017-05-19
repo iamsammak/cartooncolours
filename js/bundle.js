@@ -692,7 +692,7 @@ var Pokemon = exports.Pokemon = function () {
       name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 5px 0 " + palette[2].color + ", 0 -1px " + palette[2].color;
       name.innerHTML = _pokemon_list.POKEMON[this.currentPokeId][0];
 
-      (0, _util.calculateNameWidth)(name, this.currentPokeId, _pokemon_list.longNameArray);
+      // calculateNameWidth(name, this.currentPokeId, longNameArray);
 
       var h1 = document.createElement('h1');
       h1.setAttribute("id", "main-color");
