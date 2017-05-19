@@ -375,6 +375,14 @@ var calculateNameWidth = exports.calculateNameWidth = function calculateNameWidt
   }
 };
 
+var changeButtonDisplay = exports.changeButtonDisplay = function changeButtonDisplay(button) {
+  if (button.style.display === "inline-block") {
+    button.style.display = "none";
+  } else {
+    button.style.display = "inline-block";
+  }
+};
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -743,6 +751,8 @@ var _pokemon = __webpack_require__(4);
 
 var _fireemblem = __webpack_require__(3);
 
+var _util = __webpack_require__(2);
+
 // for webpacking css
 __webpack_require__(5);
 
@@ -768,10 +778,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // testing
   // ctxR.clearRect(canvasR.width, 0, canvasR.width, canvasR.height);
-
-  // I feel like there has to be a better way than this:
-  // let navBar = document.getElementById("nav-bar");
-  // navBar.style.width = window.innerWidth - 8 + "px";
 
   var leadPokeId = 4;
   var secondPokeId = 1;
@@ -817,6 +823,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // add button menu for mobile views
+  var displayButtons = function displayButtons() {
+    backButton = document.getElementById("back-button");
+    logRandomCharacter = document.getElementById("random-button");
+    nextButton = document.getElementById("next-button");
+    (0, _util.changeButtonDisplay)(backButton);
+    (0, _util.changeButtonDisplay)(logRandomCharacter);
+    (0, _util.changeButtonDisplay)(nextButton);
+  };
+
+  var menu = document.getElementById("menu");
+  menu.addEventListener("click", displayButtons);
+
   var resizeCanvas = function resizeCanvas() {
     // grabs old pokemon id before creating a new canvas
     leadPokeId = pokemon.logCurrentPokeId();
@@ -828,8 +847,6 @@ document.addEventListener('DOMContentLoaded', function () {
     canvas.height = window.innerHeight;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    navBar = document.getElementById("nav-bar");
-    navBar.style.width = window.innerWidth - 8 + "px";
 
     pokemon = new _pokemon.Pokemon(canvas, ctx, leadPokeId);
     // essentially rerender/repopulate DOM view
@@ -842,7 +859,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.pokemon = _pokemon_list.POKEMON;
   window.fireemblem = _fireemblem_list.FIREEMBLEM;
   window.pokemonNames = _pokemon_list.POKEMON_NAMES;
-  window.canvas = canvas;
+  // window.canvas = canvas;
   // TODO will need to check the colorData later, ex Eirika's doesn't look right
 });
 

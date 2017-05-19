@@ -8,6 +8,7 @@ import { FIREEMBLEM } from './fireemblem_list';
 
 import { Pokemon } from './pokemon';
 import { FireEmblemHero } from './fireemblem';
+import { changeButtonDisplay } from './util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let canvas = document.getElementById('colours-canvas');
@@ -28,10 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // testing
   // ctxR.clearRect(canvasR.width, 0, canvasR.width, canvasR.height);
 
-// I feel like there has to be a better way than this:
-  // let navBar = document.getElementById("nav-bar");
-  // navBar.style.width = window.innerWidth - 8 + "px";
-  
   let leadPokeId = 4;
   let secondPokeId = 1;
 
@@ -41,15 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
   pokemon.loadData();
 
 // Random Button
-  const logRandomCharacter = document.getElementById("random-button");
+  let logRandomCharacter = document.getElementById("random-button");
   logRandomCharacter.addEventListener("click", pokemon.randomPokemon);
 
 // Back Button
-  const backButton = document.getElementById("back-button");
+  let backButton = document.getElementById("back-button");
   backButton.addEventListener("click", pokemon.backPokemon);
 
 // Next Button
-  const nextButton = document.getElementById("next-button");
+  let nextButton = document.getElementById("next-button");
   nextButton.addEventListener("click", pokemon.loadPokemon);
 
 // Search Bar
@@ -74,6 +71,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+// add button menu for mobile views
+  const displayButtons = () => {
+    backButton = document.getElementById("back-button");
+    logRandomCharacter = document.getElementById("random-button");
+    nextButton = document.getElementById("next-button");
+    changeButtonDisplay(backButton);
+    changeButtonDisplay(logRandomCharacter);
+    changeButtonDisplay(nextButton);
+  }
+
+  let menu = document.getElementById("menu");
+  menu.addEventListener("click", displayButtons);
+
   const resizeCanvas = () => {
     // grabs old pokemon id before creating a new canvas
     leadPokeId = pokemon.logCurrentPokeId();
@@ -85,8 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.height = window.innerHeight;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    navBar = document.getElementById("nav-bar");
-    navBar.style.width = window.innerWidth - 8 + "px";
 
     pokemon = new Pokemon(canvas, ctx, leadPokeId);
     // essentially rerender/repopulate DOM view
@@ -99,6 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.pokemon = POKEMON;
   window.fireemblem = FIREEMBLEM;
   window.pokemonNames = POKEMON_NAMES;
-  window.canvas = canvas;
+  // window.canvas = canvas;
 // TODO will need to check the colorData later, ex Eirika's doesn't look right
 });

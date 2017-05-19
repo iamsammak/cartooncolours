@@ -85,3 +85,11 @@ export const calculateNameWidth = function(nameElement, currentId, longNameArray
     nameElement.style.fontSize = "143px";
   }
 }
+
+export const changeButtonDisplay = function(button) {
+  if (button.style.display === "inline-block") {
+    button.style.display = "none";
+  } else {
+    button.style.display = "inline-block";
+  }
+}
