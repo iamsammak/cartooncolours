@@ -15,3 +15,7 @@
   - Download/Copy Palette Option
       Export Current Palette Modal
       clipboard.js
+
+
+
+TESTING GIT REMOTE SETURL
