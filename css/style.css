@@ -137,10 +137,12 @@ button {
     left: 8vw; }
   .palette .main-hexcode {
     top: 70vh; }
-  .palette .palette-slab {
+  .palette-slab {
     top: 75vh; }
-  .palette-slab span {
-    display: none; }
+    .palette-slab span {
+      display: none; }
+    .palette-slab div:hover span {
+      display: block; }
   .nav-bar {
     width: 100%;
     border: 0px; }

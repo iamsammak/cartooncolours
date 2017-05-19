@@ -175,14 +175,17 @@ button {
     .main-hexcode {
       top: 70vh;
     }
-    .palette-slab {
-      top: 75vh;
-    }
   }
 
   .palette-slab {
-      span {
+    top: 75vh;
+
+    span {
       display: none;
+    }
+
+    div:hover span {
+      display: block;
     }
   }
 
