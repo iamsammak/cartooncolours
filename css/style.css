@@ -45,9 +45,9 @@ canvas {
 .search-bar {
   background-color: #f0f0f0;
   width: 64%;
-  height: 35px; }
+  height: 40px; }
   .search-bar .search-bar-input {
-    height: 35px;
+    height: 40px;
     width: 98%;
     font-family: 'Audiowide';
     font-size: 20px;
@@ -56,7 +56,6 @@ canvas {
     padding-left: 15px; }
 
 .header-right {
-  height: 35px;
   width: 46%;
   display: flex;
   flex-direction: row; }
@@ -68,7 +67,7 @@ button {
 .button {
   text-align: center;
   border-left: 2px solid #222224;
-  height: 35px;
+  height: 40px;
   width: 33.33%;
   cursor: pointer; }
 
@@ -168,7 +167,7 @@ button {
   .button {
     display: none;
     top: 65px;
-    width: 35px;
+    width: 40px;
     border-radius: 50%;
     position: absolute;
     border-left: 0px;
