@@ -166,22 +166,26 @@ button {
   }
 }
 
+@media (min-width: 1075px) {
+  .palette .pokemon-name {
+    font-size: 143px;
+  }
+}
 
 // iPhone 6 plus
 @media (max-width: 415px) {
   .palette {
     .pokemon-name {
-      // font-size: 13vw;
       top: 14vh;
       left: 8vw;
     }
     .main-hexcode {
       top: 70vh;
+      font-size: 25px;
     }
   }
 
   .palette-slab {
-    // top: 75vh;
     span {
       display: none;
     }
@@ -193,11 +197,6 @@ button {
       right: 37px;
     }
   }
-
-  // .nav-bar {
-  //   width: 100%;
-  //   border: 0px;
-  // }
 
   .search-bar {
     height: 60px;
@@ -280,5 +279,18 @@ button {
       transform: rotate(-45deg);
       top: 0;
     }
+  }
+}
+
+// iPhone 5
+@media (max-width: 320px) {
+  .search-bar .search-bar-input {
+    font-size: 24px;
+  }
+  .palette .main-hexcode {
+    font-size: 21px;
+  }
+  .button-menu {
+    left: 18%;
   }
 }

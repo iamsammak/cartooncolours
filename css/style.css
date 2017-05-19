@@ -136,12 +136,17 @@ button {
       font-size: 16px;
       font-family: "Audiowide"; }
 
+@media (min-width: 1075px) {
+  .palette .pokemon-name {
+    font-size: 143px; } }
+
 @media (max-width: 415px) {
   .palette .pokemon-name {
     top: 14vh;
     left: 8vw; }
   .palette .main-hexcode {
-    top: 70vh; }
+    top: 70vh;
+    font-size: 25px; }
   .palette-slab span {
     display: none; }
   .palette-slab div:hover span {
@@ -207,5 +212,13 @@ button {
   .open .button-menu:after {
     transform: rotate(-45deg);
     top: 0; } }
+
+@media (max-width: 320px) {
+  .search-bar .search-bar-input {
+    font-size: 24px; }
+  .palette .main-hexcode {
+    font-size: 21px; }
+  .button-menu {
+    left: 18%; } }
 
 /*# sourceMappingURL=style.css.map*/
