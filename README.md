@@ -2,7 +2,8 @@
 
 [Live Site](https://iamsammak.github.io/cartoonpalettes/)
 
-CartoonPalettes is visualize representation of everyday cartoons viewed from the eyes of a designer. Currently the site only supports the original 151 Pokemon but more in the works.
+CartoonPalettes is visualize representation of everyday cartoons viewed from the eyes of a designer. Each cartoon character is displayed with its 10 most prominent colours. The dominant colour becomes the background whereas the other 9 are displayed in a palette strip.
+Currently the site only supports the original 151 Pokemon but more in the works.
 
 ## Mobile view (screenshots: iPhone 6)
 
