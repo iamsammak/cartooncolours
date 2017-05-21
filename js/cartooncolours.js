@@ -36,6 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // pokemon2.loadData();
   pokemon.loadData();
 
+// Save Palette Button
+  let saveButton = document.getElementById("save-button");
+  saveButton.addEventListener("click", pokemon.downloadPalette);
+
 // Random Button
   let logRandomCharacter = document.getElementById("random-button");
   logRandomCharacter.addEventListener("click", pokemon.randomPokemon);

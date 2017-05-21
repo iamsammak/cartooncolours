@@ -777,6 +777,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // pokemon2.loadData();
   pokemon.loadData();
 
+  // Save Palette Button
+  var saveButton = document.getElementById("save-button");
+  saveButton.addEventListener("click", pokemon.downloadPalette);
+
   // Random Button
   var logRandomCharacter = document.getElementById("random-button");
   logRandomCharacter.addEventListener("click", pokemon.randomPokemon);

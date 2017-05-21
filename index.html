@@ -6,6 +6,7 @@
     <link rel="shortcut icon" type="image/png" href="./docs/images/favicon.png">
     <title>CartoonColours</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://use.fontawesome.com/b072c8cf25.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
@@ -16,9 +17,18 @@
       </div>
       <header id="header-right" class="header-right">
         <div id="menu" class="button-menu"></div>
-        <button type="button" class="back button" id="back-button">-</button>
-        <div id="random-button" class="random button"><p>?</p></div>
-        <button type="button" class="next button" id="next-button">+</button>
+        <button type="button" class="save button" id="save-button">
+          <i class="fa fa-download" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="back button" id="back-button">
+          <i class="fa fa-minus" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="random button" id="random-button">
+          <i class="fa fa-random" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="next button" id="next-button">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
       </header>
     </div>
 
@@ -44,6 +54,14 @@
 
     <canvas id="colours-canvas"></canvas>
     <canvas id="colours-canvas-right"></canvas>
+
+    <div id="export-modal" class="modal">
+      <div class="modal-content">
+        <h5>Export</h5>
+        <h2>Current Palette</h2>
+      </div>
+    </div>
+    <div class="overlay"></div>
 
   </body>
   <script type="application/javascript" src="js/bundle.js"></script>

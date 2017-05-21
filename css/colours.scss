@@ -55,15 +55,15 @@ canvas {
 .search-bar {
   background-color: #f0f0f0;
   width: 64%;
-  height: 40px;
+  height: 60px;
   .search-bar-input {
-    height: 40px;
+    height: 60px;
     width: 98%;
     font-family: 'Audiowide';
     font-size: 20px;
     color: #ee1515;
     overflow: hidden;
-    padding-left: 15px;
+    padding-left: 30px;
   }
 }
 
@@ -74,42 +74,32 @@ canvas {
   flex-direction: row;
 }
 
-button {
-  font-family: "Audiowide";
-  font-size: 24px;
-}
-
 .button {
+  font-family: "Audiowide";
   text-align: center;
   border-left: 2px solid #222224;
-  height: 40px;
+  height: 60px;
   width: 33.33%;
   cursor: pointer;
 }
 
 .next, .back {
-  background-color: #ee1515;
-  color: #f0f0f0;
+  background-color: #f0f0f0;
+  color: #ee1515;
+  font-size: 1.5em;
   &:hover {
-    background-color: #f0f0f0;
-    color: #ee1515;
+    background-color: #ee1515;
+    color: #f0f0f0;
   }
 }
 
-.random {
+.save, .random {
   background-color: #f0f0f0;
-  p {
-    color: #ee1515;
-    font-family: "Audiowide";
-    font-size: 14px;
-    padding: 9px;
-    margin: 0 auto;
-    &:hover {
-      color: #f0f0f0;
-    }
-  }
+  color: #ee1515;
+  font-size: 1.5em;
   &:hover {
     background-color: #ee1515;
+    color: #f0f0f0;
   }
 }
 
@@ -123,7 +113,7 @@ button {
   }
   .pokemon-name {
     font-size: 13vw;
-    top: 6vh;
+    top: 8vh;
     left: 5vw;
     text-shadow: -1px 0 black, 0 2px black, 4px 0 black, 0 -1px black;
   }
@@ -168,6 +158,47 @@ button {
   }
 }
 
+.overlay {
+  // display: none; give body a class of modal-active
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background-color: rgba(63,56,68,0.875);
+  -webkit-animation: fadeIn 0.375s;
+  -moz-animation: fadeIn 0.375s;
+  -ms-animation: fadeIn 0.375s;
+  -o-animation: fadeIn 0.375s;
+  animation: fadeIn 0.375s;
+}
+
+.modal {
+  // display: none;
+  position: fixed;
+  top: 0;
+  // top: -150%; // for transitions
+  z-index: 120;
+  width: 100%;
+  height: 100%;
+  // transition: top 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  // -webkit-transition: top 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  // -moz-transition: top 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  // -o-transition: top 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-content {
+  position: relative;
+  width: 84%;
+  max-width: 63em;
+  margin: 3em auto;
+  padding: 0.75em 0.75em 2.25em;
+  border-radius: 3px;
+  background-color: white;
+}
+
 @media (min-width: 1075px) {
   .palette .pokemon-name {
     font-size: 143px;
@@ -193,8 +224,8 @@ button {
   }
 }
 
-// iPhone 6 plus
-@media (max-width: 415px) {
+// iPhone 6 plus (415px)
+@media (max-width: 475px) {
   .palette {
     .pokemon-name {
       top: 14vh;
@@ -212,6 +243,7 @@ button {
     .search-bar-input {
       height: 60px;
       font-size: 28px;
+      padding-left: 15px;
     }
   }
 
@@ -219,10 +251,15 @@ button {
     display: none;
     top: 65px;
     width: 40px;
+    height: 40px;
     border-radius: 50%;
     position: absolute;
     border-left: 0px;
     border-right: 1px solid #222224;
+  }
+
+  .save {
+    right: 145px;
   }
 
   .back {
