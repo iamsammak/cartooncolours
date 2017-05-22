@@ -131,7 +131,7 @@ canvas {
       font-family: "Audiowide"; }
 
 .overlay {
-  display: block;
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -145,15 +145,22 @@ canvas {
   -o-animation: fadeIn 0.375s;
   animation: fadeIn 0.375s; }
 
-.modal {
+.modal-container {
   position: fixed;
-  top: 0;
+  top: -150%;
+  z-index: 120;
   width: 100%;
   height: 100%;
   transition: top 0.375s cubic-bezier(0.4, 0, 0.2, 1);
   -webkit-transition: top 0.375s cubic-bezier(0.4, 0, 0.2, 1);
   -moz-transition: top 0.375s cubic-bezier(0.4, 0, 0.2, 1);
   -o-transition: top 0.375s cubic-bezier(0.4, 0, 0.2, 1); }
+
+.open .modal-container {
+  top: 0; }
+
+.open .overlay {
+  display: block; }
 
 .modal-content {
   position: relative;
@@ -163,6 +170,45 @@ canvas {
   padding: 0.75em 0.75em 2.25em;
   border-radius: 3px;
   background-color: white; }
+  .modal-content span {
+    position: absolute;
+    cursor: pointer;
+    top: 8px;
+    right: 24px;
+    color: #c3c3c3;
+    font-size: 2.25em; }
+  .modal-content h5 {
+    margin: 6px 12px 8px; }
+  .modal-content h2 {
+    margin: 12px 12px 32px;
+    font-size: 36px; }
+
+h5 {
+  color: #c3c3c3;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.modal-palette {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background-color: orange;
+  padding: 0.75em;
+  width: 95%;
+  max-width: 75em;
+  margin: 0 auto; }
+  .modal-palette div:nth-child(even) {
+    position: relative;
+    background-color: red;
+    width: 10%;
+    height: 8vh; }
+  .modal-palette div:nth-child(odd) {
+    position: relative;
+    background-color: blue;
+    width: 10%;
+    height: 8vh; }
 
 @media (min-width: 1075px) {
   .palette .pokemon-name {

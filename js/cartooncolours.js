@@ -36,9 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // pokemon2.loadData();
   pokemon.loadData();
 
-// Save Palette Button
+// Save Palette Button - Modal
+  const displayModal = () => {
+    console.log("toggle modal");
+    let modal = document.getElementById("modal");
+    modal.classList.toggle("open");
+  }
+
   let saveButton = document.getElementById("save-button");
-  saveButton.addEventListener("click", pokemon.downloadPalette);
+  saveButton.addEventListener("click", displayModal);
+  let modalClose = document.getElementById("modal-close");
+  modalClose.addEventListener("click", displayModal);
 
 // Random Button
   let logRandomCharacter = document.getElementById("random-button");
@@ -83,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let menu = document.getElementById("menu");
   menu.addEventListener("click", displayButtons);
 
+// Reload canvas on window resize
   const resizeCanvas = () => {
     // grabs old pokemon id before creating a new canvas
     leadPokeId = pokemon.logCurrentPokeId();
