@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // pokemon2.loadData();
   pokemon.loadData();
 
-// Save Palette Button - Modal
+// Save Palette Button - Modal open/close
   const displayModal = () => {
     console.log("toggle modal");
     let modal = document.getElementById("modal");
@@ -47,6 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
   saveButton.addEventListener("click", displayModal);
   let modalClose = document.getElementById("modal-close");
   modalClose.addEventListener("click", displayModal);
+  let modalContainer = document.getElementById("modal-container");
+  window.onclick = e => {
+    if (e.target === modalContainer) {
+      displayModal();
+    }
+  };
 
 // Random Button
   let logRandomCharacter = document.getElementById("random-button");

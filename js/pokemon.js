@@ -4,7 +4,8 @@ import { randomNumber,
          imgDataToHexCode,
          generateImgData,
          calculateColorPercentage,
-         calculateNameWidth } from './util';
+         calculateNameWidth,
+         capitalize } from './util';
 
 export const pokemonNameToId = (obj, pokeName) => {
   for (let prop in obj ) {
@@ -156,6 +157,11 @@ export class Pokemon {
     name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 5px 0 " + palette[2].color + ", 0 -1px " + palette[2].color
     name.innerHTML = POKEMON[this.currentPokeId][0];
 
+    let modalName = document.getElementById("palette-name");
+    let cName = capitalize(POKEMON[this.currentPokeId][0]);
+    modalName.style.color = palette[0].color;
+    modalName.innerHTML = cName + " Palette";
+
     // calculateNameWidth(name, this.currentPokeId, longNameArray);
 
     let h1 = document.createElement('h1');
@@ -166,11 +172,16 @@ export class Pokemon {
     let mainHexCode = document.getElementById("main-hexcode");
     mainHexCode.innerHTML = palette[0].color;
 
+    let modalMainColor = document.getElementById("modal-main-color");
+    modalMainColor.style.backgroundColor = palette[0].color;
+
     for (let i = 1; i < palette.length; i++) {
       let h3 = document.getElementById("color" + i);
       h3.style.backgroundColor = palette[i].color;
       let hexcode = document.getElementById("hexcode" + i);
       hexcode.innerHTML = palette[i].color;
+      let modalColor = document.getElementById("modal-color" + i);
+      modalColor.style.backgroundColor = palette[i].color;
     }
   }
 

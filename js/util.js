@@ -85,3 +85,8 @@ export const calculateNameWidth = function(nameElement, currentId, longNameArray
     nameElement.style.fontSize = "143px";
   }
 }
+
+// capitalize's string
+export const capitalize = function(name) {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+}

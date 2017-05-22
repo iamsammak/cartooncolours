@@ -375,6 +375,11 @@ var calculateNameWidth = exports.calculateNameWidth = function calculateNameWidt
   }
 };
 
+// capitalize's string
+var capitalize = exports.capitalize = function capitalize(name) {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -692,6 +697,11 @@ var Pokemon = exports.Pokemon = function () {
       name.style.textShadow = "-1px 0 " + palette[2].color + ", 0 2px " + palette[2].color + ", 5px 0 " + palette[2].color + ", 0 -1px " + palette[2].color;
       name.innerHTML = _pokemon_list.POKEMON[this.currentPokeId][0];
 
+      var modalName = document.getElementById("palette-name");
+      var cName = (0, _util.capitalize)(_pokemon_list.POKEMON[this.currentPokeId][0]);
+      modalName.style.color = palette[0].color;
+      modalName.innerHTML = cName + " Palette";
+
       // calculateNameWidth(name, this.currentPokeId, longNameArray);
 
       var h1 = document.createElement('h1');
@@ -702,11 +712,16 @@ var Pokemon = exports.Pokemon = function () {
       var mainHexCode = document.getElementById("main-hexcode");
       mainHexCode.innerHTML = palette[0].color;
 
+      var modalMainColor = document.getElementById("modal-main-color");
+      modalMainColor.style.backgroundColor = palette[0].color;
+
       for (var i = 1; i < palette.length; i++) {
         var h3 = document.getElementById("color" + i);
         h3.style.backgroundColor = palette[i].color;
         var hexcode = document.getElementById("hexcode" + i);
         hexcode.innerHTML = palette[i].color;
+        var modalColor = document.getElementById("modal-color" + i);
+        modalColor.style.backgroundColor = palette[i].color;
       }
     }
 
@@ -777,7 +792,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // pokemon2.loadData();
   pokemon.loadData();
 
-  // Save Palette Button - Modal
+  // Save Palette Button - Modal open/close
   var displayModal = function displayModal() {
     console.log("toggle modal");
     var modal = document.getElementById("modal");
@@ -788,6 +803,12 @@ document.addEventListener('DOMContentLoaded', function () {
   saveButton.addEventListener("click", displayModal);
   var modalClose = document.getElementById("modal-close");
   modalClose.addEventListener("click", displayModal);
+  var modalContainer = document.getElementById("modal-container");
+  window.onclick = function (e) {
+    if (e.target === modalContainer) {
+      displayModal();
+    }
+  };
 
   // Random Button
   var logRandomCharacter = document.getElementById("random-button");
