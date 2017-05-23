@@ -209,9 +209,9 @@ h5 {
     height: 8vh; }
 
 .modal-code {
-  width: 50%;
+  width: calc(50% - 1.5em);
   position: relative;
-  margin: 0 0.75em;
+  padding: 0.75em;
   float: left; }
   .modal-code div {
     padding: 0.75em;

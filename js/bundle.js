@@ -712,6 +712,8 @@ var Pokemon = exports.Pokemon = function () {
       var mainHexCode = document.getElementById("main-hexcode");
       mainHexCode.innerHTML = palette[0].color;
 
+      var modalMainHexCode = document.getElementById("m-hexcode0");
+      modalMainHexCode.innerHTML = palette[0].color;
       var modalMainColor = document.getElementById("modal-main-color");
       modalMainColor.style.backgroundColor = palette[0].color;
 
@@ -720,6 +722,8 @@ var Pokemon = exports.Pokemon = function () {
         h3.style.backgroundColor = palette[i].color;
         var hexcode = document.getElementById("hexcode" + i);
         hexcode.innerHTML = palette[i].color;
+        var modalHex = document.getElementById("m-hexcode" + i);
+        modalHex.innerHTML = palette[i].color;
         var modalColor = document.getElementById("modal-color" + i);
         modalColor.style.backgroundColor = palette[i].color;
       }
