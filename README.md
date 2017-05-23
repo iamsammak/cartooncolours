@@ -47,11 +47,13 @@ Currently, building an app to pull color data from images and stumbled across Ca
 
 3. Counted the occurrence of each color and saved top 10 colours into a JSON object to save on future lookup time.
 ```js
-  loadData() {
-    $.getJSON('./js/pokemon_colour_data.json', function(data) {
-      this.pokeColourData = data;
-    })
-  }
+loadData() {
+  let that = this;
+  $.getJSON('./js/pokemon_data2.json', function(data) {
+    that.pokemonData = data;
+    that.loadPokemon();
+  });
+}
 ```
 
 4. A simple python http server was used to host and pull data
