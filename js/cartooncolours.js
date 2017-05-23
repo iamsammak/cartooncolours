@@ -4,6 +4,7 @@ require("../css/colours.scss");
 // testing
 import { POKEMON, POKEMON_NAMES } from './pokemon_list';
 import { FIREEMBLEM } from './fireemblem_list';
+import { hexToRGB } from './util';
 // end testing imports
 
 import { Pokemon } from './pokemon';
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.pokemon = POKEMON;
   window.fireemblem = FIREEMBLEM;
   window.pokemonNames = POKEMON_NAMES;
+  window.hexToRGB = hexToRGB;
   // window.canvas = canvas;
 // TODO will need to check the colorData later, ex Eirika's doesn't look right
 });

@@ -90,3 +90,41 @@ export const calculateNameWidth = function(nameElement, currentId, longNameArray
 export const capitalize = function(name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
+
+// hexcode to RGB
+const RGB = {
+  "0": 0,
+  "1": 1,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9,
+  "a": 10,
+  "b": 11,
+  "c": 12,
+  "d": 13,
+  "e": 14,
+  "f": 15
+}
+export const hexToRGB = function(palette) {
+  let rgb = [];
+  for (let i = 0; i < palette.length; i++) {
+    let hexcode = palette[i].color;
+    let r = hexcode.slice(1,3);
+    let g = hexcode.slice(3,5);
+    let b = hexcode.slice(5);
+
+    r = RGB[r[0]] * 16 + RGB[r[1]];
+    g = RGB[g[0]] * 16 + RGB[g[1]];
+    b = RGB[b[0]] * 16 + RGB[b[1]];
+
+    let rgbString = "rgb(" + r + ", " + g + ", " + b + ")";
+    rgb.push(rgbString);
+  }
+
+  return rgb;
+}

@@ -5,7 +5,8 @@ import { randomNumber,
          generateImgData,
          calculateColorPercentage,
          calculateNameWidth,
-         capitalize } from './util';
+         capitalize,
+         hexToRGB } from './util';
 
 export const pokemonNameToId = (obj, pokeName) => {
   for (let prop in obj ) {
@@ -148,6 +149,8 @@ export class Pokemon {
 
   displayPalette() {
     let palette = this.pokemonData[this.currentPokeId].colors;
+    let rgb = hexToRGB(palette);
+    console.log(rgb);
     let ratioPalette = calculateColorPercentage(palette);
 
     document.getElementById("main-color").remove();

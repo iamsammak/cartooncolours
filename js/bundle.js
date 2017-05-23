@@ -380,6 +380,44 @@ var capitalize = exports.capitalize = function capitalize(name) {
   return name.charAt(0).toUpperCase() + name.slice(1);
 };
 
+// hexcode to RGB
+var RGB = {
+  "0": 0,
+  "1": 1,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9,
+  "a": 10,
+  "b": 11,
+  "c": 12,
+  "d": 13,
+  "e": 14,
+  "f": 15
+};
+var hexToRGB = exports.hexToRGB = function hexToRGB(palette) {
+  var rgb = [];
+  for (var i = 0; i < palette.length; i++) {
+    var hexcode = palette[i].color;
+    var r = hexcode.slice(1, 3);
+    var g = hexcode.slice(3, 5);
+    var b = hexcode.slice(5);
+
+    r = RGB[r[0]] * 16 + RGB[r[1]];
+    g = RGB[g[0]] * 16 + RGB[g[1]];
+    b = RGB[b[0]] * 16 + RGB[b[1]];
+
+    var rgbString = "rgb(" + r + ", " + g + ", " + b + ")";
+    rgb.push(rgbString);
+  }
+
+  return rgb;
+};
+
 /***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -688,6 +726,8 @@ var Pokemon = exports.Pokemon = function () {
     key: 'displayPalette',
     value: function displayPalette() {
       var palette = this.pokemonData[this.currentPokeId].colors;
+      var rgb = (0, _util.hexToRGB)(palette);
+      console.log(rgb);
       var ratioPalette = (0, _util.calculateColorPercentage)(palette);
 
       document.getElementById("main-color").remove();
@@ -757,6 +797,8 @@ var Pokemon = exports.Pokemon = function () {
 var _pokemon_list = __webpack_require__(1);
 
 var _fireemblem_list = __webpack_require__(0);
+
+var _util = __webpack_require__(2);
 
 var _pokemon = __webpack_require__(4);
 
@@ -883,6 +925,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.pokemon = _pokemon_list.POKEMON;
   window.fireemblem = _fireemblem_list.FIREEMBLEM;
   window.pokemonNames = _pokemon_list.POKEMON_NAMES;
+  window.hexToRGB = _util.hexToRGB;
   // window.canvas = canvas;
   // TODO will need to check the colorData later, ex Eirika's doesn't look right
 });
