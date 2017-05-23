@@ -66,7 +66,7 @@ $ python -m SimpleHTTPServer
 Users can easily grab the colour palette from the export modal
 Palette Colours are formatted in: Hex, RGB, HTML and CSS
 
-![export-modal](./docs/images/desktop.png)
+![export-modal](./docs/images/export_palette.png)
 
 
 ### Current in the works: Future Features
