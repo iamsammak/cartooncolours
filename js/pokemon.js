@@ -162,7 +162,7 @@ export class Pokemon {
     let modalName = document.getElementById("palette-name");
     let cName = capitalize(POKEMON[this.currentPokeId][0]);
     modalName.style.color = palette[0].color;
-    modalName.innerHTML = cName + " Palette";
+    modalName.innerHTML = "#" + this.currentPokeId + " " + cName;
 
     // calculateNameWidth(name, this.currentPokeId, longNameArray);
 

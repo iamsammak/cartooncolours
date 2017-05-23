@@ -739,7 +739,7 @@ var Pokemon = exports.Pokemon = function () {
       var modalName = document.getElementById("palette-name");
       var cName = (0, _util.capitalize)(_pokemon_list.POKEMON[this.currentPokeId][0]);
       modalName.style.color = palette[0].color;
-      modalName.innerHTML = cName + " Palette";
+      modalName.innerHTML = "#" + this.currentPokeId + " " + cName;
 
       // calculateNameWidth(name, this.currentPokeId, longNameArray);
 
