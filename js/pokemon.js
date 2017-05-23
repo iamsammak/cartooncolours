@@ -180,6 +180,10 @@ export class Pokemon {
     modalMainHexCode.innerHTML = palette[0].color;
     let modalMainRGB = document.getElementById("m-rgb0");
     modalMainRGB.innerHTML = rgb[0];
+    let modalMainHtml = document.getElementById("m-html0");
+    modalMainHtml.innerHTML = "style=\"color:" + palette[0].color + ';"';
+    let modalMainCss = document.getElementById("m-css0");
+    modalMainCss.innerHTML = ".color-1 {color: " + palette[0].color + ";}";
 
     for (let i = 1; i < palette.length; i++) {
       let h3 = document.getElementById("color" + i);
@@ -192,6 +196,10 @@ export class Pokemon {
       modalHex.innerHTML = palette[i].color;
       let modalRGB = document.getElementById("m-rgb" + i);
       modalRGB.innerHTML = rgb[i];
+      let modalHtml = document.getElementById("m-html" + i);
+      modalHtml.innerHTML = "style=\"color:" + palette[i].color + ';"';
+      let modalCss = document.getElementById("m-css" + i);
+      modalCss.innerHTML = ".color-" + (i+1) + " {color: " + palette[i].color + ";}";
     }
   }
 

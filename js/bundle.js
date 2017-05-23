@@ -757,6 +757,10 @@ var Pokemon = exports.Pokemon = function () {
       modalMainHexCode.innerHTML = palette[0].color;
       var modalMainRGB = document.getElementById("m-rgb0");
       modalMainRGB.innerHTML = rgb[0];
+      var modalMainHtml = document.getElementById("m-html0");
+      modalMainHtml.innerHTML = "style=\"color:" + palette[0].color + ';"';
+      var modalMainCss = document.getElementById("m-css0");
+      modalMainCss.innerHTML = ".color-1 {color: " + palette[0].color + ";}";
 
       for (var i = 1; i < palette.length; i++) {
         var h3 = document.getElementById("color" + i);
@@ -769,6 +773,10 @@ var Pokemon = exports.Pokemon = function () {
         modalHex.innerHTML = palette[i].color;
         var modalRGB = document.getElementById("m-rgb" + i);
         modalRGB.innerHTML = rgb[i];
+        var modalHtml = document.getElementById("m-html" + i);
+        modalHtml.innerHTML = "style=\"color:" + palette[i].color + ';"';
+        var modalCss = document.getElementById("m-css" + i);
+        modalCss.innerHTML = ".color-" + (i + 1) + " {color: " + palette[i].color + ";}";
       }
     }
 
