@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Save Palette Button - Modal open/close
   const displayModal = () => {
-    console.log("toggle modal");
     let modal = document.getElementById("modal");
     modal.classList.toggle("open");
   }

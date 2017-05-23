@@ -727,7 +727,6 @@ var Pokemon = exports.Pokemon = function () {
     value: function displayPalette() {
       var palette = this.pokemonData[this.currentPokeId].colors;
       var rgb = (0, _util.hexToRGB)(palette);
-      console.log(rgb);
       var ratioPalette = (0, _util.calculateColorPercentage)(palette);
 
       document.getElementById("main-color").remove();
@@ -752,20 +751,24 @@ var Pokemon = exports.Pokemon = function () {
       var mainHexCode = document.getElementById("main-hexcode");
       mainHexCode.innerHTML = palette[0].color;
 
-      var modalMainHexCode = document.getElementById("m-hexcode0");
-      modalMainHexCode.innerHTML = palette[0].color;
       var modalMainColor = document.getElementById("modal-main-color");
       modalMainColor.style.backgroundColor = palette[0].color;
+      var modalMainHexCode = document.getElementById("m-hexcode0");
+      modalMainHexCode.innerHTML = palette[0].color;
+      var modalMainRGB = document.getElementById("m-rgb0");
+      modalMainRGB.innerHTML = rgb[0];
 
       for (var i = 1; i < palette.length; i++) {
         var h3 = document.getElementById("color" + i);
         h3.style.backgroundColor = palette[i].color;
         var hexcode = document.getElementById("hexcode" + i);
         hexcode.innerHTML = palette[i].color;
-        var modalHex = document.getElementById("m-hexcode" + i);
-        modalHex.innerHTML = palette[i].color;
         var modalColor = document.getElementById("modal-color" + i);
         modalColor.style.backgroundColor = palette[i].color;
+        var modalHex = document.getElementById("m-hexcode" + i);
+        modalHex.innerHTML = palette[i].color;
+        var modalRGB = document.getElementById("m-rgb" + i);
+        modalRGB.innerHTML = rgb[i];
       }
     }
 
@@ -840,7 +843,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Save Palette Button - Modal open/close
   var displayModal = function displayModal() {
-    console.log("toggle modal");
     var modal = document.getElementById("modal");
     modal.classList.toggle("open");
   };

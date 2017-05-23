@@ -150,7 +150,6 @@ export class Pokemon {
   displayPalette() {
     let palette = this.pokemonData[this.currentPokeId].colors;
     let rgb = hexToRGB(palette);
-    console.log(rgb);
     let ratioPalette = calculateColorPercentage(palette);
 
     document.getElementById("main-color").remove();
@@ -175,20 +174,24 @@ export class Pokemon {
     let mainHexCode = document.getElementById("main-hexcode");
     mainHexCode.innerHTML = palette[0].color;
 
-    let modalMainHexCode = document.getElementById("m-hexcode0")
-    modalMainHexCode.innerHTML = palette[0].color;
     let modalMainColor = document.getElementById("modal-main-color");
     modalMainColor.style.backgroundColor = palette[0].color;
+    let modalMainHexCode = document.getElementById("m-hexcode0")
+    modalMainHexCode.innerHTML = palette[0].color;
+    let modalMainRGB = document.getElementById("m-rgb0");
+    modalMainRGB.innerHTML = rgb[0];
 
     for (let i = 1; i < palette.length; i++) {
       let h3 = document.getElementById("color" + i);
       h3.style.backgroundColor = palette[i].color;
       let hexcode = document.getElementById("hexcode" + i);
       hexcode.innerHTML = palette[i].color;
-      let modalHex = document.getElementById("m-hexcode" + i);
-      modalHex.innerHTML = palette[i].color;
       let modalColor = document.getElementById("modal-color" + i);
       modalColor.style.backgroundColor = palette[i].color;
+      let modalHex = document.getElementById("m-hexcode" + i);
+      modalHex.innerHTML = palette[i].color;
+      let modalRGB = document.getElementById("m-rgb" + i);
+      modalRGB.innerHTML = rgb[i];
     }
   }
 
