@@ -76,6 +76,5 @@ Users can easily grab the colour palette from the export modal
     + Allow user to put compare two characters side by side (desktop view only)
   - Palette View Options
   - Download/Copy Palette Option
-    + Export Current Palette Modal
     + clipboard.js
   - Download as wallpaper
