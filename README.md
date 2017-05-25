@@ -78,3 +78,5 @@ Users can easily grab the colour palette from the export modal
   - Download/Copy Palette Option
     + clipboard.js
   - Download as wallpaper
+
+<!-- D3, bridge both sides of a product, i wanna contribute to more of the technical side since I've been on the side of creative. head of product. junior front end to senior to product manager head of product -->
