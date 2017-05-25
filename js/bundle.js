@@ -76,6 +76,150 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var randomNumber = exports.randomNumber = function randomNumber(limit) {
+  // add 1 to exclude 0 and include 'limit'
+  return Math.floor(Math.random() * limit) + 1;
+};
+
+// hexcode is just rgb mapped in base 16
+var imgDataToHexCode = exports.imgDataToHexCode = function imgDataToHexCode(color) {
+  var r = color.red.toString(16);
+  var g = color.green.toString(16);
+  var b = color.blue.toString(16);
+  // prepend '0' before 0-9 digits
+  if (r.length === 1) {
+    r = '0' + r;
+  }
+  if (g.length === 1) {
+    g = '0' + g;
+  }
+  if (b.length === 1) {
+    b = '0' + b;
+  }
+
+  return '#' + r + g + b;
+};
+
+var generateImgData = exports.generateImgData = function generateImgData(img, canvas, ctx, colors, currentId, group) {
+  var imageData = ctx.getImageData(canvas.width / 3, canvas.height / 3, img.width, img.height).data;
+
+  for (var i = 0; i < imageData.length - 3; i += 4) {
+    var r = imageData[i];
+    var g = imageData[i + 1];
+    var b = imageData[i + 2];
+
+    var imageColor = imgDataToHexCode({ red: r, green: g, blue: b });
+
+    if (imageColor in colors) {
+      colors[imageColor] += 1;
+    } else {
+      colors[imageColor] = 1;
+    }
+  }
+  var sortedColors = [];
+  delete colors['#000000'];
+  // delete colors['#ffffff'];
+  delete colors['#0d131a'];
+
+  Object.keys(colors).forEach(function (color) {
+    sortedColors.push({
+      color: color,
+      count: colors[color]
+    });
+  });
+
+  // sorts from largest to smallest
+  sortedColors.sort(function (a, b) {
+    return b.count - a.count;
+  });
+  var topTenColors = [];
+
+  for (var k = 0; k < 10; k++) {
+    topTenColors.push(sortedColors[k]);
+  }
+
+  return topTenColors;
+};
+
+var calculateColorPercentage = exports.calculateColorPercentage = function calculateColorPercentage(palette) {
+  var totalCount = 0;
+  var colorRatio = [];
+
+  palette.forEach(function (p) {
+    return totalCount += p.count;
+  });
+  palette.forEach(function (p) {
+    var color = p.color;
+    var percentage = p.count / totalCount;
+    colorRatio.push({
+      color: color, percentage: percentage
+    });
+  });
+  return colorRatio;
+};
+
+// this function can be replaced with a mixin
+var calculateNameWidth = exports.calculateNameWidth = function calculateNameWidth(nameElement, currentId, longNameArray) {
+  if (window.innerWidth <= 1057 && longNameArray.includes(currentId)) {
+    nameElement.style.fontSize = "13vw";
+  } else {
+    nameElement.style.fontSize = "143px";
+  }
+};
+
+// capitalize's string
+var capitalize = exports.capitalize = function capitalize(name) {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
+
+// hexcode to RGB
+var RGB = {
+  "0": 0,
+  "1": 1,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9,
+  "a": 10,
+  "b": 11,
+  "c": 12,
+  "d": 13,
+  "e": 14,
+  "f": 15
+};
+var hexToRGB = exports.hexToRGB = function hexToRGB(palette) {
+  var rgb = [];
+  for (var i = 0; i < palette.length; i++) {
+    var hexcode = palette[i].color;
+    var r = hexcode.slice(1, 3);
+    var g = hexcode.slice(3, 5);
+    var b = hexcode.slice(5);
+
+    r = RGB[r[0]] * 16 + RGB[r[1]];
+    g = RGB[g[0]] * 16 + RGB[g[1]];
+    b = RGB[b[0]] * 16 + RGB[b[1]];
+
+    var rgbString = "rgb(" + r + ", " + g + ", " + b + ")";
+    rgb.push(rgbString);
+  }
+
+  return rgb;
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var FIREEMBLEM = exports.FIREEMBLEM = {
   1: ["azura", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348437/cartooncolours/Full_Portrait_Azura.png"],
   2: ["eirika", "http://res.cloudinary.com/dfazwubvc/image/upload/v1494348435/cartooncolours/Full_Portrait_Eirika.png"],
@@ -85,7 +229,7 @@ var FIREEMBLEM = exports.FIREEMBLEM = {
 var totalCount = exports.totalCount = Object.keys(FIREEMBLEM).length;
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -275,150 +419,6 @@ var longNames = exports.longNames = {
 var longNameArray = exports.longNameArray = [4, 5, 12, 27, 31, 40, 69, 70, 71, 73, 81, 102, 103, 107, 115, 125, 142];
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var randomNumber = exports.randomNumber = function randomNumber(limit) {
-  // add 1 to exclude 0 and include 'limit'
-  return Math.floor(Math.random() * limit) + 1;
-};
-
-// hexcode is just rgb mapped in base 16
-var imgDataToHexCode = exports.imgDataToHexCode = function imgDataToHexCode(color) {
-  var r = color.red.toString(16);
-  var g = color.green.toString(16);
-  var b = color.blue.toString(16);
-  // prepend '0' before 0-9 digits
-  if (r.length === 1) {
-    r = '0' + r;
-  }
-  if (g.length === 1) {
-    g = '0' + g;
-  }
-  if (b.length === 1) {
-    b = '0' + b;
-  }
-
-  return '#' + r + g + b;
-};
-
-var generateImgData = exports.generateImgData = function generateImgData(img, canvas, ctx, colors, currentId, group) {
-  var imageData = ctx.getImageData(canvas.width / 3, canvas.height / 3, img.width, img.height).data;
-
-  for (var i = 0; i < imageData.length - 3; i += 4) {
-    var r = imageData[i];
-    var g = imageData[i + 1];
-    var b = imageData[i + 2];
-
-    var imageColor = imgDataToHexCode({ red: r, green: g, blue: b });
-
-    if (imageColor in colors) {
-      colors[imageColor] += 1;
-    } else {
-      colors[imageColor] = 1;
-    }
-  }
-  var sortedColors = [];
-  delete colors['#000000'];
-  // delete colors['#ffffff'];
-  delete colors['#0d131a'];
-
-  Object.keys(colors).forEach(function (color) {
-    sortedColors.push({
-      color: color,
-      count: colors[color]
-    });
-  });
-
-  // sorts from largest to smallest
-  sortedColors.sort(function (a, b) {
-    return b.count - a.count;
-  });
-  var topTenColors = [];
-
-  for (var k = 0; k < 10; k++) {
-    topTenColors.push(sortedColors[k]);
-  }
-
-  return topTenColors;
-};
-
-var calculateColorPercentage = exports.calculateColorPercentage = function calculateColorPercentage(palette) {
-  var totalCount = 0;
-  var colorRatio = [];
-
-  palette.forEach(function (p) {
-    return totalCount += p.count;
-  });
-  palette.forEach(function (p) {
-    var color = p.color;
-    var percentage = p.count / totalCount;
-    colorRatio.push({
-      color: color, percentage: percentage
-    });
-  });
-  return colorRatio;
-};
-
-// this function can be replaced with a mixin
-var calculateNameWidth = exports.calculateNameWidth = function calculateNameWidth(nameElement, currentId, longNameArray) {
-  if (window.innerWidth <= 1057 && longNameArray.includes(currentId)) {
-    nameElement.style.fontSize = "13vw";
-  } else {
-    nameElement.style.fontSize = "143px";
-  }
-};
-
-// capitalize's string
-var capitalize = exports.capitalize = function capitalize(name) {
-  return name.charAt(0).toUpperCase() + name.slice(1);
-};
-
-// hexcode to RGB
-var RGB = {
-  "0": 0,
-  "1": 1,
-  "2": 2,
-  "3": 3,
-  "4": 4,
-  "5": 5,
-  "6": 6,
-  "7": 7,
-  "8": 8,
-  "9": 9,
-  "a": 10,
-  "b": 11,
-  "c": 12,
-  "d": 13,
-  "e": 14,
-  "f": 15
-};
-var hexToRGB = exports.hexToRGB = function hexToRGB(palette) {
-  var rgb = [];
-  for (var i = 0; i < palette.length; i++) {
-    var hexcode = palette[i].color;
-    var r = hexcode.slice(1, 3);
-    var g = hexcode.slice(3, 5);
-    var b = hexcode.slice(5);
-
-    r = RGB[r[0]] * 16 + RGB[r[1]];
-    g = RGB[g[0]] * 16 + RGB[g[1]];
-    b = RGB[b[0]] * 16 + RGB[b[1]];
-
-    var rgbString = "rgb(" + r + ", " + g + ", " + b + ")";
-    rgb.push(rgbString);
-  }
-
-  return rgb;
-};
-
-/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -432,9 +432,9 @@ exports.FireEmblemHero = exports.fireemblemNameToId = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _fireemblem_list = __webpack_require__(0);
+var _fireemblem_list = __webpack_require__(1);
 
-var _util = __webpack_require__(2);
+var _util = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -570,9 +570,9 @@ exports.Pokemon = exports.pokemonNameToId = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _pokemon_list = __webpack_require__(1);
+var _pokemon_list = __webpack_require__(2);
 
-var _util = __webpack_require__(2);
+var _util = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -805,11 +805,11 @@ var Pokemon = exports.Pokemon = function () {
 "use strict";
 
 
-var _pokemon_list = __webpack_require__(1);
+var _pokemon_list = __webpack_require__(2);
 
-var _fireemblem_list = __webpack_require__(0);
+var _fireemblem_list = __webpack_require__(1);
 
-var _util = __webpack_require__(2);
+var _util = __webpack_require__(0);
 
 var _pokemon = __webpack_require__(4);
 

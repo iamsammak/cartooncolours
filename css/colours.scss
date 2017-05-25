@@ -432,3 +432,17 @@ h5 {
     left: 18%;
   }
 }
+
+@media (max-height: 667px) {
+  .palette-slab {
+    top: 80vh;
+  }
+  .palette {
+    .main-hexcode {
+      top: 72vh;
+    }
+    .pokemon-name {
+      top: 17vh;
+    }
+  }
+}
